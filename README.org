@@ -25,46 +25,51 @@
 7. Verify and validate numerical solutions to engineering problems.
 
 * Evaluation
-| Items                                          | (%) |
-|------------------------------------------------+-----|
-| Assignments + Classwork                        |  35 |
-| Report and (Final) Poster                      |  20 |
-| Short Quiz (Exit Survey)                       |  10 |
-| Computer-Based Learning                        |  15 |
-| (Final) Oral Presentation                      |  10 |
-| (Final) Peer Evaluation of Experiment Analysis |  10 |
+| Items             | (%) |
+|-------------------+-----|
+| Assignments (6)   |  30 |
+| Short Quizzes (4) |  20 |
+| Term Project      |  20 |
+| Final Exam        |  30 |
 
 * Weekly outline
 #+REVEAL_HTML: <div style="font-size: 80%;">
-|   Week | Topic                            | Description, Related Work     | Resources |
-|--------+----------------------------------+-------------------------------+-----------|
-|      1 | Mathematical Preliminaries       | Tensor Indicial Notation      | [[BW2005][see Ch.2]]  |
-|      2 | Buckling of a Cylindrical Vessel | Details Regarding the Problem |           |
-|      3 |                                  |                               |           |
-|      4 |                                  |                               |           |
-|      5 |                                  |                               |           |
-|      6 |                                  |                               |           |
-|      7 |                                  |                               |           |
-|      8 |                                  |                               |           |
-|      9 |                                  |                               |           |
-|     10 |                                  |                               |           |
-|     11 |                                  |                               |           |
-| 11 (S) | Saturday Session                 |                               |           |
-|     12 |                                  |                               |           |
-|     13 |                                  |                               |           |
+|   Week | Topic                      | Description, Related Work | Resources   |
+|--------+----------------------------+---------------------------+-------------|
+|      1 | About This Course          | Modus Operandi            | [[https://git-scm.com/][git]], [[https://github.com][github]] |
+|      2 | Mathematical Preliminaries | Tensor Indicial Notation  | [[BW2005][see Ch.2]]    |
+|      3 | Our Sample Model           | A Cylindrical Vessel      | [[https://calculix.discourse.group/t/nonlinear-axial-compression-buckling-of-a-cylinder-not-converging/4027][Topic#4027]]  |
+|      4 |                            |                           |             |
+|      5 |                            |                           |             |
+|      6 |                            |                           |             |
+|      7 |                            |                           |             |
+|      8 |                            |                           |             |
+|      9 |                            |                           |             |
+|     10 |                            |                           |             |
+|     11 |                            |                           |             |
+| 11 (S) | <2026-12-12 Sat>           |                           |             |
+|     12 |                            |                           |             |
+|     13 |                            |                           |             |
 
+* Assignments
+A total of six assignments are targeted until the end of the semester. Some of these assignments will consists of trivial tasks defined by a particular procedure provided by the assignment. Some others may be handwritten homework papers dealing with mathematical problems. Yet some others may require preparation of an input file aimed to achieve a desired objective as laid out in the assignment.
+** Evaluation
+Evaluation and grading of the assignments will mostly be based on the following four criteria.
+- Punctuality: the timeliness of the submission.
+- Accuracy: The degree to which the submission adheres with the assignment deliverable.
+- Precision: The degree of description that accompanies the submitted solution.
+- Originality: The degree of appearant originality of the submission.
 * Resources
 #+REVEAL_HTML: <div style="font-size: 60%;">
 #+ATTR_REVEAL: :frag (appear appear appear ...)
 - [[https://akts.yeditepe.edu.tr/web/Ects/CourseDetail?PID=207&BID=182&Y=1&Z=Z&G=1&DID=7722][Bologna Syllabus]]
 - Lecture presentations
-- Seminar Slides (when made available by guest speaker)
-#+ATTR_REVEAL: :frag (appear appear appear ...)
+
 ** Software
 #+ATTR_REVEAL: :frag (appear appear appear ...)
 - CalculiX
 ** References
-1. <<Hughes1987>> Hughes, Thomas J. R. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall, 1987. [[/home/fethi/snkr/academic/courses/undergrad_courses/me477_fea/books/The_Finite_Element_Method-Thomas_Hughes.djvu][internal]]
-2. <<BW2005>> Bonet, J., Wood, R.D. Nonlinear Continuum Mechanics for Finite Element Analysis, 2nd ed., 2010 (Cambridge University Press): [[https://www.cambridge.org/core/books/nonlinear-continuum-mechanics-for-finite-element-analysis/67AD6DBAAB77E755C09E7FB82565DA0B?utm_campaign=shareaholic&utm_medium=copy_link&utm_source=bookmark][BW2005]],  [[/home/fethi/snkr/academic/courses/undergrad_courses/me477_fea/books/Nonlinear_Continuum_Mechanics_for_Finite_Element_Analysis-Bonet_Wood.pdf][internal]]
+1. <<Textbook>> Hughes, Thomas J. R. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall, 1987. [[/home/fethi/snkr/academic/courses/undergrad_courses/me477_fea/books/The_Finite_Element_Method-Thomas_Hughes.djvu][internal]]
+2. <<BW2005>> Bonet, J., Wood, R.D. Nonlinear Continuum Mechanics for Finite Element Analysis, 2nd ed., 2010 (Cambridge University Press): [[https://www.cambridge.org/core/books/nonlinear-continuum-mechanics-for-finite-element-analysis/67AD6DBAAB77E755C09E7FB82565DA0B?utm_campaign=shareaholic&utm_medium=copy_link&utm_source=bookmark][BW2005]], [[/home/fethi/snkr/academic/courses/undergrad_courses/me477_fea/books/Nonlinear_Continuum_Mechanics_for_Finite_Element_Analysis-Bonet_Wood.pdf][internal]]
 3. Dhondt, Guido. The Finite Element Method for Three-Dimensional Thermomechanical Applications. Wiley, 2004. [[https://onlinelibrary.wiley.com/doi/book/10.1002/0470021217][Dhondt2004]], [[/home/fethi/snkr/academic/courses/undergrad_courses/me477_fea/books/The_Finite_Element_Method_for_3D_Thermomechanical_Applications-Guido_Dhondt.pdf][internal]]
 
