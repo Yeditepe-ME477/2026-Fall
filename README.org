@@ -34,22 +34,22 @@
 
 * Weekly outline
 #+REVEAL_HTML: <div style="font-size: 80%;">
-|   Week | Topic                      | Description, Related Work | Resources   |
-|--------+----------------------------+---------------------------+-------------|
-|      1 | About This Course          | Modus Operandi            | [[https://git-scm.com/][git]], [[https://github.com][github]] |
-|      2 | Mathematical Preliminaries | Tensor Indicial Notation  | [[BW2005][see Ch.2]]    |
-|      3 | Our Sample Model           | A Cylindrical Vessel      | [[https://calculix.discourse.group/t/nonlinear-axial-compression-buckling-of-a-cylinder-not-converging/4027][Topic#4027]]  |
-|      4 |                            |                           |             |
-|      5 |                            |                           |             |
-|      6 |                            |                           |             |
-|      7 |                            |                           |             |
-|      8 |                            |                           |             |
-|      9 |                            |                           |             |
-|     10 |                            |                           |             |
-|     11 |                            |                           |             |
-| 11 (S) | <2026-12-12 Sat>           |                           |             |
-|     12 |                            |                           |             |
-|     13 |                            |                           |             |
+|   Week | Topic            | Description, Related Work | Assignments | Resources   |
+|--------+------------------+---------------------------+-------------+-------------|
+|      1 | About            | Modus Operandi            |             | [[https://git-scm.com/][git]], [[https://github.com][github]] |
+|      2 | Preliminaries    | Tensor Indicial Notation  |             | [[BW2005][see Ch.2]]    |
+|      3 | Sample Model     | A Cylindrical Vessel      |             | [[https://calculix.discourse.group/t/nonlinear-axial-compression-buckling-of-a-cylinder-not-converging/4027][Topic#4027]]  |
+|      4 |                  |                           |             |             |
+|      5 |                  |                           |             |             |
+|      6 |                  |                           |             |             |
+|      7 |                  |                           |             |             |
+|      8 |                  |                           |             |             |
+|      9 |                  |                           |             |             |
+|     10 |                  |                           |             |             |
+|     11 |                  |                           |             |             |
+| 11 (S) |                  |                           |             |             |
+|     12 |                  |                           |             |             |
+|     13 |                  |                           |             |             |
 
 * Assignments
 A total of six assignments are targeted until the end of the semester. Some of these assignments will consists of trivial tasks defined by a particular procedure provided by the assignment. Some others may be handwritten homework papers dealing with mathematical problems. Yet some others may require preparation of an input file aimed to achieve a desired objective as laid out in the assignment.
