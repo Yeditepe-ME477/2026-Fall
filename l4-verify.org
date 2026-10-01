@@ -1,27 +1,97 @@
-#+TITLE:  verification link
-#+AUTHOR: Fethi Okyar
-#+DATE: <2026-09-30 Wed>
-#+SUBTITLE: Finite Element Method, ME 477, 2026 Fall
-#+DESCRIPTION: On the fly report generation
-#+STARTUP: overview
-#+REVEAL_THEME: simple
-#+REVEAL_INIT_OPTIONS: slideNumber:"c/t", width:1920, height:1080
-#+REVEAL_TITLE_SLIDE: <h2>%t</h2> <h3>%s</h3> <h4>%d</h4>
-#+OPTIONS: timestamp:nil toc:1 num:t
-#+REVEAL_EXTRA_CSS: ../style.css
-#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
-#+HTML_HEAD_EXTRA: <style>
-#+HTML_HEAD_EXTRA: pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
-#+HTML_HEAD_EXTRA: </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>verification link</title>
+<meta name="author" content="Fethi Okyar"/>
+<meta name="description" content="On the fly report generation"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
 
-* Adapy
-- https://krande.github.io/adapy/index.html
-- https://krande.github.io/adapy/documents/fea/fea_verification.html
-    
-#+REVEAL: split
-#+ATTR_HTML: :width 600px
-[[./sketch_3.1.jpg]]
-+ rectangular
-  \[ \sum_i \boldsymbol{F}_x = m\,\ddot{x} \, , \hspace{1em} \sum_i \boldsymbol{F}_y = m\,\ddot{y} \]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/simple.css" id="theme"/>
 
-* Examples
+<link rel="stylesheet" href="../style.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style>
+pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h2>verification link</h2> <h3>Finite Element Method, ME 477, 2026 Fall</h3> <h4>2026-09-30 Wed 00:00</h4>
+</section>
+<section id="sec-table-of-contents"><div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#/slide-orgcf6ef30">1. Adapy</a></li>
+<li><a href="#/slide-org40e96c8">2. Examples</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<section id="slide-orgcf6ef30">
+<h2 id="orgcf6ef30"><span class="section-number-2">1.</span> Adapy</h2>
+<ul>
+<li><a href="https://krande.github.io/adapy/index.html">https://krande.github.io/adapy/index.html</a></li>
+<li><a href="https://krande.github.io/adapy/documents/fea/fea_verification.html">https://krande.github.io/adapy/documents/fea/fea_verification.html</a></li>
+
+</ul>
+
+</section>
+<section id="slide-orgcf6ef30-split">
+
+<div id="orgb1880ac" class="figure">
+<p><img src="./sketch_3.1.jpg" alt="sketch_3.1.jpg" width="600px" />
+</p>
+</div>
+<ul>
+<li>rectangular
+\[ \sum_i \boldsymbol{F}_x = m\,\ddot{x} \, , \hspace{1em} \sum_i \boldsymbol{F}_y = m\,\ddot{y} \]</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org40e96c8">
+<h2 id="org40e96c8"><span class="section-number-2">2.</span> Examples</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+slideNumber:"c/t", width:1920, height:1080,
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>
