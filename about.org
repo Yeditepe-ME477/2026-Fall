@@ -1,0 +1,63 @@
+#+TITLE:  About This Course
+#+AUTHOR: Fethi Okyar
+#+DATE: <2026-10-01 Thu>
+#+SUBTITLE: Finite Element Method, ME 477, 2026 Fall
+#+DESCRIPTION: Description of the Course Outine
+#+STARTUP: overview
+#+REVEAL_THEME: simple
+#+REVEAL_INIT_OPTIONS: slideNumber:"c/t", width:1920, height:1080
+#+REVEAL_TITLE_SLIDE: <h2>%t</h2> <h3>%s</h3> <h4>%d</h4>
+#+OPTIONS: timestamp:nil toc:1 num:t
+#+REVEAL_EXTRA_CSS: ../style.css
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
+#+HTML_HEAD_EXTRA: </style>
+
+* Physics is the Description of Nature
+#+ATTR_REVEAL: :frag (appear appear appear ...)
+- As engineers we are usually more interested in how structures behave under loads, thermal conditions, or other physical impetus.
+- But this is not an easy undertaking, especially for arbitrary shapes whose geometry is not an analytical shape (line, circle, etc.)
+- From the 1950s, availability of computers for matrix computations, fueled the effort to convert physical models in the form of boundary-value problems to linear (or nonlinear) systems of equations
+  #+ATTR_REVEAL: :frag (appear appear appear ...)
+  + Finite Differences
+  + *Finite Element Method*
+  + Finite Volume Method
+  + Boundary Element Method
+  + Meshless Methods
+  + Iso-geometric Analysis
+  + etc.
+** Mathematics is the Language of Nature
+- Physical objects and phenomenon are quantified using mathematics. The mathematical toolchest that is useful for this purpose consists of but is not limited to
+  + algebra
+  + linear algebra
+  + calculus
+  + integration
+  + vector algebra
+  + vector calculus
+  + differential forms and equations
+  + variational forms and equations
+  + eigenvalue problems
+** Physical Models
+- Try to describe a hollow shell (the Body) that is partly buried in earth (part of its Boundary)
+- How can the condition at the boundary be modeled?
+  + There is need for a variable that represents motion of the Body, call it $\boldsymbol{u}$, the displacement.
+- Let the rest of the free boundary interact with the surrounding fluid.
+  + We need another variable to model this interaction, say $\boldsymbol{t}$, the traction. 
+- Of course, there are also fundamental conceptualizations such as coordinates, points, configurations, rotations, etc., required in model building.
+  
+* Finite Element Method is an Expert System
+- But is intelligle and written in a computer language, such as Fortran, C, or Python.
+- The mathematical basis is provided by the theory of continuous media, also known as continuum mechanics, the mechanics of deformable media, etc.
+- In this course, it will be necessary to give a preliminary introduction to continuum mechanics in order to familiarize students with the language used in this expert system.
+- In this course, a modern, free (as in free beer), open-source finite element software will be used throughout the semester, both for illustration and assignments. It is called [[https://dhondt.de][CalculiX]].
+
+* The Cylindrical Vessel Problem, One Sample Fits All
+What kind of solutions are available for the study of structural behavior?
+- Static Response (Linear and Nonlinear)
+- Modal Analysis
+- Harmonic Response
+- Buckling and Collapse
+- Transient Response
+
+* The Mode of Operation  

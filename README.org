@@ -36,8 +36,8 @@
 #+REVEAL_HTML: <div style="font-size: 80%;">
 |   Week | Topic         | Description, Related Work | Assignments | Resources   |
 |--------+---------------+---------------------------+-------------+-------------|
-|      1 | About         | Modus Operandi            |             | [[https://git-scm.com/][git]], [[https://github.com][github]] |
-|      2 | Preliminaries | Tensor Indicial Notation  |             | [[BW2005][see Ch.2]]    |
+|      1 | [[./about.html][About]]         | Modus Operandi            |             | [[https://git-scm.com/][git]], [[https://github.com][github]] |
+|      2 | [[./preliminaries.html][Preliminaries]] | Tensor Indicial Notation  |             | [[BW2005][see Ch.2]]    |
 |      3 | Sample Model  | A Cylindrical Vessel      |             | [[https://calculix.discourse.group/t/nonlinear-axial-compression-buckling-of-a-cylinder-not-converging/4027][Topic#4027]]  |
 |      4 |               |                           |             |             |
 |      5 |               |                           |             |             |

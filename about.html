@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>About This Course</title>
+<meta name="author" content="Fethi Okyar"/>
+<meta name="description" content="Description of the Course Outine"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/simple.css" id="theme"/>
+
+<link rel="stylesheet" href="../style.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style>
+pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h2>About This Course</h2> <h3>Finite Element Method, ME 477, 2026 Fall</h3> <h4>2026-10-01 Thu 00:00</h4>
+</section>
+<section id="sec-table-of-contents"><div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#/slide-orga870405">1. Physics is the Description of Nature</a></li>
+<li><a href="#/slide-orgdbbedf4">2. Finite Element Method is an Expert System</a></li>
+<li><a href="#/slide-org10d70ab">3. The Cylindrical Vessel Problem, One Sample Fits All</a></li>
+<li><a href="#/slide-org39aed94">4. The Mode of Operation</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<section id="slide-orga870405">
+<h2 id="orga870405"><span class="section-number-2">1.</span> Physics is the Description of Nature</h2>
+<ul>
+<li class="fragment appear">As engineers we are usually more interested in how structures behave under loads, thermal conditions, or other physical impetus.</li>
+<li class="fragment appear">But this is not an easy undertaking, especially for arbitrary shapes whose geometry is not an analytical shape (line, circle, etc.)</li>
+<li class="fragment appear">From the 1950s, availability of computers for matrix computations, fueled the effort to convert physical models in the form of boundary-value problems to linear (or nonlinear) systems of equations
+<ul>
+<li class="fragment appear">Finite Differences</li>
+<li class="fragment appear"><b>Finite Element Method</b></li>
+<li class="fragment appear">Finite Volume Method</li>
+<li class="fragment ...">Boundary Element Method</li>
+<li class="fragment ...">Meshless Methods</li>
+<li class="fragment ...">Iso-geometric Analysis</li>
+<li class="fragment ...">etc.</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgca2fe6a">
+<h3 id="orgca2fe6a"><span class="section-number-3">1.1.</span> Mathematics is the Language of Nature</h3>
+<ul>
+<li>Physical objects and phenomenon are quantified using mathematics. The mathematical toolchest that is useful for this purpose consists of but is not limited to
+<ul>
+<li>algebra</li>
+<li>linear algebra</li>
+<li>calculus</li>
+<li>integration</li>
+<li>vector algebra</li>
+<li>vector calculus</li>
+<li>differential forms and equations</li>
+<li>variational forms and equations</li>
+<li>eigenvalue problems</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgec09df2">
+<h3 id="orgec09df2"><span class="section-number-3">1.2.</span> Physical Models</h3>
+<ul>
+<li>Try to describe a hollow shell (the Body) that is partly buried in earth (part of its Boundary)</li>
+<li>How can the condition at the boundary be modeled?
+<ul>
+<li>There is need for a variable that represents motion of the Body, call it \(\boldsymbol{u}\), the displacement.</li>
+
+</ul></li>
+<li>Let the rest of the free boundary interact with the surrounding fluid.
+<ul>
+<li>We need another variable to model this interaction, say \(\boldsymbol{t}\), the traction.</li>
+
+</ul></li>
+<li>Of course, there are also fundamental conceptualizations such as coordinates, points, configurations, rotations, etc., required in model building.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgdbbedf4">
+<h2 id="orgdbbedf4"><span class="section-number-2">2.</span> Finite Element Method is an Expert System</h2>
+<ul>
+<li>But is intelligle and written in a computer language, such as Fortran, C, or Python.</li>
+<li>The mathematical basis is provided by the theory of continuous media, also known as continuum mechanics, the mechanics of deformable media, etc.</li>
+<li>In this course, it will be necessary to give a preliminary introduction to continuum mechanics in order to familiarize students with the language used in this expert system.</li>
+<li>In this course, a modern, free (as in free beer), open-source finite element software will be used throughout the semester, both for illustration and assignments. It is called <a href="https://dhondt.de">CalculiX</a>.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org10d70ab">
+<h2 id="org10d70ab"><span class="section-number-2">3.</span> The Cylindrical Vessel Problem, One Sample Fits All</h2>
+<p>
+What kind of solutions are available for the study of structural behavior?
+</p>
+<ul>
+<li>Static Response (Linear and Nonlinear)</li>
+<li>Modal Analysis</li>
+<li>Harmonic Response</li>
+<li>Buckling and Collapse</li>
+<li>Transient Response</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org39aed94">
+<h2 id="org39aed94"><span class="section-number-2">4.</span> The Mode of Operation</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+slideNumber:"c/t", width:1920, height:1080,
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>
