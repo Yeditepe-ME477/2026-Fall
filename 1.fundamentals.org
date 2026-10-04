@@ -1,0 +1,40 @@
+#+TITLE:  Fundamental Concepts
+#+AUTHOR: Fethi Okyar
+#+DATE: <2026-10-01 Thu>
+#+SUBTITLE: Finite Element Method, ME 477, 2026 Fall
+#+DESCRIPTION: Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method
+#+STARTUP: overview
+#+REVEAL_THEME: simple
+#+REVEAL_INIT_OPTIONS: slideNumber:"c/t", width:1920, height:1080
+#+REVEAL_TITLE_SLIDE: <h2>%t</h2> <h3>%s</h3> <h4>%d</h4>
+#+OPTIONS: timestamp:nil toc:1 num:nil
+#+REVEAL_EXTRA_CSS: ../style.css
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
+#+HTML_HEAD_EXTRA: </style>
+
+* ($\S1.1$) A Simple 1-D Boundary-Value Problem
+#+ATTR_REVEAL: :frag (appear appear appear ...)
+- A boundary-value problem consists of a (linear only, for our purposes and scope) partial differential equation, subject to a dual set of initial and final boundary conditions. The solution of the dependent variable at the final state is sought.
+- \[ u_{,xx} + \mathscr{f} = 0\]
+  (comma stands for differentiating)
+- \[ \mathscr{f}:[0,1] \rightarrow \mathbb{R} \]
+  is a load function mapping in the domain interval.
+- The main constituents to be derived in finite element method are
+  + The /variational/ or /weak/ form of the problem, and
+  + introduction of the approximate solution space
+- What is the physical relevance of this problem? (longitudinal motion in elastic rod, displacement of a taught string, etc.)
+- What are /open/ and /closed/ *domains*, $\Omega$, $\bar\Omega$, and *boundaries*, $\partial\Omega^-$, $\partial\Omega^+$ in one-d?
+** ($\S1.2$) Strong, or Classical Form
+#+ATTR_REVEAL: :frag (appear appear appear ...)
+- The strong form of the boundary-value problem, $(S)$, is stated as follows:
+- Given $\mathscr{f}:\bar\Omega \rightarrow \mathbb{R}$ and constants $\mathscr{g}$ and $\mathscr{h}$, find $u: \bar\Omega \rightarrow \mathbb{R}$, such that
+  \begin{align}
+  u_{,xx} + \mathscr{f} &= 0 \hspace{1em} \textrm{on}\,\Omega \nonumber\\
+  u(1) &= \mathscr{g} \hspace{1em} \textrm{on}\,\partial\Omega^- \nonumber\\
+  -u_{,x}(0) &= \mathscr{h} \hspace{1em} \textrm{on}\,\partial\Omega^+ \nonumber
+  \end{align}
+** ($\S1.3$) Weak, or Variational Form
+
+* How to Run Tests in CalculiX
