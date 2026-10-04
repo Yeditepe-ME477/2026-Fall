@@ -1,7 +1,7 @@
 #+TITLE:  verification link
 #+AUTHOR: Fethi Okyar
-#+DATE: <2026-09-30 Wed>
-#+SUBTITLE: Finite Element Method, ME 477, 2026 Fall
+#+DATE: 2026 Fall
+#+SUBTITLE: Finite Element Method, ME 477
 #+DESCRIPTION: On the fly report generation
 #+STARTUP: overview
 #+REVEAL_THEME: simple

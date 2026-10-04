@@ -1,7 +1,7 @@
 #+TITLE:  Fundamental Concepts
 #+AUTHOR: Fethi Okyar
-#+DATE: <2026-10-01 Thu>
-#+SUBTITLE: Finite Element Method, ME 477, 2026 Fall
+#+DATE: 2026 Fall
+#+SUBTITLE: Finite Element Method, ME 477
 #+DESCRIPTION: Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method
 #+STARTUP: overview
 #+REVEAL_THEME: simple

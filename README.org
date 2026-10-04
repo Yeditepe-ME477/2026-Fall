@@ -1,6 +1,7 @@
 #+TITLE: ME 477/572 (Advanced) Finite Element Analysis
-#+SUBTITLE: 2026 Fall
 #+AUTHOR: Fethi Okyar
+#+DATE: 2026 Fall
+#+SUBTITLE: Finite Element Method, ME 477
 #+STARTUP: overview
 #+REVEAL_THEME: simple
 #+REVEAL_INIT_OPTIONS: slideNumber:"c/t", width:1920, height:1080
