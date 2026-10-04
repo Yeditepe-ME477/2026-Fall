@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Fundamental Concepts</title>
+<meta name="author" content="Fethi Okyar"/>
+<meta name="description" content="Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method"/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/simple.css" id="theme"/>
+
+<link rel="stylesheet" href="../style.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style>
+pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h2>Fundamental Concepts</h2> <h3>Finite Element Method, ME 477, 2026 Fall</h3> <h4>2026-10-01 Thu 00:00</h4>
+</section>
+<section id="sec-table-of-contents"><div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#/slide-org6a55fa3">(\(\S1.1\)) A Simple 1-D Boundary-Value Problem</a></li>
+<li><a href="#/slide-orge26bd83">How to Run Tests in CalculiX</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<section id="slide-org6a55fa3">
+<h2 id="org6a55fa3">(\(\S1.1\)) A Simple 1-D Boundary-Value Problem</h2>
+<ul>
+<li class="fragment appear">A boundary-value problem consists of a (linear only, for our purposes and scope) partial differential equation, subject to a dual set of initial and final boundary conditions. The solution of the dependent variable at the final state is sought.</li>
+<li class="fragment appear">\[ u_{,xx} + \mathscr{f} = 0\]
+(comma stands for differentiating)</li>
+<li class="fragment appear">\[ \mathscr{f}:[0,1] \rightarrow \mathbb{R} \]
+is a load function mapping in the domain interval.</li>
+<li class="fragment ...">The main constituents to be derived in finite element method are
+<ul>
+<li>The <i>variational</i> or <i>weak</i> form of the problem, and</li>
+<li>introduction of the approximate solution space</li>
+
+</ul></li>
+<li class="fragment ...">What is the physical relevance of this problem? (longitudinal motion in elastic rod, displacement of a taught string, etc.)</li>
+<li class="fragment ...">What are <i>open</i> and <i>closed</i> <b>domains</b>, \(\Omega\), \(\bar\Omega\), and <b>boundaries</b>, \(\partial\Omega^-\), \(\partial\Omega^+\) in one-d?</li>
+
+</ul>
+</section>
+<section id="slide-org9eaa7de">
+<h3 id="org9eaa7de">(\(\S1.2\)) Strong, or Classical Form</h3>
+<ul>
+<li class="fragment appear">The strong form of the boundary-value problem, \((S)\), is stated as follows:</li>
+<li class="fragment appear"><p>
+Given \(\mathscr{f}:\bar\Omega \rightarrow \mathbb{R}\) and constants \(\mathscr{g}\) and \(\mathscr{h}\), find \(u: \bar\Omega \rightarrow \mathbb{R}\), such that
+</p>
+<div>
+\begin{align}
+u_{,xx} + \mathscr{f} &= 0 \hspace{1em} \textrm{on}\,\Omega \nonumber\\
+u(1) &= \mathscr{g} \hspace{1em} \textrm{on}\,\partial\Omega^- \nonumber\\
+-u_{,x}(0) &= \mathscr{h} \hspace{1em} \textrm{on}\,\partial\Omega^+ \nonumber
+\end{align}
+
+</div></li>
+
+</ul>
+</section>
+<section id="slide-orgda20954">
+<h3 id="orgda20954">(\(\S1.3\)) Weak, or Variational Form</h3>
+</section>
+</section>
+<section>
+<section id="slide-orge26bd83">
+<h2 id="orge26bd83">How to Run Tests in CalculiX</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+slideNumber:"c/t", width:1920, height:1080,
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>
