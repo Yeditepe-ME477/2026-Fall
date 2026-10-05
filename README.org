@@ -6,7 +6,7 @@
 #+REVEAL_THEME: simple
 #+REVEAL_INIT_OPTIONS: slideNumber:"c/t", width:1920, height:1080
 #+REVEAL_TITLE_SLIDE: <h2>%t</h2> <h3>%s</h3> <h3>%a</h3>
-#+OPTIONS: timestamp:nil toc:1 num:nil
+#+OPTIONS: timestamp:true toc:1 num:nil
 #+REVEAL_EXTRA_CSS: ./mystyle.css
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
 
@@ -38,7 +38,7 @@
 |   Week | Topic           | Description, Related Work | Assignments | Resources         |
 |--------+-----------------+---------------------------+-------------+-------------------|
 |      1 | [[./about.html][About]]           | Modus Operandi            |             | [[https://git-scm.com/][git]], [[https://github.com][github]]       |
-|      2 | [[./1.fundamentals.html][Fundamentals]]    | One-d BVP + Run Calculix  |             | [[./textbook/Ch1_p1.pdf	][Ch.1-p1]], [[https://calculix.discourse.group/t/how-to-run-calculix-tests/1810][THD#1810]] |
+|      2 | [[./1.fundamentals.html][Fundamentals]]    | One-d BVP + Run Calculix  | Test_1      | [[./textbook/Ch1_p1.pdf	][Ch.1-p1]], [[https://calculix.discourse.group/t/how-to-run-calculix-tests/1810][THD#1810]] |
 |      3 | Teknopark visit | Yeditepe TTO A.Ş. Girişim |             |                   |
 |      4 | Sample Model    | A Cylindrical Vessel      |             | [[https://calculix.discourse.group/t/nonlinear-axial-compression-buckling-of-a-cylinder-not-converging/4027][THD#4027]]          |
 |      5 |                 |                           |             |                   |
