@@ -1,0 +1,12 @@
+**WSL Kurulum Rehberi**
+by Eren Kabarik, CCSA-1
+1. Denetim masasından windows özelliklerini aç veya kapat kısmına girin.
+1.1.Buradan "Linux için Windows alt sistem" seçeneğini işaretleyin ve bilgisayarı yeniden başlatın.
+2. CMD'yi yönetici olarak çalıştırıp "wsl --install" komutunu girin.
+3. İndirme işlemi tamamlandıktan sonra "wsl.exe --list --online" yazın.
+4. "wsl.exe --install Ubuntu" yazın ve "İstenen işlem başarılı. Değişiklikler sistem yeniden önyükleninceye kadar etkili olmayacak." cevabını aldıktan sonra bilgisayarı yeniden başlatın.
+5. Tekrardan CMD'yi yönetici olarak çalıştırın ve "wsl.exe --install Ubuntu" yazın, bu şekilde kurulum başlayacak.
+6. Kurulum sırasında gelen Would you like to opt-in to platform metrics kısmına yes "y" diyebilirsiniz.
+7. Kurulum tamamlandıktan sonra ilk olarak "sudo apt update" ve daha sonrasında "sudo apt upgrade -y" kodlarını girin.
+8. Sistem güncellemesi tamamlandıktan sonra "sudo apt install calculix-ccx calculix-cgx" kodunu girip calculix'in kurulumunu yapabilirsiniz
+9. Calculix kurulumunun başarılı olup olmadığını görebilmek için ilk önce "ccx -v" daha sonrasında "which cgx" komutlarını deneyiniz.

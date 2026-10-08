@@ -27,6 +27,15 @@
 - What is the physical relevance of this problem? (longitudinal motion in elastic rod, displacement of a taught string, etc.)
 - What are /open/ and /closed/ *domains*, $\Omega$, $\bar\Omega$, and *boundaries*, $\partial\Omega^-$, $\partial\Omega^+$ in one-d?
 ** ($\S1.2$) Strong, or Classical Form
+#+ATTR_REVEAL: :frag (appear)
+There are two types of boundary conditions
+  #+ATTR_REVEAL: :frag (appear appear appear ...)
+  - Those that are assigned to the displacements (independent variable)
+    \[ u(1) = \mathscr{g} \]
+  - Those that are assigned to the displacement derivative
+    \[ -u_{,x}(0) = \mathscr{h} \]
+
+#+REVEAL: split
 #+ATTR_REVEAL: :frag (appear appear appear ...)
 - The strong form of the boundary-value problem, $(S)$, is stated as follows:
 - Given $\mathscr{f}:\bar\Omega \rightarrow \mathbb{R}$ and constants $\mathscr{g}$ and $\mathscr{h}$, find $u: \bar\Omega \rightarrow \mathbb{R}$, such that
@@ -35,6 +44,22 @@
   u(1) &= \mathscr{g} \hspace{1em} \textrm{on}\,\partial\Omega^- \nonumber\\
   -u_{,x}(0) &= \mathscr{h} \hspace{1em} \textrm{on}\,\partial\Omega^+ \nonumber
   \end{align}
-** ($\S1.3$) Weak, or Variational Form
 
+#+REVEAL: split
+#+ATTR_REVEAL: :frag (appear appear appear ...)
+- The solution of the problem is a function $u(x)$, selected from the space of trial functions, $\delta$.
+- For numerical suitability of the solution we require that its' first derivative be square-integrable
+  \[ \int_0^1 (u_{,x})^2 dx < \infty \]
+  Functions that satisfy the above equation are called $H^1$ functions; indicated as $u \in H^1$.
+- The other restriction for eligibility to be a member of the trial function set is to satisfy the $\mathscr{g}$ type boundary condition, i.e. $u(1)=\mathscr{g}$.
+- The collection of *trial solutions*, is written as:
+  \[ \delta = \{u|u \in H^1, u(1) =\mathscr{g} \} \]
+  
+** ($\S1.3$) Weak, or Variational Form
+#+ATTR_REVEAL: :feag (appear appear appear ...)
+- It is possible to change the form of a boundary-value problem between /differential/ and /integral/ types.
+- For this purpose, we introduce the tool known as /weight functions/, or /variations/.
+- This collection is very similar to the trial functions except that we reqire the homogeneous counterpart of the $\mathscr{g}$ condition.
+  \[ \mathscr{V} = \{w|w \in H^1, w(1) = 0 \} \]
+ 
 * How to Run Tests in CalculiX
