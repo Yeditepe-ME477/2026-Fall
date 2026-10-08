@@ -1,0 +1,18 @@
+#+TITLE:  Central Ideas
+#+AUTHOR: Fethi Okyar
+#+DATE: 2026 Fall
+#+SUBTITLE: Finite Element Method, ME 477
+#+DESCRIPTION: Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method
+#+STARTUP: overview
+#+REVEAL_THEME: simple
+#+REVEAL_INIT_OPTIONS: slideNumber:"c/t", width:1920, height:1080
+#+REVEAL_TITLE_SLIDE: <h2>%t</h2> <h3>%s</h3> <h4>%d</h4>
+#+OPTIONS: timestamp:nil toc:1 num:nil
+#+REVEAL_EXTRA_CSS: ../style.css
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
+#+HTML_HEAD_EXTRA: </style>
+
+* ($\S1.5$) Bubnov-Galerkin Approximation
+(under construction...)

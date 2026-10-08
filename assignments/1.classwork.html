@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About This Course</title>
+<title>Classwork 1: Initialization</title>
 <meta name="author" content="Fethi Okyar" />
-<meta name="description" content="Description of the Course Outine" />
+<meta name="description" content="Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -197,42 +197,10 @@
 <style>
 pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 </style>
-<script>
-  window.MathJax = {
-    tex: {
-      ams: {
-        multlineWidth: '85%'
-      },
-      tags: 'ams',
-      tagSide: 'right',
-      tagIndent: '.8em'
-    },
-    chtml: {
-      scale: 1.0,
-      displayAlign: 'center',
-      displayIndent: '0em'
-    },
-    svg: {
-      scale: 1.0,
-      displayAlign: 'center',
-      displayIndent: '0em'
-    },
-    output: {
-      font: 'mathjax-modern',
-      displayOverflow: 'overflow'
-    }
-  };
-</script>
-
-<script
-  id="MathJax-script"
-  async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">About This Course
+<h1 class="title">Classwork 1: Initialization
 <br />
 <span class="subtitle">Finite Element Method, ME 477</span>
 </h1>
@@ -240,96 +208,51 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org39a32e7">1. Physics is the Description of Nature</a></li>
-<li><a href="#org51d81a6">2. Finite Element Method is an Expert System</a></li>
-<li><a href="#org9de8ad9">3. The Cylindrical Vessel Problem, One Sample Fits All</a></li>
-<li><a href="#orgad16e12">4. The Mode of Operation</a></li>
+<li><a href="#org768c94d">WSL Kurulum Rehberi</a></li>
+<li><a href="#org44b8831">How to Use <code>cgx</code></a></li>
+<li><a href="#orga77a42d">How to Run Tests in CalculiX</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org39a32e7" class="outline-2">
-<h2 id="org39a32e7"><span class="section-number-2">1.</span> Physics is the Description of Nature</h2>
-<div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li>As engineers we are usually more interested in how structures behave under loads, thermal conditions, or other physical impetus.</li>
-<li>But this is not an easy undertaking, especially for arbitrary shapes whose geometry is not an analytical shape (line, circle, etc.)</li>
-<li>From the 1950s, availability of computers for matrix computations, fueled the effort to convert physical models in the form of boundary-value problems to linear (or nonlinear) systems of equations
-<ul class="org-ul">
-<li>Finite Differences</li>
-<li><b>Finite Element Method</b></li>
-<li>Finite Volume Method</li>
-<li>Boundary Element Method</li>
-<li>Meshless Methods</li>
-<li>Iso-geometric Analysis</li>
-<li>etc.</li>
-</ul></li>
-</ul>
-</div>
-<div id="outline-container-orgd6c4e5e" class="outline-3">
-<h3 id="orgd6c4e5e"><span class="section-number-3">1.1.</span> Mathematics is the Language of Nature</h3>
-<div class="outline-text-3" id="text-1-1">
-<ul class="org-ul">
-<li>Physical objects and phenomenon are quantified using mathematics. The mathematical toolchest that is useful for this purpose consists of but is not limited to
-<ul class="org-ul">
-<li>algebra</li>
-<li>linear algebra</li>
-<li>calculus</li>
-<li>integration</li>
-<li>vector algebra</li>
-<li>vector calculus</li>
-<li>differential forms and equations</li>
-<li>variational forms and equations</li>
-<li>eigenvalue problems</li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org90fdded" class="outline-3">
-<h3 id="org90fdded"><span class="section-number-3">1.2.</span> Physical Models</h3>
-<div class="outline-text-3" id="text-1-2">
-<ul class="org-ul">
-<li>Try to describe a hollow shell (the Body) that is partly buried in earth (part of its Boundary)</li>
-<li>How can the condition at the boundary be modeled?
-<ul class="org-ul">
-<li>There is need for a variable that represents motion of the Body, call it \(\boldsymbol{u}\), the displacement.</li>
-</ul></li>
-<li>Let the rest of the free boundary interact with the surrounding fluid.
-<ul class="org-ul">
-<li>We need another variable to model this interaction, say \(\boldsymbol{t}\), the traction.</li>
-</ul></li>
-<li>Of course, there are also fundamental conceptualizations such as coordinates, points, configurations, rotations, etc., required in model building.</li>
-</ul>
-</div>
-</div>
-</div>
-<div id="outline-container-org51d81a6" class="outline-2">
-<h2 id="org51d81a6"><span class="section-number-2">2.</span> Finite Element Method is an Expert System</h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li>But is intelligle and written in a computer language, such as Fortran, C, or Python.</li>
-<li>The mathematical basis is provided by the theory of continuous media, also known as continuum mechanics, the mechanics of deformable media, etc.</li>
-<li>In this course, it will be necessary to give a preliminary introduction to continuum mechanics in order to familiarize students with the language used in this expert system.</li>
-<li>In this course, a modern, free (as in free beer), open-source finite element software will be used throughout the semester, both for illustration and assignments. It is called <a href="https://dhondt.de">CalculiX</a>.</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org9de8ad9" class="outline-2">
-<h2 id="org9de8ad9"><span class="section-number-2">3.</span> The Cylindrical Vessel Problem, One Sample Fits All</h2>
-<div class="outline-text-2" id="text-3">
 <p>
-What kind of solutions are available for the study of structural behavior?
+This classwork sheet consists of 3 parts and a total of 5 points.
 </p>
-<ul class="org-ul">
-<li>Static Response (Linear and Nonlinear)</li>
-<li>Modal Analysis</li>
-<li>Harmonic Response</li>
-<li>Buckling and Collapse</li>
-<li>Transient Response</li>
-</ul>
+<div id="outline-container-org768c94d" class="outline-2">
+<h2 id="org768c94d">WSL Kurulum Rehberi</h2>
+<div class="outline-text-2" id="text-org768c94d">
+<p>
+by Eren Kabarik, CCSA-1 
+</p>
+<ol class="org-ol">
+<li>Denetim masasından windows özelliklerini aç veya kapat kısmına girin.
+Buradan &ldquo;Linux için Windows alt sistem&rdquo; seçeneğini işaretleyin ve bilgisayarı yeniden başlatın.</li>
+<li>CMD&rsquo;yi yönetici olarak çalıştırıp &ldquo;wsl &ndash;install&rdquo; komutunu girin.</li>
+<li>İndirme işlemi tamamlandıktan sonra &ldquo;wsl.exe &ndash;list &ndash;online&rdquo; yazın.</li>
+<li>&ldquo;wsl.exe &ndash;install Ubuntu&rdquo; yazın ve &ldquo;İstenen işlem başarılı. Değişiklikler sistem yeniden önyükleninceye kadar etkili olmayacak.&rdquo; cevabını aldıktan sonra bilgisayarı yeniden başlatın.</li>
+<li>Tekrardan CMD&rsquo;yi yönetici olarak çalıştırın ve &ldquo;wsl.exe &ndash;install Ubuntu&rdquo; yazın, bu şekilde kurulum başlayacak.</li>
+<li>Kurulum sırasında gelen Would you like to opt-in to platform metrics kısmına yes &ldquo;y&rdquo; diyebilirsiniz.</li>
+<li>Kurulum tamamlandıktan sonra ilk olarak &ldquo;sudo apt update&rdquo; ve daha sonrasında &ldquo;sudo apt upgrade -y&rdquo; kodlarını girin.</li>
+<li>Sistem güncellemesi tamamlandıktan sonra &ldquo;sudo apt install calculix-ccx calculix-cgx&rdquo; kodunu girip calculix&rsquo;in kurulumunu yapabilirsiniz.</li>
+<li>Calculix kurulumunun başarılı olup olmadığını görebilmek için ilk önce &ldquo;ccx -v&rdquo; daha sonrasında &ldquo;which cgx&rdquo; komutlarını.</li>
+<li>Read and apply (1 point)</li>
+</ol>
 </div>
 </div>
-<div id="outline-container-orgad16e12" class="outline-2">
-<h2 id="orgad16e12"><span class="section-number-2">4.</span> The Mode of Operation</h2>
+<div id="outline-container-org44b8831" class="outline-2">
+<h2 id="org44b8831">How to Use <code>cgx</code></h2>
+<div class="outline-text-2" id="text-org44b8831">
+<p>
+This is from the <a href="https://www.dhondt.de/">official CalculiX webpage</a>. <code>cgx</code> is the pre- and post-processor for CalculiX. Here is a not so short <a href="https://www.dhondt.de/tutorial.txt">cgx tutorial</a>. Read and apply. (2 points)
+</p>
+</div>
+</div>
+<div id="outline-container-orga77a42d" class="outline-2">
+<h2 id="orga77a42d">How to Run Tests in CalculiX</h2>
+<div class="outline-text-2" id="text-orga77a42d">
+<p>
+This is from the CalculiX Discourse page. It is filed as <a href="https://calculix.discourse.group/t/how-to-run-calculix-tests/1810">thread#1810</a>. Read and apply. (2 points)
+</p>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">

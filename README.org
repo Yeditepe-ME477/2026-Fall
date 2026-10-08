@@ -35,22 +35,22 @@
 
 * Weekly outline
 #+REVEAL_HTML: <div style="font-size: 80%;">
-|   Week | Topic           | Description, Related Work | Assignments | Resources         |
-|--------+-----------------+---------------------------+-------------+-------------------|
-|      1 | [[./about.html][About]]           | Modus Operandi            |             | [[https://git-scm.com/][git]], [[https://github.com][github]]       |
-|      2 | [[./1.fundamentals.html][Fundamentals]]    | One-d BVP + Run Calculix  | Test_1      | [[./textbook/Ch1_p1.pdf	][Ch.1-p1]], [[https://calculix.discourse.group/t/how-to-run-calculix-tests/1810][THD#1810]] |
-|      3 | Teknopark visit | Yeditepe TTO A.Ş. Girişim |             |                   |
-|      4 | Sample Model    | A Cylindrical Vessel      |             | [[https://calculix.discourse.group/t/nonlinear-axial-compression-buckling-of-a-cylinder-not-converging/4027][THD#4027]]          |
-|      5 |                 |                           |             |                   |
-|      6 |                 |                           |             |                   |
-|      7 |                 |                           |             |                   |
-|      8 |                 |                           |             |                   |
-|      9 |                 |                           |             |                   |
-|     10 |                 |                           |             |                   |
-|     11 |                 |                           |             |                   |
-| 11 (S) |                 |                           |             |                   |
-|     12 |                 |                           |             |                   |
-|     13 |                 |                           |             |                   |
+|   Week | Topic           | Description, Related Work | Assignments | Resources   |
+|--------+-----------------+---------------------------+-------------+-------------|
+|      1 | [[./0.about.html][About]]           | Modus Operandi            |             | [[https://git-scm.com/][git]], [[https://github.com][github]] |
+|      2 | [[./1.fundamentals.html][Fundamentals]]    | One-d BVP + Run Calculix  | [[./assignments/1.classwork.html][Classwork 1]] | [[./textbook/Ch1_p1.pdf	][Ch.1-p1]]     |
+|      3 | Teknopark visit | Yeditepe TTO A.Ş. Girişim |             |             |
+|      4 | [[./2.central_idea.html][Central Idea]]    | Bubkov-Galerkin Method    |             | [[./textbook/Ch1_p2.pdf	][Ch.1-p2]]     |
+|      5 | Sample Model    | A Cylindrical Vessel      |             | [[https://calculix.discourse.group/t/nonlinear-axial-compression-buckling-of-a-cylinder-not-converging/4027][THD#4027]]    |
+|      6 |                 |                           |             |             |
+|      7 |                 |                           |             |             |
+|      8 |                 |                           |             |             |
+|      9 |                 |                           |             |             |
+|     10 |                 |                           |             |             |
+|     11 |                 |                           |             |             |
+| 11 (S) |                 |                           |             |             |
+|     12 |                 |                           |             |             |
+|     13 |                 |                           |             |             |
 
 * Assignments
 A total of six assignments are targeted until the end of the semester. Some of these assignments will consists of trivial tasks defined by a particular procedure provided by the assignment. Some others may be handwritten homework papers dealing with mathematical problems. Yet some others may require preparation of an input file aimed to achieve a desired objective as laid out in the assignment.

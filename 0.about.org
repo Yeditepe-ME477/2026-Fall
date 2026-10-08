@@ -1,7 +1,7 @@
 #+TITLE:  About This Course
 #+AUTHOR: Fethi Okyar
-#+DATE: <2026-10-01 Thu>
-#+SUBTITLE: Finite Element Method, ME 477, 2026 Fall
+#+DATE: 2026 Fall
+#+SUBTITLE: Finite Element Method, ME 477
 #+DESCRIPTION: Description of the Course Outine
 #+STARTUP: overview
 #+REVEAL_THEME: simple

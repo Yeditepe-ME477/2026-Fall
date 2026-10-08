@@ -21,12 +21,17 @@
   (comma stands for differentiating)
 - \[ \mathscr{f}:[0,1] \rightarrow \mathbb{R} \]
   is a load function mapping in the domain interval.
+
+#+REVEAL: split
+Some relevant definitions...
+#+ATTR_REVEAL: :frag (appear appear appear ...)
 - The main constituents to be derived in finite element method are
   + The /variational/ or /weak/ form of the problem, and
   + introduction of the approximate solution space
 - What is the physical relevance of this problem? (longitudinal motion in elastic rod, displacement of a taught string, etc.)
 - What are /open/ and /closed/ *domains*, $\Omega$, $\bar\Omega$, and *boundaries*, $\partial\Omega^-$, $\partial\Omega^+$ in one-d?
-** ($\S1.2$) Strong, or Classical Form
+  
+* ($\S1.2$) Strong, or Classical Form ($S$)
 #+ATTR_REVEAL: :frag (appear)
 There are two types of boundary conditions
   #+ATTR_REVEAL: :frag (appear appear appear ...)
@@ -36,8 +41,8 @@ There are two types of boundary conditions
     \[ -u_{,x}(0) = \mathscr{h} \]
 
 #+REVEAL: split
+The strong form of the boundary-value problem, $(S)$, is stated as follows:
 #+ATTR_REVEAL: :frag (appear appear appear ...)
-- The strong form of the boundary-value problem, $(S)$, is stated as follows:
 - Given $\mathscr{f}:\bar\Omega \rightarrow \mathbb{R}$ and constants $\mathscr{g}$ and $\mathscr{h}$, find $u: \bar\Omega \rightarrow \mathbb{R}$, such that
   \begin{align}
   u_{,xx} + \mathscr{f} &= 0 \hspace{1em} \textrm{on}\,\Omega \nonumber\\
@@ -46,20 +51,46 @@ There are two types of boundary conditions
   \end{align}
 
 #+REVEAL: split
+The solution of the problem is a function $u(x)$, selected from the space of trial functions, $\delta$.
 #+ATTR_REVEAL: :frag (appear appear appear ...)
-- The solution of the problem is a function $u(x)$, selected from the space of trial functions, $\delta$.
 - For numerical suitability of the solution we require that its' first derivative be square-integrable
   \[ \int_0^1 (u_{,x})^2 dx < \infty \]
   Functions that satisfy the above equation are called $H^1$ functions; indicated as $u \in H^1$.
 - The other restriction for eligibility to be a member of the trial function set is to satisfy the $\mathscr{g}$ type boundary condition, i.e. $u(1)=\mathscr{g}$.
 - The collection of *trial solutions*, is written as:
   \[ \delta = \{u|u \in H^1, u(1) =\mathscr{g} \} \]
-  
-** ($\S1.3$) Weak, or Variational Form
-#+ATTR_REVEAL: :feag (appear appear appear ...)
+
+* ($\S1.3$) Weak, or Variational Form ($W$)
+#+ATTR_REVEAL: :frag (appear appear appear ...)
 - It is possible to change the form of a boundary-value problem between /differential/ and /integral/ types.
 - For this purpose, we introduce the tool known as /weight functions/, or /variations/.
-- This collection is very similar to the trial functions except that we reqire the homogeneous counterpart of the $\mathscr{g}$ condition.
+- This collection is very similar to the trial functions except that we require the homogeneous counterpart of the $\mathscr{g}$ condition.
   \[ \mathscr{V} = \{w|w \in H^1, w(1) = 0 \} \]
- 
-* How to Run Tests in CalculiX
+
+** Conversion from ($S$) to ($W$)
+#+ATTR_REVEAL: :frag (appear appear appear ...)
+1. Take $w(x)$ into ($S$) and integrate over $\Omega$
+2. Use by parts integration to reduce the order of derivative
+3. Evaluate the $\mathscr{h}$ type boundary condition,  $\rightarrow (W)$
+
+#+REVEAL: split
+The weak form of the boundary-value problem, $(W)$, is stated as follows:
+#+ATTR_REVEAL: :frag (appear appear appear ...)
+- Given $\mathscr{f}$, $\mathscr{g}$, and $\mathscr{h}$, as before. Find $u \in \delta$ such that for all $w \in \mathscr{V}$
+  \[ \int_0^1 w_{,x} u_{,x} \, dx = \int_0^1 wf \, dx + w(0)\mathscr{h} \]
+- This is also known as the /integral/ form of the boundary-value problem.
+
+* ($\S1.4$) Bilinear Form
+Finite element methods are based on the /integral form/ of the boundary-value problem.
+#+ATTR_REVEAL: :frag (appear appear appear ...)
+- Bilinear form is an additional notation to provide a shorthand expression of ($W$).
+- First introduce the operators:
+  \begin{align}
+   a(w,u) = \int_0^1 w_{,x} u_{,x} \, dx \\
+   (w,\mathscr{f}) = \int_0^1 w \mathscr{f} \, dx
+  \end{align}
+- In terms of these two, ($W$) takes the form
+  \[ a(w,u) = (w,\mathscr{f}) + w(0) \mathscr{h} \]
+- Both $a(\cdot\,\cdot)$ and $(\cdot,\cdot$) are symmetric, bilinear forms.
+
+

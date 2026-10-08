@@ -1,0 +1,37 @@
+#+TITLE:  Classwork 1: Initialization
+#+AUTHOR: Fethi Okyar
+#+DATE: 2026 Fall
+#+SUBTITLE: Finite Element Method, ME 477
+#+DESCRIPTION: Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method
+#+STARTUP: overview
+#+REVEAL_THEME: simple
+#+REVEAL_INIT_OPTIONS: slideNumber:"c/t", width:1920, height:1080
+#+REVEAL_TITLE_SLIDE: <h2>%t</h2> <h3>%s</h3> <h4>%d</h4>
+#+OPTIONS: timestamp:nil toc:1 num:nil
+#+REVEAL_EXTRA_CSS: ../style.css
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
+#+HTML_HEAD_EXTRA: </style>
+
+This classwork sheet consists of 3 parts and a total of 5 points.
+
+* WSL Kurulum Rehberi
+by Eren Kabarik, CCSA-1 
+1. Denetim masasından windows özelliklerini aç veya kapat kısmına girin.
+   Buradan "Linux için Windows alt sistem" seçeneğini işaretleyin ve bilgisayarı yeniden başlatın.
+2. CMD'yi yönetici olarak çalıştırıp "wsl --install" komutunu girin.
+3. İndirme işlemi tamamlandıktan sonra "wsl.exe --list --online" yazın.
+4. "wsl.exe --install Ubuntu" yazın ve "İstenen işlem başarılı. Değişiklikler sistem yeniden önyükleninceye kadar etkili olmayacak." cevabını aldıktan sonra bilgisayarı yeniden başlatın.    
+5. Tekrardan CMD'yi yönetici olarak çalıştırın ve "wsl.exe --install Ubuntu" yazın, bu şekilde kurulum başlayacak.
+6. Kurulum sırasında gelen Would you like to opt-in to platform metrics kısmına yes "y" diyebilirsiniz.
+7. Kurulum tamamlandıktan sonra ilk olarak "sudo apt update" ve daha sonrasında "sudo apt upgrade -y" kodlarını girin.
+8. Sistem güncellemesi tamamlandıktan sonra "sudo apt install calculix-ccx calculix-cgx" kodunu girip calculix'in kurulumunu yapabilirsiniz.
+9. Calculix kurulumunun başarılı olup olmadığını görebilmek için ilk önce "ccx -v" daha sonrasında "which cgx" komutlarını.
+10. Read and apply (1 point)   
+
+* How to Use =cgx=
+This is from the [[https://www.dhondt.de/][official CalculiX webpage]]. =cgx= is the pre- and post-processor for CalculiX. Here is a not so short [[https://www.dhondt.de/tutorial.txt][cgx tutorial]]. Read and apply. (2 points)
+
+* How to Run Tests in CalculiX
+This is from the CalculiX Discourse page. It is filed as [[https://calculix.discourse.group/t/how-to-run-calculix-tests/1810][thread#1810]]. Read and apply. (2 points)
