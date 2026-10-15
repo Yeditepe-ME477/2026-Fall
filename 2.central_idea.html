@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Central Ideas</title>
+<title><a href="https://youtu.be/WwgrAH-IMOk">Central Ideas</a></title>
 <meta name="author" content="Fethi Okyar"/>
 <meta name="description" content="Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method"/>
 <meta name="keywords" content=""/>
@@ -33,22 +33,116 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h2>Central Ideas</h2> <h3>Finite Element Method, ME 477</h3> <h4>2026 Fall</h4>
+<section id="sec-title-slide"><h2><a href="https://youtu.be/WwgrAH-IMOk">Central Ideas</a></h2> <h3>Finite Element Method, ME 477</h3> <h4>2026 Fall</h4>
 </section>
 <section id="sec-table-of-contents"><div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-orgd718787">(\(\S1.5\)) Bubnov-Galerkin Approximation</a></li>
+<li><a href="#/slide-org3f0c43a">Spatial Discretization Concepts</a></li>
+<li><a href="#/slide-org948b023">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</a></li>
+<li><a href="#/slide-org3fa76ec">(\(\S1.6\)) Matrix Equations</a></li>
 </ul>
 </div>
 </div>
 </section>
 <section>
-<section id="slide-orgd718787">
-<h2 id="orgd718787">(\(\S1.5\)) Bubnov-Galerkin Approximation</h2>
+<section id="slide-org3f0c43a">
+<h2 id="org3f0c43a">Spatial Discretization Concepts</h2>
 <p>
-(under construction&hellip;)
+<a href="./1.fundamentals.html">\(\leftarrow\) Previous Lecture</a>
+</p>
+
+<ul>
+<li class="fragment appear">We construct finite-dimensional approximations of function spaces \(\delta\) and \(\mathscr{V}\), denoted as \(\delta^h\) and \(\mathscr{V}^h\), respectively.</li>
+<li class="fragment appear"><p>
+The superscript refers to the association of \(\delta^h\) and \(\mathscr{V}^h\) with a <b>mesh</b>, or <b>discretization</b>, of the domain \(\Omega\), parameterized by a characteristic length scale \(h\).
+</p>
+
+<div id="org50279b7" class="figure">
+<p><img src="./2.fig1-discretization.png" alt="2.fig1-discretization.png" width="1000px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div></li>
+<li class="fragment appear"><p>
+We think of \(\delta^h\) and \(\mathscr{V}^h\) as being subsets of \(\delta\) and \(\mathscr{V}\), written as
+\[ \delta^h \subset \delta \hspace{1em} (\mathrm{i.e., if} \; u^h \in \delta^h,\, \mathrm{then}\, u^h \in \delta) \]
+</p>
+
+</section>
+<section id="slide-org2eb3111-split">
+<p>
+Remember Tom Hughes&hellip; <a href="https://www.asme.org/topics-resources/content/thomas-jr-hughes-2018-medal">https://www.asme.org/topics-resources/content/thomas-jr-hughes-2018-medal</a>
+</p>
+
+<p>
+The finite element method : linear static and dynamic finite element analysis / Thomas J.R. Hughes
+</p></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org948b023">
+<h2 id="org948b023">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</h2>
+<p>
+Remember the resctriction on the trial and weight functions, \(u\) and \(v\), at the <b>essential</b> boundaries (\(\mathscr{g}\) type):
+</p>
+<ul>
+<li class="fragment appear"><p>
+The same applies to the discretized forms
+</p>
+<div>
+\begin{align}
+u^h(1) = \mathscr{g} \hspace{.5em} (u^h \in \delta^h)\\
+w^h(1) = 0  \hspace{.5em} (w^h \in \mathscr{V}^h)
+\end{align}
+
+</div></li>
+<li class="fragment appear">We construct the trial function \(u^h \in \delta^h\) by using a weight function \(v^h \in \mathscr{V}^h\)  thus eliminating the need for \(\delta^h\), as
+\[ u^h = v^h + \mathscr{g}^h \]</li>
+<li class="fragment appear">Here \(\mathscr{g}^h\) is a <i>given</i> function satisfying the essential boundary conditions, i.e.,
+\[ \mathscr{g}^h = \mathscr{g} \]</li>
+<li class="fragment appear"><p>
+Note that \(u^h\) satisfies
+</p>
+<div>
+\begin{align}
+u^h(1) & = v^h(1) + \mathscr{g}^h \\
+  & = 0 + \mathscr{g}
+\end{align}
+
+</div></li>
+
+</ul>
+
+</section>
+<section id="slide-org948b023-split">
+<p>
+Note that the <i>trial function</i> \(u^h\) from the space \(\delta^h\) has been re-written as the sum of a function \(v^h\) from \(\mathscr{V}^h\) and a <i>given</i> function. Now the function \(v^h\) assumes the role of <i>trial function</i>.
+</p>
+<ul>
+<li class="fragment appear">The bilinear shorthand of the <i>weak form</i> (W) can now be written in terms of \(w^h \in \mathscr{V}^h\) and \(u^h \in \delta^h\):
+\[ a(w^h,\, u^h) = (w^h,\, \mathscr{f}) + w^h(0) \mathscr{h} \]
+This can be thought of as defining an &ldquo;<i>approximate (weak) solution</i>&rdquo;, \(u^h\).</li>
+<li class="fragment appear">Substitition of \(u^h = v^h + \mathscr{g}^h\) and using the distributive property of the bilinear operator, we write
+\[ a(w^h,\, v^h) + a(w^h,\, \mathscr{g}^h) = (w^h,\, \mathscr{f}) + w^h(0) \mathscr{h} \]</li>
+<li class="fragment appear"><p>
+The (Bubnov-) Galerkin form of the problem, denote by (G), is stated as follows:
+</p>
+
+<p>
+Given \(\mathscr{f}\), \(\mathscr{g}\), and \(\mathscr{h}\), as before, find \(u^h = v^h + \mathscr{g}^h\), where \(v^h \in \mathscr{V}^h\), such that for all \(w^h \in \mathscr{V}^h\)
+\[ a(w^h,\, v^h) = (w^h,\, \mathscr{f}) + w^h(0) \mathscr{h} - a(w^h,\, \mathscr{g}^h) \]
+</p></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org3fa76ec">
+<h2 id="org3fa76ec">(\(\S1.6\)) Matrix Equations</h2>
+<p>
+We will show that the (G) form will lead to a coupled system of linear algebraic equations. 
 </p>
 </section>
 </section>

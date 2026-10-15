@@ -92,5 +92,3 @@ Finite element methods are based on the /integral form/ of the boundary-value pr
 - In terms of these two, ($W$) takes the form
   \[ a(w,u) = (w,\mathscr{f}) + w(0) \mathscr{h} \]
 - Both $a(\cdot\,\cdot)$ and $(\cdot,\cdot$) are symmetric, bilinear forms.
-
-

@@ -38,9 +38,9 @@
 |   Week | Topic           | Description, Related Work | Assignments | Resources   |
 |--------+-----------------+---------------------------+-------------+-------------|
 |      1 | [[./0.about.html][About]]           | Modus Operandi            |             | [[https://git-scm.com/][git]], [[https://github.com][github]] |
-|      2 | [[./1.fundamentals.html][Fundamentals]]    | One-d BVP + Run Calculix  | [[./assignments/1.classwork.html][Classwork 1]] | [[./textbook/Ch1_p1.pdf	][Ch.1-p1]]     |
+|      2 | [[./1.fundamentals.html][Fundamentals]]    | One-d BVP + Run Calculix  |             | [[./textbook/Ch1_p1.pdf	][Ch.1-p1]]     |
 |      3 | Teknopark visit | Yeditepe TTO A.Ş. Girişim |             |             |
-|      4 | [[./2.central_idea.html][Central Idea]]    | Bubkov-Galerkin Method    |             | [[./textbook/Ch1_p2.pdf	][Ch.1-p2]]     |
+|      4 | [[./2.central_idea.html][Central Idea]]    | Bubnov-Galerkin Method    | [[./assignments/1.classwork.html][Classwork 1]] | [[./textbook/Ch1_p2.pdf][Ch.1-p2]]     |
 |      5 | Sample Model    | A Cylindrical Vessel      |             | [[https://calculix.discourse.group/t/nonlinear-axial-compression-buckling-of-a-cylinder-not-converging/4027][THD#4027]]    |
 |      6 |                 |                           |             |             |
 |      7 |                 |                           |             |             |

@@ -1,4 +1,4 @@
-#+TITLE:  Central Ideas
+#+TITLE:  [[https://youtu.be/WwgrAH-IMOk][Central Ideas]]
 #+AUTHOR: Fethi Okyar
 #+DATE: 2026 Fall
 #+SUBTITLE: Finite Element Method, ME 477
@@ -14,5 +14,52 @@
 #+HTML_HEAD_EXTRA: pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 #+HTML_HEAD_EXTRA: </style>
 
-* ($\S1.5$) Bubnov-Galerkin Approximation
-(under construction...)
+* Spatial Discretization Concepts
+[[./1.fundamentals.html][$\leftarrow$ Previous Lecture]]
+
+#+ATTR_REVEAL: :frag (appear)
+- We construct finite-dimensional approximations of function spaces $\delta$ and $\mathscr{V}$, denoted as $\delta^h$ and $\mathscr{V}^h$, respectively.
+- The superscript refers to the association of $\delta^h$ and $\mathscr{V}^h$ with a *mesh*, or *discretization*, of the domain $\Omega$, parameterized by a characteristic length scale $h$.
+  #+ATTR_HTML: :width 1000px :style "display: block; margin: auto"
+  [[./2.fig1-discretization.png]]
+- We think of $\delta^h$ and $\mathscr{V}^h$ as being subsets of $\delta$ and $\mathscr{V}$, written as
+  \[ \delta^h \subset \delta \hspace{1em} (\mathrm{i.e., if} \; u^h \in \delta^h,\, \mathrm{then}\, u^h \in \delta) \]
+
+  #+REVEAL: split
+  Remember Tom Hughes... https://www.asme.org/topics-resources/content/thomas-jr-hughes-2018-medal
+
+  The finite element method : linear static and dynamic finite element analysis / Thomas J.R. Hughes
+
+* ($\S1.5$) (Bubnov-) Galerkin Approximation
+Remember the resctriction on the trial and weight functions, $u$ and $v$, at the *essential* boundaries ($\mathscr{g}$ type):
+#+ATTR_REVEAL: :frag (appear)
+- The same applies to the discretized forms
+  \begin{align}
+  u^h(1) = \mathscr{g} \hspace{.5em} (u^h \in \delta^h)\\
+  w^h(1) = 0  \hspace{.5em} (w^h \in \mathscr{V}^h)
+  \end{align}
+- We construct the trial function $u^h \in \delta^h$ by using a weight function $v^h \in \mathscr{V}^h$  thus eliminating the need for $\delta^h$, as
+  \[ u^h = v^h + \mathscr{g}^h \]
+- Here $\mathscr{g}^h$ is a /given/ function satisfying the essential boundary conditions, i.e.,
+  \[ \mathscr{g}^h = \mathscr{g} \]
+- Note that $u^h$ satisfies
+  \begin{align}
+  u^h(1) & = v^h(1) + \mathscr{g}^h \\
+    & = 0 + \mathscr{g}
+  \end{align}
+    
+#+REVEAL: split
+Note that the /trial function/ $u^h$ from the space $\delta^h$ has been re-written as the sum of a function $v^h$ from $\mathscr{V}^h$ and a /given/ function. Now the function $v^h$ assumes the role of /trial function/.
+#+ATTR_REVEAL: :frag (appear)
+- The bilinear shorthand of the /weak form/ (W) can now be written in terms of $w^h \in \mathscr{V}^h$ and $u^h \in \delta^h$:
+  \[ a(w^h,\, u^h) = (w^h,\, \mathscr{f}) + w^h(0) \mathscr{h} \]
+  This can be thought of as defining an "/approximate (weak) solution/", $u^h$.
+- Substitition of $u^h = v^h + \mathscr{g}^h$ and using the distributive property of the bilinear operator, we write
+  \[ a(w^h,\, v^h) + a(w^h,\, \mathscr{g}^h) = (w^h,\, \mathscr{f}) + w^h(0) \mathscr{h} \]
+- The (Bubnov-) Galerkin form of the problem, denote by (G), is stated as follows:
+
+  Given $\mathscr{f}$, $\mathscr{g}$, and $\mathscr{h}$, as before, find $u^h = v^h + \mathscr{g}^h$, where $v^h \in \mathscr{V}^h$, such that for all $w^h \in \mathscr{V}^h$
+  \[ a(w^h,\, v^h) = (w^h,\, \mathscr{f}) + w^h(0) \mathscr{h} - a(w^h,\, \mathscr{g}^h) \]
+
+* ($\S1.6$) Matrix Equations 
+We will show that the (G) form will lead to a coupled system of linear algebraic equations. 
