@@ -55,7 +55,7 @@ Note that the /trial function/ $u^h$ from the space $\delta^h$ has been re-writt
   \[ a(w^h,\, u^h) = (w^h,\, \mathscr{f}) + w^h(0) \mathscr{h} \]
   This can be thought of as defining an "/approximate (weak) solution/", $u^h$.
 - Substitition of $u^h = v^h + \mathscr{g}^h$ and using the distributive property of the bilinear operator, we write
-  \[ a(w^h,\, v^h) + a(w^h,\, \mathscr{g}^h) = (w^h,\, \mathscr{f}) + w^h(0) \mathscr{h} \]
+  \[ a(w^h,\, v^h + \mathscr{g}^h) = (w^h,\, \mathscr{f}) + w^h(0) \mathscr{h} \]
 - The (Bubnov-) Galerkin form of the problem, denote by (G), is stated as follows:
 
   Given $\mathscr{f}$, $\mathscr{g}$, and $\mathscr{h}$, as before, find $u^h = v^h + \mathscr{g}^h$, where $v^h \in \mathscr{V}^h$, such that for all $w^h \in \mathscr{V}^h$

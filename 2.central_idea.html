@@ -39,16 +39,16 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-org3f0c43a">Spatial Discretization Concepts</a></li>
-<li><a href="#/slide-org948b023">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</a></li>
-<li><a href="#/slide-org3fa76ec">(\(\S1.6\)) Matrix Equations</a></li>
+<li><a href="#/slide-org48eb63c">Spatial Discretization Concepts</a></li>
+<li><a href="#/slide-orge7206b0">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</a></li>
+<li><a href="#/slide-orgdc5c077">(\(\S1.6\)) Matrix Equations</a></li>
 </ul>
 </div>
 </div>
 </section>
 <section>
-<section id="slide-org3f0c43a">
-<h2 id="org3f0c43a">Spatial Discretization Concepts</h2>
+<section id="slide-org48eb63c">
+<h2 id="org48eb63c">Spatial Discretization Concepts</h2>
 <p>
 <a href="./1.fundamentals.html">\(\leftarrow\) Previous Lecture</a>
 </p>
@@ -59,7 +59,7 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 The superscript refers to the association of \(\delta^h\) and \(\mathscr{V}^h\) with a <b>mesh</b>, or <b>discretization</b>, of the domain \(\Omega\), parameterized by a characteristic length scale \(h\).
 </p>
 
-<div id="org50279b7" class="figure">
+<div id="org4f23cfa" class="figure">
 <p><img src="./2.fig1-discretization.png" alt="2.fig1-discretization.png" width="1000px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
@@ -69,7 +69,7 @@ We think of \(\delta^h\) and \(\mathscr{V}^h\) as being subsets of \(\delta\) an
 </p>
 
 </section>
-<section id="slide-org2eb3111-split">
+<section id="slide-orgba36a75-split">
 <p>
 Remember Tom Hughes&hellip; <a href="https://www.asme.org/topics-resources/content/thomas-jr-hughes-2018-medal">https://www.asme.org/topics-resources/content/thomas-jr-hughes-2018-medal</a>
 </p>
@@ -82,8 +82,8 @@ The finite element method : linear static and dynamic finite element analysis / 
 </section>
 </section>
 <section>
-<section id="slide-org948b023">
-<h2 id="org948b023">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</h2>
+<section id="slide-orge7206b0">
+<h2 id="orge7206b0">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</h2>
 <p>
 Remember the resctriction on the trial and weight functions, \(u\) and \(v\), at the <b>essential</b> boundaries (\(\mathscr{g}\) type):
 </p>
@@ -116,7 +116,7 @@ u^h(1) & = v^h(1) + \mathscr{g}^h \\
 </ul>
 
 </section>
-<section id="slide-org948b023-split">
+<section id="slide-orge7206b0-split">
 <p>
 Note that the <i>trial function</i> \(u^h\) from the space \(\delta^h\) has been re-written as the sum of a function \(v^h\) from \(\mathscr{V}^h\) and a <i>given</i> function. Now the function \(v^h\) assumes the role of <i>trial function</i>.
 </p>
@@ -125,7 +125,7 @@ Note that the <i>trial function</i> \(u^h\) from the space \(\delta^h\) has been
 \[ a(w^h,\, u^h) = (w^h,\, \mathscr{f}) + w^h(0) \mathscr{h} \]
 This can be thought of as defining an &ldquo;<i>approximate (weak) solution</i>&rdquo;, \(u^h\).</li>
 <li class="fragment appear">Substitition of \(u^h = v^h + \mathscr{g}^h\) and using the distributive property of the bilinear operator, we write
-\[ a(w^h,\, v^h) + a(w^h,\, \mathscr{g}^h) = (w^h,\, \mathscr{f}) + w^h(0) \mathscr{h} \]</li>
+\[ a(w^h,\, v^h + \mathscr{g}^h) = (w^h,\, \mathscr{f}) + w^h(0) \mathscr{h} \]</li>
 <li class="fragment appear"><p>
 The (Bubnov-) Galerkin form of the problem, denote by (G), is stated as follows:
 </p>
@@ -139,8 +139,8 @@ Given \(\mathscr{f}\), \(\mathscr{g}\), and \(\mathscr{h}\), as before, find \(u
 </section>
 </section>
 <section>
-<section id="slide-org3fa76ec">
-<h2 id="org3fa76ec">(\(\S1.6\)) Matrix Equations</h2>
+<section id="slide-orgdc5c077">
+<h2 id="orgdc5c077">(\(\S1.6\)) Matrix Equations</h2>
 <p>
 We will show that the (G) form will lead to a coupled system of linear algebraic equations. 
 </p>
