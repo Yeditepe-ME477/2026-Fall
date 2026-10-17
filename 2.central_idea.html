@@ -39,16 +39,17 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-org48eb63c">Spatial Discretization Concepts</a></li>
-<li><a href="#/slide-orge7206b0">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</a></li>
-<li><a href="#/slide-orgdc5c077">(\(\S1.6\)) Matrix Equations</a></li>
+<li><a href="#/slide-org99a3f38">Spatial Discretization Concepts</a></li>
+<li><a href="#/slide-org8628c8b">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</a></li>
+<li><a href="#/slide-org89ef47f">(\(\S1.6\)) Matrix Equations</a></li>
+<li><a href="#/slide-org12e58ec">Example: Bar Under Gravity Load</a></li>
 </ul>
 </div>
 </div>
 </section>
 <section>
-<section id="slide-org48eb63c">
-<h2 id="org48eb63c">Spatial Discretization Concepts</h2>
+<section id="slide-org99a3f38">
+<h2 id="org99a3f38">Spatial Discretization Concepts</h2>
 <p>
 <a href="./1.fundamentals.html">\(\leftarrow\) Previous Lecture</a>
 </p>
@@ -59,7 +60,7 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 The superscript refers to the association of \(\delta^h\) and \(\mathscr{V}^h\) with a <b>mesh</b>, or <b>discretization</b>, of the domain \(\Omega\), parameterized by a characteristic length scale \(h\).
 </p>
 
-<div id="org4f23cfa" class="figure">
+<div id="org43e9161" class="figure">
 <p><img src="./2.fig1-discretization.png" alt="2.fig1-discretization.png" width="1000px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
@@ -69,7 +70,7 @@ We think of \(\delta^h\) and \(\mathscr{V}^h\) as being subsets of \(\delta\) an
 </p>
 
 </section>
-<section id="slide-orgba36a75-split">
+<section id="slide-org41b0b1b-split">
 <p>
 Remember Tom Hughes&hellip; <a href="https://www.asme.org/topics-resources/content/thomas-jr-hughes-2018-medal">https://www.asme.org/topics-resources/content/thomas-jr-hughes-2018-medal</a>
 </p>
@@ -82,26 +83,18 @@ The finite element method : linear static and dynamic finite element analysis / 
 </section>
 </section>
 <section>
-<section id="slide-orge7206b0">
-<h2 id="orge7206b0">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</h2>
+<section id="slide-org8628c8b">
+<h2 id="org8628c8b">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</h2>
 <p>
 Remember the resctriction on the trial and weight functions, \(u\) and \(v\), at the <b>essential</b> boundaries (\(\mathscr{g}\) type):
 </p>
 <ul>
-<li class="fragment appear"><p>
-The same applies to the discretized forms
-</p>
-<div>
-\begin{align}
-u^h(1) = \mathscr{g} \hspace{.5em} (u^h \in \delta^h)\\
-w^h(1) = 0  \hspace{.5em} (w^h \in \mathscr{V}^h)
-\end{align}
-
-</div></li>
+<li class="fragment appear">The same applies to the discretized forms
+\[ u^h(1) = \mathscr{g} \hspace{.5em} (u^h \in \delta^h) \hspace{1em} \mathrm{and} \hspace{1em}   w^h(1) = 0  \hspace{.5em} (w^h \in \mathscr{V}^h) \]</li>
 <li class="fragment appear">We construct the trial function \(u^h \in \delta^h\) by using a weight function \(v^h \in \mathscr{V}^h\)  thus eliminating the need for \(\delta^h\), as
 \[ u^h = v^h + \mathscr{g}^h \]</li>
 <li class="fragment appear">Here \(\mathscr{g}^h\) is a <i>given</i> function satisfying the essential boundary conditions, i.e.,
-\[ \mathscr{g}^h = \mathscr{g} \]</li>
+\[ \mathscr{g}^h(1) = \mathscr{g} \]</li>
 <li class="fragment appear"><p>
 Note that \(u^h\) satisfies
 </p>
@@ -116,9 +109,9 @@ u^h(1) & = v^h(1) + \mathscr{g}^h \\
 </ul>
 
 </section>
-<section id="slide-orge7206b0-split">
+<section id="slide-org8628c8b-split">
 <p>
-Note that the <i>trial function</i> \(u^h\) from the space \(\delta^h\) has been re-written as the sum of a function \(v^h\) from \(\mathscr{V}^h\) and a <i>given</i> function. Now the function \(v^h\) assumes the role of <i>trial function</i>.
+Note that the <i>trial function</i> \(u^h\) from the space \(\delta^h\) has been re-written as the sum of a function \(v^h\) from \(\mathscr{V}^h\) and a <i>given</i> function. 
 </p>
 <ul>
 <li class="fragment appear">The bilinear shorthand of the <i>weak form</i> (W) can now be written in terms of \(w^h \in \mathscr{V}^h\) and \(u^h \in \delta^h\):
@@ -127,7 +120,7 @@ This can be thought of as defining an &ldquo;<i>approximate (weak) solution</i>&
 <li class="fragment appear">Substitition of \(u^h = v^h + \mathscr{g}^h\) and using the distributive property of the bilinear operator, we write
 \[ a(w^h,\, v^h + \mathscr{g}^h) = (w^h,\, \mathscr{f}) + w^h(0) \mathscr{h} \]</li>
 <li class="fragment appear"><p>
-The (Bubnov-) Galerkin form of the problem, denote by (G), is stated as follows:
+The (Bubnov-) Galerkin form of the problem, denoted by (G), is stated as follows:
 </p>
 
 <p>
@@ -139,11 +132,138 @@ Given \(\mathscr{f}\), \(\mathscr{g}\), and \(\mathscr{h}\), as before, find \(u
 </section>
 </section>
 <section>
-<section id="slide-orgdc5c077">
-<h2 id="orgdc5c077">(\(\S1.6\)) Matrix Equations</h2>
+<section id="slide-org89ef47f">
+<h2 id="org89ef47f">(\(\S1.6\)) Matrix Equations</h2>
 <p>
 We will show that the (G) form will lead to a coupled system of linear algebraic equations. 
 </p>
+<ul>
+<li class="fragment appear">Let \(\mathscr{V}^h\) consist of all linear combinations of &ldquo;<i>given</i>&rdquo; (shape) functions denoted by \(N_A: \bar\Omega \to \mathbb{R}\), where \(A=1,\,2,\,\ldots\,n\).</li>
+<li class="fragment appear"><p>
+We mean, \(w^h \in \mathscr{V}^h\), can be constructed in terms of a set of coefficients \(c_A, A=1,\, 2,\, \ldots, n\) such that
+</p>
+<div>
+\begin{align}
+w^h & = \sum_{A=1}^n c_A N_A \\
+    & = c_1 N_1 + c_2 N_2 + \cdots + c_n N_n
+    \end{align}
+
+</div></li>
+<li class="fragment appear">The \(N_A\)&rsquo;s are referred to as <b>shape</b>, <b>basis</b>, or <b>interpolation</b> functions. We require that each \(N_A\) satisfies
+\[ N_A(1) = 0, \hspace{1em} A=1,\,2,\,\ldots,n \]
+which follows the condition \(w^h(1) = 0\) (weight function vanishes at essential boundaries).</li>
+<li class="fragment appear">The space of <i>weight</i> functions \(\mathscr{V}^n\) is said to have \(n\) dimensions.</li>
+
+</ul>
+
+</section>
+<section id="slide-org89ef47f-split">
+<p>
+Now, we define members of <i>trial</i> functions \(\delta^h\) from the space \(\mathscr{V}^h\). For this we need to define their difference \(\mathscr{g}^h\) as a function. 
+</p>
+<ul>
+<li class="fragment appear">We introduce an additional shape function, \(N_{n+1} : \bar\Omega \to \mathbb{R}\), which has the property
+\[ N_{n+1}(1) = 1 \]</li>
+<li class="fragment appear">Note that \(N_{n+1} \not\in \mathscr{V}^h\). Then \(\mathscr{g}^h\) is given by
+\[ \mathscr{g}^h = \mathscr{g}\,N_{n+1} \]
+which yields the required condition that \(\mathscr{g}^h(1) = \mathscr{g}\).</li>
+<li class="fragment appear"><p>
+With these definitions, a typical \(u^h \in \delta^h\) may be written as
+</p>
+<div>
+\begin{align}
+u^h & = v^h + \mathscr{g}^h \\
+    & = \sum_{A=1}^n d_A\, N_A + \mathscr{g} N_{n+1}
+  \end{align}      
+
+</div>
+<p>
+where the \(d_A\)&rsquo;s are coefficients, and \(u^h(1) = \mathscr{g}\).
+</p></li>
+
+</ul>
+
+</section>
+<section id="slide-org89ef47f-split">
+<p>
+The constructed functions \(u^h\) and \(w^h\) can now be substituted into the bilinear (G) form.
+</p>
+<ul>
+<li class="fragment appear">\[ a\left( \sum_{A=1}^n c_A N_A \sum_{B=1}^n d_B N_B \right) = \left( \sum_{A=1}^n c_A N_A,\mathscr{f}\right) + \left[ \sum_{A=1}^n c_A N_A(0) \right] \mathscr{h} - a \left( \sum_{A=1}^n c_A N_A,\mathscr{g}N_{n+1} \right) \]</li>
+<li class="fragment appear">This can be written as a sum of terms with coefficients \(c_A\) as
+\[ 0 = \sum_{A=1}^n c_A G_A \]
+where
+\[ G_A = \sum_{B=1}^n a(N_A,\,N_B)d_B - (N_A,\mathscr{f}) - N_A(0) \mathscr{h} + a(N_A,\,N_{n+1}) \mathscr{g} \]</li>
+<li class="fragment appear"><span class="underline">Key to Solution</span>: As the weight functions can have arbitrarily selected coeffients \(c_A\), each \(G_A\) <b>must be identically zero</b>. Hence we obtain the set of \(n\) equations by writing \(G_A=0,\;A=1,2,\ldots,n\).</li>
+
+</ul>
+
+</section>
+<section id="slide-org89ef47f-split">
+<p>
+The Galerkin approximation equations can be written in the form
+\[ \sum_{B=1}^n a(N_A,\,N_B)d_B = (N_A,\mathscr{f}) + N_A(0) \mathscr{h} - a(N_A,\,N_{n+1}) \mathscr{g}, \hspace{2em} A = 1,2,\ldots,n  \]
+</p>
+<ul>
+<li class="fragment appear">This set of equations can be recast into <span class="underline">matrix form</span> by defining \(K_{AB}\) and \(F_A\) as
+\[ K_{AB} = a(N_A,\,N_B) \hspace{3em} F_A = (N_A,\mathscr{f}) + N_A(0) \mathscr{h} - a(N_A,\,N_{n+1}) \mathscr{g} \]</li>
+<li class="fragment appear">which allows for rewriting the system of equations as
+\[ \sum_{B=1}^n K_{AB}d_B = F_A,\hspace{2.5em} A=1,2,\ldots,n \]</li>
+<li class="fragment appear">the following terminology is used for the equation \(\boldsymbol{K} \boldsymbol{d} = \boldsymbol{F}\)
+<ul>
+<li>\(\boldsymbol{K} =\) stiffness matrix</li>
+<li>\(\boldsymbol{F} =\) force vector</li>
+<li>\(\boldsymbol{d} =\) displacement vector</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org7fbab4c">
+<h3 id="org7fbab4c">The Matrix Form (M)</h3>
+<p>
+Given the coefficient matrix \(\boldsymbol{K}\) and vector \(\boldsymbol{F}\), find \(\boldsymbol{d}\) such that
+\[ \boldsymbol{K} \boldsymbol{d} = \boldsymbol{F} \]
+</p>
+<ul>
+<li class="fragment appear">Once \(\boldsymbol{d} = \boldsymbol{K}^{-1} \boldsymbol{F}\) is known, the solution of (G) may be obtained at any point \(x \in \bar\Omega\) by
+\[ u^h(x) = \sum_{A=1}^n d_A N_A(x) + \mathscr{g} N_{n+1}(x) \]</li>
+<li class="fragment appear">The quality of the approximation depends upon the order of interpolation \(p=p(N_A)\) and the discretization size \(\mathcal{O}(n)=\mathcal{O}(1/h)\).</li>
+<li class="fragment appear">The matrix \(\boldsymbol{K}\) is symmetric. This has important computational consequences.</li>
+
+</ul>
+</section>
+<section id="slide-orgc2e8261">
+<h3 id="orgc2e8261">Interpolation: a piecewise-linear set of <i>hat</i> functions</h3>
+
+<div id="org6a2d3b6" class="figure">
+<p><img src="./2.fig2-shapefunctions.png" alt="2.fig2-shapefunctions.png" width="1400px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org12e58ec">
+<h2 id="org12e58ec">Example: Bar Under Gravity Load</h2>
+<p>
+We take a bar of constant circular cross-section, radius \(r\), and length \(l\), fixed to a horizontal ceiling wall from top and let to deform downwards under its weight. Assume the material behaves as a linearly elastic, isotropic and homogeneous medium, with elastic modulus \(E\), and Poisson&rsquo;s ratio, \(\nu\).
+</p>
+
+
+<div id="org19b46ba" class="figure">
+<p><img src="./2.fig3-barexample.png" alt="2.fig3-barexample.png" width="1100px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div>
+</section>
+<section id="slide-org256a90f">
+<h3 id="org256a90f">Exercise: Bar Formulation</h3>
+<ul>
+<li>\[ \frac{d}{dy} (EA \frac{du}{dy}) - \rho g A = 0 \]</li>
+<li>subject to boundary conditions</li>
+<li>exact solution: \(u(y) = \frac{\rho g}{E} (\frac{y^2}{2} + ly)\)</li>
+<li>work on one-term and two-term FE solutions and compare with the exact solution.</li>
+
+</ul>
 </section>
 </section>
 </div>
