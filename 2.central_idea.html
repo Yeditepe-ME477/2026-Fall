@@ -39,17 +39,17 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-org99a3f38">Spatial Discretization Concepts</a></li>
-<li><a href="#/slide-org8628c8b">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</a></li>
-<li><a href="#/slide-org89ef47f">(\(\S1.6\)) Matrix Equations</a></li>
-<li><a href="#/slide-org12e58ec">Example: Bar Under Gravity Load</a></li>
+<li><a href="#/slide-orgd4e7050">Spatial Discretization Concepts</a></li>
+<li><a href="#/slide-orgd8c7fc3">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</a></li>
+<li><a href="#/slide-org6369b5a">(\(\S1.6\)) Matrix Equations</a></li>
+<li><a href="#/slide-org0fc2c70">Example: Bar Under Gravity Load</a></li>
 </ul>
 </div>
 </div>
 </section>
 <section>
-<section id="slide-org99a3f38">
-<h2 id="org99a3f38">Spatial Discretization Concepts</h2>
+<section id="slide-orgd4e7050">
+<h2 id="orgd4e7050">Spatial Discretization Concepts</h2>
 <p>
 <a href="./1.fundamentals.html">\(\leftarrow\) Previous Lecture</a>
 </p>
@@ -60,7 +60,7 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 The superscript refers to the association of \(\delta^h\) and \(\mathscr{V}^h\) with a <b>mesh</b>, or <b>discretization</b>, of the domain \(\Omega\), parameterized by a characteristic length scale \(h\).
 </p>
 
-<div id="org43e9161" class="figure">
+<div id="org018f29e" class="figure">
 <p><img src="./2.fig1-discretization.png" alt="2.fig1-discretization.png" width="1000px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
@@ -70,7 +70,7 @@ We think of \(\delta^h\) and \(\mathscr{V}^h\) as being subsets of \(\delta\) an
 </p>
 
 </section>
-<section id="slide-org41b0b1b-split">
+<section id="slide-orgdf860fd-split">
 <p>
 Remember Tom Hughes&hellip; <a href="https://www.asme.org/topics-resources/content/thomas-jr-hughes-2018-medal">https://www.asme.org/topics-resources/content/thomas-jr-hughes-2018-medal</a>
 </p>
@@ -83,10 +83,10 @@ The finite element method : linear static and dynamic finite element analysis / 
 </section>
 </section>
 <section>
-<section id="slide-org8628c8b">
-<h2 id="org8628c8b">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</h2>
+<section id="slide-orgd8c7fc3">
+<h2 id="orgd8c7fc3">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</h2>
 <p>
-Remember the resctriction on the trial and weight functions, \(u\) and \(v\), at the <b>essential</b> boundaries (\(\mathscr{g}\) type):
+Remember the resctriction on the trial and weight functions, \(u\) and \(w\), at the <b>essential</b> boundaries (\(\mathscr{g}\) type):
 </p>
 <ul>
 <li class="fragment appear">The same applies to the discretized forms
@@ -109,7 +109,7 @@ u^h(1) & = v^h(1) + \mathscr{g}^h \\
 </ul>
 
 </section>
-<section id="slide-org8628c8b-split">
+<section id="slide-orgd8c7fc3-split">
 <p>
 Note that the <i>trial function</i> \(u^h\) from the space \(\delta^h\) has been re-written as the sum of a function \(v^h\) from \(\mathscr{V}^h\) and a <i>given</i> function. 
 </p>
@@ -132,8 +132,8 @@ Given \(\mathscr{f}\), \(\mathscr{g}\), and \(\mathscr{h}\), as before, find \(u
 </section>
 </section>
 <section>
-<section id="slide-org89ef47f">
-<h2 id="org89ef47f">(\(\S1.6\)) Matrix Equations</h2>
+<section id="slide-org6369b5a">
+<h2 id="org6369b5a">(\(\S1.6\)) Matrix Equations</h2>
 <p>
 We will show that the (G) form will lead to a coupled system of linear algebraic equations. 
 </p>
@@ -157,7 +157,7 @@ which follows the condition \(w^h(1) = 0\) (weight function vanishes at essentia
 </ul>
 
 </section>
-<section id="slide-org89ef47f-split">
+<section id="slide-org6369b5a-split">
 <p>
 Now, we define members of <i>trial</i> functions \(\delta^h\) from the space \(\mathscr{V}^h\). For this we need to define their difference \(\mathscr{g}^h\) as a function. 
 </p>
@@ -184,12 +184,12 @@ where the \(d_A\)&rsquo;s are coefficients, and \(u^h(1) = \mathscr{g}\).
 </ul>
 
 </section>
-<section id="slide-org89ef47f-split">
+<section id="slide-org6369b5a-split">
 <p>
 The constructed functions \(u^h\) and \(w^h\) can now be substituted into the bilinear (G) form.
 </p>
 <ul>
-<li class="fragment appear">\[ a\left( \sum_{A=1}^n c_A N_A \sum_{B=1}^n d_B N_B \right) = \left( \sum_{A=1}^n c_A N_A,\mathscr{f}\right) + \left[ \sum_{A=1}^n c_A N_A(0) \right] \mathscr{h} - a \left( \sum_{A=1}^n c_A N_A,\mathscr{g}N_{n+1} \right) \]</li>
+<li class="fragment appear">\[ a\left( \sum_{A=1}^n c_A N_A, \sum_{B=1}^n d_B N_B \right) = \left( \sum_{A=1}^n c_A N_A,\mathscr{f}\right) + \left[ \sum_{A=1}^n c_A N_A(0) \right] \mathscr{h} - a \left( \sum_{A=1}^n c_A N_A,\mathscr{g}N_{n+1} \right) \]</li>
 <li class="fragment appear">This can be written as a sum of terms with coefficients \(c_A\) as
 \[ 0 = \sum_{A=1}^n c_A G_A \]
 where
@@ -199,7 +199,7 @@ where
 </ul>
 
 </section>
-<section id="slide-org89ef47f-split">
+<section id="slide-org6369b5a-split">
 <p>
 The Galerkin approximation equations can be written in the form
 \[ \sum_{B=1}^n a(N_A,\,N_B)d_B = (N_A,\mathscr{f}) + N_A(0) \mathscr{h} - a(N_A,\,N_{n+1}) \mathscr{g}, \hspace{2em} A = 1,2,\ldots,n  \]
@@ -219,8 +219,8 @@ The Galerkin approximation equations can be written in the form
 
 </ul>
 </section>
-<section id="slide-org7fbab4c">
-<h3 id="org7fbab4c">The Matrix Form (M)</h3>
+<section id="slide-org8b1427d">
+<h3 id="org8b1427d">The Matrix Form (M)</h3>
 <p>
 Given the coefficient matrix \(\boldsymbol{K}\) and vector \(\boldsymbol{F}\), find \(\boldsymbol{d}\) such that
 \[ \boldsymbol{K} \boldsymbol{d} = \boldsymbol{F} \]
@@ -233,30 +233,30 @@ Given the coefficient matrix \(\boldsymbol{K}\) and vector \(\boldsymbol{F}\), f
 
 </ul>
 </section>
-<section id="slide-orgc2e8261">
-<h3 id="orgc2e8261">Interpolation: a piecewise-linear set of <i>hat</i> functions</h3>
+<section id="slide-orgdc54a31">
+<h3 id="orgdc54a31">Interpolation: a piecewise-linear set of <i>hat</i> functions</h3>
 
-<div id="org6a2d3b6" class="figure">
+<div id="org6a7bf71" class="figure">
 <p><img src="./2.fig2-shapefunctions.png" alt="2.fig2-shapefunctions.png" width="1400px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org12e58ec">
-<h2 id="org12e58ec">Example: Bar Under Gravity Load</h2>
+<section id="slide-org0fc2c70">
+<h2 id="org0fc2c70">Example: Bar Under Gravity Load</h2>
 <p>
 We take a bar of constant circular cross-section, radius \(r\), and length \(l\), fixed to a horizontal ceiling wall from top and let to deform downwards under its weight. Assume the material behaves as a linearly elastic, isotropic and homogeneous medium, with elastic modulus \(E\), and Poisson&rsquo;s ratio, \(\nu\).
 </p>
 
 
-<div id="org19b46ba" class="figure">
+<div id="org7cd77bf" class="figure">
 <p><img src="./2.fig3-barexample.png" alt="2.fig3-barexample.png" width="1100px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 </section>
-<section id="slide-org256a90f">
-<h3 id="org256a90f">Exercise: Bar Formulation</h3>
+<section id="slide-orgc131aa8">
+<h3 id="orgc131aa8">Exercise: Bar Formulation</h3>
 <ul>
 <li>\[ \frac{d}{dy} (EA \frac{du}{dy}) - \rho g A = 0 \]</li>
 <li>subject to boundary conditions</li>
