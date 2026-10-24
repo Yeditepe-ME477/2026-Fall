@@ -31,7 +31,7 @@
   The finite element method : linear static and dynamic finite element analysis / Thomas J.R. Hughes
 
 * ($\S1.5$) (Bubnov-) Galerkin Approximation
-Remember the resctriction on the trial and weight functions, $u$ and $v$, at the *essential* boundaries ($\mathscr{g}$ type):
+Remember the resctriction on the trial and weight functions, $u$ and $w$, at the *essential* boundaries ($\mathscr{g}$ type):
 #+ATTR_REVEAL: :frag (appear)
 - The same applies to the discretized forms
   \[ u^h(1) = \mathscr{g} \hspace{.5em} (u^h \in \delta^h) \hspace{1em} \mathrm{and} \hspace{1em}   w^h(1) = 0  \hspace{.5em} (w^h \in \mathscr{V}^h) \]
@@ -90,7 +90,7 @@ Now, we define members of /trial/ functions $\delta^h$ from the space $\mathscr{
 #+REVEAL: split
 The constructed functions $u^h$ and $w^h$ can now be substituted into the bilinear (G) form.
 #+ATTR_REVEAL: :frag (appear)
-+ \[ a\left( \sum_{A=1}^n c_A N_A \sum_{B=1}^n d_B N_B \right) = \left( \sum_{A=1}^n c_A N_A,\mathscr{f}\right) + \left[ \sum_{A=1}^n c_A N_A(0) \right] \mathscr{h} - a \left( \sum_{A=1}^n c_A N_A,\mathscr{g}N_{n+1} \right) \]
++ \[ a\left( \sum_{A=1}^n c_A N_A, \sum_{B=1}^n d_B N_B \right) = \left( \sum_{A=1}^n c_A N_A,\mathscr{f}\right) + \left[ \sum_{A=1}^n c_A N_A(0) \right] \mathscr{h} - a \left( \sum_{A=1}^n c_A N_A,\mathscr{g}N_{n+1} \right) \]
 + This can be written as a sum of terms with coefficients $c_A$ as
   \[ 0 = \sum_{A=1}^n c_A G_A \]
   where
