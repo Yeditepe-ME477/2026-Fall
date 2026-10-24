@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>What is a Finite Element?</title>
+<meta name="author" content="Fethi Okyar"/>
+<meta name="description" content="Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/simple.css" id="theme"/>
+
+<link rel="stylesheet" href="./style.css"/>
+<style>
+pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h2>What is a Finite Element?</h2> <h3>Finite Element Method, ME 477</h3> <h4>2026 Fall</h4>
+</section>
+<section id="table-of-contents-section">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#/slide-orgcd8d7c2">(\(\S1.8\)) Space of Piecewise Linear Functions</a></li>
+<li><a href="#/slide-org6cc9aa7">(\(\S1.9\)) Properties of \(\boldsymbol{K}\)</a></li>
+<li><a href="#/slide-org6939820">(\(\S1.12\)) The Element Point of View</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<section id="slide-orgcd8d7c2">
+<h2 id="orgcd8d7c2">(\(\S1.8\)) Space of Piecewise Linear Functions</h2>
+<p>
+<a href="./2.central_idea.html">\(\leftarrow\) Previous Lecture</a>
+</p>
+<ul>
+<li class="fragment appear">The bar example of the preceeding section employed so-called piecewise linear functions \(N_A(x)\). Spaces \(\mathscr{V}^h\) and \(\delta^h\) that are composed of such functions are called <i>piecewise linear finite element spaces</i>.</li>
+<li class="fragment appear">A general case in which \(\mathscr{V}^h\) is \(n\) dimensional, we partition the domain \([0,1]\) into \(n\) nonoverlapping subintervals. The typical subinterval is denoted by \([x_A,x_{A+1}]\), where \(x_A < x_{A+1}\) and \(A=1,2,\ldots,n\).</li>
+<li class="fragment appear">The \(x_A\)&rsquo;s are called <b><i>nodal points</i></b>, or simply <i>nodes</i>. The subintervals are referred to as <b><i>elements</i></b>.</li>
+<li class="fragment appear">The mesh parameter, \(h\), is taken to be the maximum element length.</li>
+
+</ul>
+</section>
+<section id="slide-org148e999">
+<h3 id="org148e999">Shape Functions</h3>
+<ul>
+<li class="fragment appear"><p>
+Associate to a typical internal node (i.e., \(2\leq A \leq N\))
+</p>
+<div>
+ \begin{align} N_A(x) = \begin{cases}
+\frac{(x - x_{A-1})}{h_{A-1}}, \hspace{2em} & x_{A-1} \leq x \leq x_A \\
+\frac{(x_{A+1} - x)}{h_A}, & x_A \leq x \leq x_{A+1} \\
+0, & \mathrm{elsewhere} \end{cases} \end{align}
+
+</div>
+<p>
+whereas for the boundary nodes we have \(N_1(x) = \frac{x_2 - x}{h_1}\), and \(N_{n+1}(x) = \frac{x-x_n}{h_n}\).
+</p></li>
+
+<li class="fragment appear"><p>
+The shape functions are also referred to as &ldquo;hat&rdquo;, or &ldquo;roof&rdquo; functions.
+</p>
+
+<div id="orgaf8fdbf" class="figure">
+<p><img src="./3.fig1-shapeFunctions.png" alt="3.fig1-shapeFunctions.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div></li>
+
+</ul>
+
+</section>
+<section>
+<ul>
+<li>Note that \(N_A(x_B) = \delta_{AB}\), where \(\delta_{AB}\) is the Kroenecker delta (i.e, \(\delta_{AB} = 1\) if \(A = B\), whereas \(\delta_{AB} = 0\) if \(A\neq B\)).</li>
+
+</ul>
+<ul>
+<li class="fragment appear"><p>
+A typical member \(w^h \in \mathscr{V}^h\) has the form \(\sum_{A=1}^n c_A N_A\) and appear as below.
+</p>
+
+<div id="orgc588cc6" class="figure">
+<p><img src="./3.fig2-typicalWeight.png" alt="3.fig2-typicalWeight.png" width="1000px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div></li>
+<li class="fragment appear">Note that while \(w^h\) is continuous, it has discontinuous slope across each element boundary, i.e. its derivative \(w_{,x}^h\) will be <b><span title="That is why strains are considered as less accurate in comparison with the displacements.">piecewise constant</span></b>.</li>
+<li class="fragment appear">Typical members of \(\delta^h\) are obtained by adding \(\mathscr{g}^h = \mathscr{g}N_{n+1}\) to a typical member of \(\mathscr{V}^h\).</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org6cc9aa7">
+<h2 id="org6cc9aa7">(\(\S1.9\)) Properties of \(\boldsymbol{K}\)</h2>
+<ul>
+<li class="fragment appear">The shape functions \(N_A,\, A = 1,2,\ldots,n+1\), are zero outside of the immediate neighborhood of node \(A\). As a results, many of the entries of \(\boldsymbol{K}\) are zero.</li>
+<li class="fragment appear">Let \(B > A+1\). Then
+\[ K_{AB} = \int_0^1 \underbrace{N_{A,x} N_{B,x}}_0 dx = 0 \]</li>
+<li class="fragment appear">It can readily be seen that \(\boldsymbol{K}\) is symmetric, i.e. \(K_{AB} = K_{BA}\).</li>
+<li class="fragment appear"><p>
+With a matrix structure with zeros outside the <i>diagonal band</i>, \(\boldsymbol{K}\) is said to be <b><i>banded</i></b>. 
+</p>
+
+<div id="orgd91063b" class="figure">
+<p><img src="./3.fig3-nonoverlapping.png" alt="3.fig3-nonoverlapping.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div></li>
+
+</ul>
+
+</section>
+<section>
+
+<div id="orga20e4ff" class="figure">
+<p><img src="./3.fig4-bandstructure.png" alt="3.fig4-bandstructure.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div>
+
+</section>
+<section>
+<p>
+<b>Definition</b>. An \(n\times n\) matrix \(\boldsymbol{A}\) is said to be <b><i>positive definite</i></b> if
+</p>
+<ol>
+<li>\(\boldsymbol{c}^T \boldsymbol{A} \boldsymbol{c} \geq 0\) for all \(n\) vectors \(\boldsymbol{c}\); and</li>
+<li>\(\boldsymbol{c}^T \boldsymbol{A} \boldsymbol{c} = 0\) implies \(\boldsymbol{c} = \boldsymbol{0}\).</li>
+
+</ol>
+<p>
+<br>
+</p>
+
+<ul>
+<li class="fragment appear">It can be shown that the stiffness matrix has the above property, i.e. the \(n\times n\) matrix \(\boldsymbol{K}\) is positive definite.</li>
+<li class="fragment appear">A positive-definite matrix posesses a unique inverse (it can be inverted).</li>
+<li class="fragment appear">The eigenvalues of a positive-definite matrix are real and positive.</li>
+<li class="fragment appear"><b>Summary</b>: The stiffness matrix defined above is
+<ol>
+<li>Symmetric</li>
+<li>Banded</li>
+<li>Positive-definite</li>
+
+</ol></li>
+
+</ul>
+
+<aside class="notes">
+<p>
+The practical consequence of the above properties is that a very efficient computer solution of Kd=F may be performed.
+GPT: what are the standard sparse linear solvers?
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org6939820">
+<h2 id="org6939820">(\(\S1.12\)) The Element Point of View</h2>
+<ul>
+<li>Up till now the Galerkin approximation method implied the selection of a finite number of <i>basis</i> functions without a general restriction on their region of influence.</li>
+
+</ul>
+<ul>
+<li class="fragment appear">Even when we restricted the <i>basis</i> functions to have influence only up to the nearest neighboring node(s), our approach may be termed as a <b><i>global</i> point of view</b>.</li>
+<li class="fragment appear">Now, we would like to come to the <span class="underline">crux of the matter,</span> by bringing the <b><i>local</i></b> or <b><i>element</i> point of view</b>.</li>
+
+</ul>
+</section>
+<section id="slide-org642b294">
+<h3 id="org642b294">What is a Finite Element?</h3>
+<ul>
+<li>Two separate descriptions of the &ldquo;finite element&rdquo; will be provided based on the use of <i>global</i> versus <i>local</i> coordinates.</li>
+
+</ul>
+<ul>
+<li class="fragment appear"><b>Linear (two-noded) finite element (<i>global</i> coordinates)</b></li>
+<li class="fragment appear"><p>
+An individual element consists of the following quantities:
+</p>
+<table border="0" cellspacing="0" cellpadding="6" rules="none" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">(g1)</td>
+<td class="org-left">Domain:</td>
+<td class="org-left">\([x_A,\,x_{A+1}]\)</td>
+</tr>
+
+<tr>
+<td class="org-left">(g2)</td>
+<td class="org-left">Nodes:</td>
+<td class="org-left">\(\{x_A,\,x_{A+1}\}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">(g3)</td>
+<td class="org-left">Degrees of freedom:</td>
+<td class="org-left">\(\{d_A,\,d_{A+1}\}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">(g4)</td>
+<td class="org-left">Shape functions:</td>
+<td class="org-left">\(\{N_A,\,N_{A+1}\}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">(g5)</td>
+<td class="org-left">Interpolation function:</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>
+\[ u^h(x) = N_A(x) d_A + N_{A+1}(x) d_{A+1} \]
+</p></li>
+
+</ul>
+
+</section>
+<section>
+<ul>
+<li>It is fruitful to introduce a <i>local</i> coordinate system \(tau\), and a set of <i>local</i> quantities, corresponding to the global ones, so that calculations for a typical element may be <i>standardized</i>.</li>
+
+</ul>
+<ul>
+<li class="fragment appear"><b>Linear (two-noded) finite element (<i>local</i> coordinates)</b></li>
+<li class="fragment appear"><p>
+An individual element consists of the following quantities:
+</p>
+<table border="0" cellspacing="0" cellpadding="6" rules="none" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">(l1)</td>
+<td class="org-left">Domain:</td>
+<td class="org-left">\([\xi_1,\,\xi_2]\)</td>
+</tr>
+
+<tr>
+<td class="org-left">(l2)</td>
+<td class="org-left">Nodes:</td>
+<td class="org-left">\(\{\xi_1,\,\xi_2\}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">(l3)</td>
+<td class="org-left">Degrees of freedom:</td>
+<td class="org-left">\(\{d_1,\,d_2\}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">(l4)</td>
+<td class="org-left">Shape functions:</td>
+<td class="org-left">\(\{N_1,\,N_2\}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">(l5)</td>
+<td class="org-left">Interpolation function:</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>
+\[ u^h(\xi) = N_1(\xi) d_1 + N_2(\xi) d_2 \]
+</p></li>
+
+</ul>
+</section>
+<section id="slide-org66e7393">
+<h3 id="org66e7393">An &ldquo;affine&rdquo; transformation</h3>
+<p>
+In relating the global and local coordinates an &ldquo;affine&rdquo; transformation 
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/math/math.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+
+transition: 'convex',
+transitionSpeed: 'default',
+
+// Plugins with reveal.js 4.x and later
+plugins: [ RevealNotes, RevealMath ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
+</body>
+</html>
