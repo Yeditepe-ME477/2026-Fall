@@ -14,6 +14,7 @@
 #+HTML_HEAD_EXTRA: <style>
 #+HTML_HEAD_EXTRA: pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 #+HTML_HEAD_EXTRA: </style>
+#+REVEAL_HEAD_PREAMBLE: <script>MathJax = { tex: { tags: 'ams' } };</script>
 
 * ($\S1.8$) Space of Piecewise Linear Functions
 [[./2.central_idea.html][$\leftarrow$ Previous Lecture]]
@@ -109,5 +110,49 @@ GPT: what are the standard sparse linear solvers?
   | (l4) | Shape functions:        | $\{N_1,\,N_2\}$       |
   | (l5) | Interpolation function: |                       |
   \[ u^h(\xi) = N_1(\xi) d_1 + N_2(\xi) d_2 \]
-** An "affine" transformation
-In relating the global and local coordinates an "affine" transformation 
+** What is an "Affine" Transformation
+#+ATTR_REVEAL: :frag (appear)
+- In relating the global and local coordinates, an "affine" transformation $\xi:[x_A,x_{A+1}] \rightarrow [\xi_1,\xi_2]$, such that $\xi(x_A) = \xi_1$ and $\xi(x_{A+1}) = \xi_2$.
+- We take $\xi_1 = -1$ and $\xi_2 = +1$.
+- An affine (linear) mapping is provided by
+  \[ \xi(x) = c_1 + c_2 x \]
+  where $c_1$ and $c_2$ are determined by
+  \begin{align} 
+  \begin{array}{rl}
+  -1 & = c_1 + x_A c_2 \\
+   1 & = c_1 + x_{A+1} c_2
+  \end{array}
+  \end{align}
+- Solving this system yields the mapping $\xi(x)$
+  \begin{equation} \xi(x) = (2x - x_A - x_{A+1})\,/\,{h_A} \label{eq:mapforw} \end{equation}
+- The inverse mapping $x(\xi)$ can be obtained by solving the above for $x$
+  \[ x(\xi) = (h_A \xi + x_A + x_{A+1})\,/\,{2} \]
+- In $\xi(x)$, $\xi$ is a mapping and $x$ is a point, whereas in $x(\xi)$, $x$ is a mapping and $\xi$ is a point. 
+*** Notational Convention
+#+ATTR_REVEAL: :frag (appear)
+- /lowercase/ subscripts pertain to the /local/ numbering system, e.g. $N_a$, or $d_b$, etc.
+- /UPPERCASE/ subscripts pertain to the /global/ numbering system, e.g. $F_A$, or $N_B$, etc.
+- A superscript $e$ denoted a quantitiy in the local description associated with element number $e$, e.g.
+  \[ d_a^e = d_A, \hspace{1em} N_a^e(\xi) = N_A(x^e(\xi)), \]
+  where
+  \[ x^e: [\xi_1, \xi_2] \rightarrow [x_1^e, x_2^e] = [x_A, x_{A+1}]. \] 
+** Shape Functions (Local Description)
+#+ATTR_REVEAL: :frag (appear)
+- In terms of the local coordinate $\xi$, the shape functions take a standard form
+  \[ N_a(\xi) = \frac{1}{2} (1+ \xi_a \xi), \hspace{2em} a=1,\,2 \]
+- The local and global descriptions of the $e$th element are depicted below
+  #+ATTR_HTML: :width 600px :style "display: block; margin: auto"
+  [[./3.fig5-mapping.png]] 
+*** Isoparametric Mapping
+#+ATTR_REVEAL: :frag (appear)
+- The mapping from the local to the global coordinates can be expressed in terms of the shape functions!
+  \[ x^e(\xi) = \sum_{a=1}^2 N_a(\xi) x_a^e \]
+- The shape function derivatives can be taken as
+  \[ N_{a,\xi} = \frac{\xi_a}{2} = \frac{(-1)^a}{2} \]
+  which are used to write
+  \[ x_{,\xi}^e = \frac{h^e}{2} \]
+  where $h^e = x_2^e - x_1^e$
+- The derivative of the inverse mapping can easily be found as
+  \[ \xi_{,x}^e = (x_{,\xi}^e)^{-1} = \frac{2}{h^e} \]
+* ($\S1.13$) Element Stiffness Matrix and Force Vector
+

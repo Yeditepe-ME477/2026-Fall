@@ -24,3 +24,4 @@ Gemfile.lock
 auto/
 *~
 ._*
+.DS_Store

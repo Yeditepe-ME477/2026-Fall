@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/simple.css" id="theme"/>
 
 <link rel="stylesheet" href="./style.css"/>
+<script>MathJax = { tex: { tags: 'ams' } };</script>
 <style>
 pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 </style>
@@ -28,16 +29,16 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-orgcd8d7c2">(\(\S1.8\)) Space of Piecewise Linear Functions</a></li>
-<li><a href="#/slide-org6cc9aa7">(\(\S1.9\)) Properties of \(\boldsymbol{K}\)</a></li>
-<li><a href="#/slide-org6939820">(\(\S1.12\)) The Element Point of View</a></li>
+<li><a href="#/slide-org218ca05">(\(\S1.8\)) Space of Piecewise Linear Functions</a></li>
+<li><a href="#/slide-orgc32897e">(\(\S1.9\)) Properties of \(\boldsymbol{K}\)</a></li>
+<li><a href="#/slide-org1bfb7ce">(\(\S1.12\)) The Element Point of View</a></li>
 </ul>
 </div>
 </div>
 </section>
 <section>
-<section id="slide-orgcd8d7c2">
-<h2 id="orgcd8d7c2">(\(\S1.8\)) Space of Piecewise Linear Functions</h2>
+<section id="slide-org218ca05">
+<h2 id="org218ca05">(\(\S1.8\)) Space of Piecewise Linear Functions</h2>
 <p>
 <a href="./2.central_idea.html">\(\leftarrow\) Previous Lecture</a>
 </p>
@@ -49,8 +50,8 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 
 </ul>
 </section>
-<section id="slide-org148e999">
-<h3 id="org148e999">Shape Functions</h3>
+<section id="slide-org51c953e">
+<h3 id="org51c953e">Shape Functions</h3>
 <ul>
 <li class="fragment appear"><p>
 Associate to a typical internal node (i.e., \(2\leq A \leq N\))
@@ -70,7 +71,7 @@ whereas for the boundary nodes we have \(N_1(x) = \frac{x_2 - x}{h_1}\), and \(N
 The shape functions are also referred to as &ldquo;hat&rdquo;, or &ldquo;roof&rdquo; functions.
 </p>
 
-<div id="orgaf8fdbf" class="figure">
+<div id="orgee1e596" class="figure">
 <p><img src="./3.fig1-shapeFunctions.png" alt="3.fig1-shapeFunctions.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
@@ -88,7 +89,7 @@ The shape functions are also referred to as &ldquo;hat&rdquo;, or &ldquo;roof&rd
 A typical member \(w^h \in \mathscr{V}^h\) has the form \(\sum_{A=1}^n c_A N_A\) and appear as below.
 </p>
 
-<div id="orgc588cc6" class="figure">
+<div id="org3cf0980" class="figure">
 <p><img src="./3.fig2-typicalWeight.png" alt="3.fig2-typicalWeight.png" width="1000px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
@@ -99,8 +100,8 @@ A typical member \(w^h \in \mathscr{V}^h\) has the form \(\sum_{A=1}^n c_A N_A\)
 </section>
 </section>
 <section>
-<section id="slide-org6cc9aa7">
-<h2 id="org6cc9aa7">(\(\S1.9\)) Properties of \(\boldsymbol{K}\)</h2>
+<section id="slide-orgc32897e">
+<h2 id="orgc32897e">(\(\S1.9\)) Properties of \(\boldsymbol{K}\)</h2>
 <ul>
 <li class="fragment appear">The shape functions \(N_A,\, A = 1,2,\ldots,n+1\), are zero outside of the immediate neighborhood of node \(A\). As a results, many of the entries of \(\boldsymbol{K}\) are zero.</li>
 <li class="fragment appear">Let \(B > A+1\). Then
@@ -110,7 +111,7 @@ A typical member \(w^h \in \mathscr{V}^h\) has the form \(\sum_{A=1}^n c_A N_A\)
 With a matrix structure with zeros outside the <i>diagonal band</i>, \(\boldsymbol{K}\) is said to be <b><i>banded</i></b>. 
 </p>
 
-<div id="orgd91063b" class="figure">
+<div id="org4965a52" class="figure">
 <p><img src="./3.fig3-nonoverlapping.png" alt="3.fig3-nonoverlapping.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
@@ -120,7 +121,7 @@ With a matrix structure with zeros outside the <i>diagonal band</i>, \(\boldsymb
 </section>
 <section>
 
-<div id="orga20e4ff" class="figure">
+<div id="orgbd01d41" class="figure">
 <p><img src="./3.fig4-bandstructure.png" alt="3.fig4-bandstructure.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
@@ -163,8 +164,8 @@ GPT: what are the standard sparse linear solvers?
 </section>
 </section>
 <section>
-<section id="slide-org6939820">
-<h2 id="org6939820">(\(\S1.12\)) The Element Point of View</h2>
+<section id="slide-org1bfb7ce">
+<h2 id="org1bfb7ce">(\(\S1.12\)) The Element Point of View</h2>
 <ul>
 <li>Up till now the Galerkin approximation method implied the selection of a finite number of <i>basis</i> functions without a general restriction on their region of influence.</li>
 
@@ -175,8 +176,8 @@ GPT: what are the standard sparse linear solvers?
 
 </ul>
 </section>
-<section id="slide-org642b294">
-<h3 id="org642b294">What is a Finite Element?</h3>
+<section id="slide-orgddf3bb7">
+<h3 id="orgddf3bb7">What is a Finite Element?</h3>
 <ul>
 <li>Two separate descriptions of the &ldquo;finite element&rdquo; will be provided based on the use of <i>global</i> versus <i>local</i> coordinates.</li>
 
@@ -293,11 +294,80 @@ An individual element consists of the following quantities:
 
 </ul>
 </section>
-<section id="slide-org66e7393">
-<h3 id="org66e7393">An &ldquo;affine&rdquo; transformation</h3>
-<p>
-In relating the global and local coordinates an &ldquo;affine&rdquo; transformation 
+<section id="slide-org54fff89">
+<h3 id="org54fff89">What is an &ldquo;Affine&rdquo; Transformation</h3>
+<ul>
+<li class="fragment appear">In relating the global and local coordinates, an &ldquo;affine&rdquo; transformation \(\xi:[x_A,x_{A+1}] \rightarrow [\xi_1,\xi_2]\), such that \(\xi(x_A) = \xi_1\) and \(\xi(x_{A+1}) = \xi_2\).</li>
+<li class="fragment appear">We take \(\xi_1 = -1\) and \(\xi_2 = +1\).</li>
+<li class="fragment appear"><p>
+An affine (linear) mapping is provided by
+\[ \xi(x) = c_1 + c_2 x \]
+where \(c_1\) and \(c_2\) are determined by
 </p>
+<div>
+\begin{align} 
+\begin{array}{rl}
+-1 & = c_1 + x_A c_2 \\
+ 1 & = c_1 + x_{A+1} c_2
+\end{array}
+\end{align}
+
+</div></li>
+<li class="fragment appear"><p>
+Solving this system yields the mapping \(\xi(x)\)
+</p>
+<div>
+\begin{equation} \xi(x) = (2x - x_A - x_{A+1})\,/\,{h_A} \label{eq:mapforw} \end{equation}
+
+</div></li>
+<li class="fragment appear">The inverse mapping \(x(\xi)\) can be obtained by solving the above for \(x\)
+\[ x(\xi) = (h_A \xi + x_A + x_{A+1})\,/\,{2} \]</li>
+<li class="fragment appear">In \(\xi(x)\), \(\xi\) is a mapping and \(x\) is a point, whereas in \(x(\xi)\), \(x\) is a mapping and \(\xi\) is a point.</li>
+
+</ul>
+</section>
+<section id="slide-org1e58413">
+<h4 id="org1e58413">Notational Convention</h4>
+<ul>
+<li class="fragment appear"><i>lowercase</i> subscripts pertain to the <i>local</i> numbering system, e.g. \(N_a\), or \(d_b\), etc.</li>
+<li class="fragment appear"><i>UPPERCASE</i> subscripts pertain to the <i>global</i> numbering system, e.g. \(F_A\), or \(N_B\), etc.</li>
+<li class="fragment appear">A superscript \(e\) denoted a quantitiy in the local description associated with element number \(e\), e.g.
+\[ d_a^e = d_A, \hspace{1em} N_a^e(\xi) = N_A(x^e(\xi)), \]
+where
+\[ x^e: [\xi_1, \xi_2] \rightarrow [x_1^e, x_2^e] = [x_A, x_{A+1}]. \]</li>
+
+</ul>
+</section>
+<section id="slide-orgce758f8">
+<h3 id="orgce758f8">Shape Functions (Local Description)</h3>
+<ul>
+<li class="fragment appear">In terms of the local coordinate \(\xi\), the shape functions take a standard form
+\[ N_a(\xi) = \frac{1}{2} (1+ \xi_a \xi), \hspace{2em} a=1,\,2 \]</li>
+<li class="fragment appear"><p>
+The local and global descriptions of the $e$th element are depicted below
+</p>
+
+<div id="org9839be3" class="figure">
+<p><img src="./3.fig5-mapping.png" alt="3.fig5-mapping.png" width="600px" style="&quot;display: block; margin: auto&quot;" /> 
+</p>
+</div></li>
+
+</ul>
+</section>
+<section id="slide-orgc37819f">
+<h4 id="orgc37819f">Isoparametric Mapping</h4>
+<ul>
+<li class="fragment appear">The mapping from the local to the global coordinates can be expressed in terms of the shape functions!
+\[ x^e(\xi) = \sum_{a=1}^2 N_a(\xi) x_a^e \]</li>
+<li class="fragment appear">The shape function derivatives can be taken as
+\[ N_{a,\xi} = \frac{\xi_a}{2} = \frac{(-1)^a}{2} \]
+which are used to write
+\[ x_{,\xi}^e = \frac{h^e}{2} \]
+where \(h^e = x_2^e - x_1^e\)</li>
+<li class="fragment appear">The derivative of the inverse mapping can easily be found as
+\[ \xi_{,x}^e = (x_{,\xi}^e)^{-1} = \frac{2}{h^e} \]</li>
+
+</ul>
 </section>
 </section>
 </div>
