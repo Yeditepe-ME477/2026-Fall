@@ -29,16 +29,17 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-org218ca05">(\(\S1.8\)) Space of Piecewise Linear Functions</a></li>
-<li><a href="#/slide-orgc32897e">(\(\S1.9\)) Properties of \(\boldsymbol{K}\)</a></li>
-<li><a href="#/slide-org1bfb7ce">(\(\S1.12\)) The Element Point of View</a></li>
+<li><a href="#/slide-orgb6318d4">(\(\S1.8\)) Space of Piecewise Linear Functions</a></li>
+<li><a href="#/slide-orgb9105f2">(\(\S1.9\)) Properties of \(\boldsymbol{K}\)</a></li>
+<li><a href="#/slide-org3db25d7">(\(\S1.12\)) The Element Point of View</a></li>
+<li><a href="#/slide-org6793491">(\(\S1.13\)) Stiffness Matrix and Force Vector</a></li>
 </ul>
 </div>
 </div>
 </section>
 <section>
-<section id="slide-org218ca05">
-<h2 id="org218ca05">(\(\S1.8\)) Space of Piecewise Linear Functions</h2>
+<section id="slide-orgb6318d4">
+<h2 id="orgb6318d4">(\(\S1.8\)) Space of Piecewise Linear Functions</h2>
 <p>
 <a href="./2.central_idea.html">\(\leftarrow\) Previous Lecture</a>
 </p>
@@ -50,8 +51,8 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 
 </ul>
 </section>
-<section id="slide-org51c953e">
-<h3 id="org51c953e">Shape Functions</h3>
+<section id="slide-orgf64fcfb">
+<h3 id="orgf64fcfb">Shape Functions</h3>
 <ul>
 <li class="fragment appear"><p>
 Associate to a typical internal node (i.e., \(2\leq A \leq N\))
@@ -71,7 +72,7 @@ whereas for the boundary nodes we have \(N_1(x) = \frac{x_2 - x}{h_1}\), and \(N
 The shape functions are also referred to as &ldquo;hat&rdquo;, or &ldquo;roof&rdquo; functions.
 </p>
 
-<div id="orgee1e596" class="figure">
+<div id="org48fa2d9" class="figure">
 <p><img src="./3.fig1-shapeFunctions.png" alt="3.fig1-shapeFunctions.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
@@ -89,7 +90,7 @@ The shape functions are also referred to as &ldquo;hat&rdquo;, or &ldquo;roof&rd
 A typical member \(w^h \in \mathscr{V}^h\) has the form \(\sum_{A=1}^n c_A N_A\) and appear as below.
 </p>
 
-<div id="org3cf0980" class="figure">
+<div id="orgcee83b2" class="figure">
 <p><img src="./3.fig2-typicalWeight.png" alt="3.fig2-typicalWeight.png" width="1000px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
@@ -100,8 +101,8 @@ A typical member \(w^h \in \mathscr{V}^h\) has the form \(\sum_{A=1}^n c_A N_A\)
 </section>
 </section>
 <section>
-<section id="slide-orgc32897e">
-<h2 id="orgc32897e">(\(\S1.9\)) Properties of \(\boldsymbol{K}\)</h2>
+<section id="slide-orgb9105f2">
+<h2 id="orgb9105f2">(\(\S1.9\)) Properties of \(\boldsymbol{K}\)</h2>
 <ul>
 <li class="fragment appear">The shape functions \(N_A,\, A = 1,2,\ldots,n+1\), are zero outside of the immediate neighborhood of node \(A\). As a results, many of the entries of \(\boldsymbol{K}\) are zero.</li>
 <li class="fragment appear">Let \(B > A+1\). Then
@@ -111,7 +112,7 @@ A typical member \(w^h \in \mathscr{V}^h\) has the form \(\sum_{A=1}^n c_A N_A\)
 With a matrix structure with zeros outside the <i>diagonal band</i>, \(\boldsymbol{K}\) is said to be <b><i>banded</i></b>. 
 </p>
 
-<div id="org4965a52" class="figure">
+<div id="org46af935" class="figure">
 <p><img src="./3.fig3-nonoverlapping.png" alt="3.fig3-nonoverlapping.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
@@ -121,7 +122,7 @@ With a matrix structure with zeros outside the <i>diagonal band</i>, \(\boldsymb
 </section>
 <section>
 
-<div id="orgbd01d41" class="figure">
+<div id="orgd3e6507" class="figure">
 <p><img src="./3.fig4-bandstructure.png" alt="3.fig4-bandstructure.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
@@ -164,8 +165,8 @@ GPT: what are the standard sparse linear solvers?
 </section>
 </section>
 <section>
-<section id="slide-org1bfb7ce">
-<h2 id="org1bfb7ce">(\(\S1.12\)) The Element Point of View</h2>
+<section id="slide-org3db25d7">
+<h2 id="org3db25d7">(\(\S1.12\)) The Element Point of View</h2>
 <ul>
 <li>Up till now the Galerkin approximation method implied the selection of a finite number of <i>basis</i> functions without a general restriction on their region of influence.</li>
 
@@ -176,8 +177,8 @@ GPT: what are the standard sparse linear solvers?
 
 </ul>
 </section>
-<section id="slide-orgddf3bb7">
-<h3 id="orgddf3bb7">What is a Finite Element?</h3>
+<section id="slide-org15c4f41">
+<h3 id="org15c4f41">What is a Finite Element?</h3>
 <ul>
 <li>Two separate descriptions of the &ldquo;finite element&rdquo; will be provided based on the use of <i>global</i> versus <i>local</i> coordinates.</li>
 
@@ -294,11 +295,10 @@ An individual element consists of the following quantities:
 
 </ul>
 </section>
-<section id="slide-org54fff89">
-<h3 id="org54fff89">What is an &ldquo;Affine&rdquo; Transformation</h3>
+<section id="slide-org14afc14">
+<h3 id="org14afc14">What is an &ldquo;Affine&rdquo; Transformation</h3>
 <ul>
-<li class="fragment appear">In relating the global and local coordinates, an &ldquo;affine&rdquo; transformation \(\xi:[x_A,x_{A+1}] \rightarrow [\xi_1,\xi_2]\), such that \(\xi(x_A) = \xi_1\) and \(\xi(x_{A+1}) = \xi_2\).</li>
-<li class="fragment appear">We take \(\xi_1 = -1\) and \(\xi_2 = +1\).</li>
+<li class="fragment appear">In relating the global and local coordinates, an &ldquo;affine&rdquo; transformation \(\xi:[x_A,x_{A+1}] \rightarrow [\xi_1,\xi_2]\), such that \(\xi(x_A) = \xi_1\) and \(\xi(x_{A+1}) = \xi_2\), where we take \(\xi_1 = -1\) and \(\xi_2 = +1\).</li>
 <li class="fragment appear"><p>
 An affine (linear) mapping is provided by
 \[ \xi(x) = c_1 + c_2 x \]
@@ -326,8 +326,8 @@ Solving this system yields the mapping \(\xi(x)\)
 
 </ul>
 </section>
-<section id="slide-org1e58413">
-<h4 id="org1e58413">Notational Convention</h4>
+<section id="slide-org840b905">
+<h4 id="org840b905">Notational Convention</h4>
 <ul>
 <li class="fragment appear"><i>lowercase</i> subscripts pertain to the <i>local</i> numbering system, e.g. \(N_a\), or \(d_b\), etc.</li>
 <li class="fragment appear"><i>UPPERCASE</i> subscripts pertain to the <i>global</i> numbering system, e.g. \(F_A\), or \(N_B\), etc.</li>
@@ -338,8 +338,8 @@ where
 
 </ul>
 </section>
-<section id="slide-orgce758f8">
-<h3 id="orgce758f8">Shape Functions (Local Description)</h3>
+<section id="slide-org61bc4fb">
+<h3 id="org61bc4fb">Shape Functions (Local Description)</h3>
 <ul>
 <li class="fragment appear">In terms of the local coordinate \(\xi\), the shape functions take a standard form
 \[ N_a(\xi) = \frac{1}{2} (1+ \xi_a \xi), \hspace{2em} a=1,\,2 \]</li>
@@ -347,15 +347,15 @@ where
 The local and global descriptions of the $e$th element are depicted below
 </p>
 
-<div id="org9839be3" class="figure">
+<div id="org426d077" class="figure">
 <p><img src="./3.fig5-mapping.png" alt="3.fig5-mapping.png" width="600px" style="&quot;display: block; margin: auto&quot;" /> 
 </p>
 </div></li>
 
 </ul>
 </section>
-<section id="slide-orgc37819f">
-<h4 id="orgc37819f">Isoparametric Mapping</h4>
+<section id="slide-org52153ed">
+<h4 id="org52153ed">Isoparametric Mapping</h4>
 <ul>
 <li class="fragment appear">The mapping from the local to the global coordinates can be expressed in terms of the shape functions!
 \[ x^e(\xi) = \sum_{a=1}^2 N_a(\xi) x_a^e \]</li>
@@ -366,6 +366,51 @@ which are used to write
 where \(h^e = x_2^e - x_1^e\)</li>
 <li class="fragment appear">The derivative of the inverse mapping can easily be found as
 \[ \xi_{,x}^e = (x_{,\xi}^e)^{-1} = \frac{2}{h^e} \]</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org6793491">
+<h2 id="org6793491">(\(\S1.13\)) Stiffness Matrix and Force Vector</h2>
+<ul>
+<li class="fragment appear">The difference between <i>global</i> and <i>local</i> become clear by looking at the two alternative approaches to the construction of the stiffness matrix and the force vector.</li>
+<li class="fragment appear"><p>
+Start with the <i>global</i> approach <br />
+Assume that the model consists of \(n_{el}\) elements, numbered as shown below
+</p>
+
+<div id="org738d2de" class="figure">
+<p><img src="./3.fig6-numberingscheme.png" alt="3.fig6-numberingscheme.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div></li>
+<li class="fragment appear">Recall the definitions of the (global) stiffness matrix and force vector
+\[ \boldsymbol{K} = \underbrace{[K_{AB}]}_{n\times n}, \hspace{2em} \boldsymbol{F} = \underbrace{\{F_A\}}_{n\times 1} \]</li>
+
+</ul>
+
+</section>
+<section>
+<p>
+Components of the global stiffness matrix, \(K_{AB}\), and force vector, \(F_A\) are calculated by taking integrals over the domain, \(\Omega\) as
+</p>
+<ul>
+<li class="fragment appear">\[ K_{AB} = a(N_A, N_B) = \int_0^1 N_{A,x} N_{B,x} dx \]</li>
+<li class="fragment appear"><div>
+\begin{align}
+F_A & = (N_A, \mathscr{f}) + \delta_{1A} \mathscr{h} - a(N_A, N_{n+1}) \mathscr{g} \\
+    & = \int_0^1 N_A \mathscr{f} dx + \delta_{1A} \mathscr{h} - \int_)^1 N_{A,x} N_{n+1,x} dx\, \mathscr{g}
+\end{align}
+
+</div></li>
+<li class="fragment appear"><p>
+The details for the left node, a middle and the right node should be illustrated on board!
+</p>
+
+<div id="org6472e4b" class="figure">
+<p><img src="./3.fig7-K.png" alt="3.fig7-K.png" width="1000px" style="&quot;display: block; margin: auto&quot;" /> 
+</p>
+</div></li>
 
 </ul>
 </section>

@@ -112,8 +112,7 @@ GPT: what are the standard sparse linear solvers?
   \[ u^h(\xi) = N_1(\xi) d_1 + N_2(\xi) d_2 \]
 ** What is an "Affine" Transformation
 #+ATTR_REVEAL: :frag (appear)
-- In relating the global and local coordinates, an "affine" transformation $\xi:[x_A,x_{A+1}] \rightarrow [\xi_1,\xi_2]$, such that $\xi(x_A) = \xi_1$ and $\xi(x_{A+1}) = \xi_2$.
-- We take $\xi_1 = -1$ and $\xi_2 = +1$.
+- In relating the global and local coordinates, an "affine" transformation $\xi:[x_A,x_{A+1}] \rightarrow [\xi_1,\xi_2]$, such that $\xi(x_A) = \xi_1$ and $\xi(x_{A+1}) = \xi_2$, where we take $\xi_1 = -1$ and $\xi_2 = +1$.
 - An affine (linear) mapping is provided by
   \[ \xi(x) = c_1 + c_2 x \]
   where $c_1$ and $c_2$ are determined by
@@ -154,5 +153,26 @@ GPT: what are the standard sparse linear solvers?
   where $h^e = x_2^e - x_1^e$
 - The derivative of the inverse mapping can easily be found as
   \[ \xi_{,x}^e = (x_{,\xi}^e)^{-1} = \frac{2}{h^e} \]
-* ($\S1.13$) Element Stiffness Matrix and Force Vector
-
+* ($\S1.13$) Stiffness Matrix and Force Vector
+#+ATTR_REVEAL: :frag (appear)
+- The difference between /global/ and /local/ become clear by looking at the two alternative approaches to the construction of the stiffness matrix and the force vector.
+- Start with the /global/ approach \\
+  Assume that the model consists of $n_{el}$ elements, numbered as shown below
+  #+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
+  [[./3.fig6-numberingscheme.png]]
+- Recall the definitions of the (global) stiffness matrix and force vector
+  \[ \boldsymbol{K} = \underbrace{[K_{AB}]}_{n\times n}, \hspace{2em} \boldsymbol{F} = \underbrace{\{F_A\}}_{n\times 1} \]
+  
+#+REVEAL: split
+Components of the global stiffness matrix, $K_{AB}$, and force vector, $F_A$ are calculated by taking integrals over the domain, $\Omega$ as
+#+ATTR_REVEAL: :frag (appear)
+- \[ K_{AB} = a(N_A, N_B) = \int_0^1 N_{A,x} N_{B,x} dx \]
+- 
+  \begin{align}
+  F_A & = (N_A, \mathscr{f}) + \delta_{1A} \mathscr{h} - a(N_A, N_{n+1}) \mathscr{g} \\
+      & = \int_0^1 N_A \mathscr{f} dx + \delta_{1A} \mathscr{h} - \int_0^1 N_{A,x} N_{n+1,x} dx\, \mathscr{g}
+  \end{align}
+- Contributions from the left, mid and right node should be illustrated on board!
+  #+ATTR_HTML: :width 1000px :style "display: block; margin: auto"
+  [[./3.fig7-K.png]] 
+  
