@@ -176,3 +176,45 @@ Components of the global stiffness matrix, $K_{AB}$, and force vector, $F_A$ are
   #+ATTR_HTML: :width 1000px :style "display: block; margin: auto"
   [[./3.fig7-K.png]] 
   
+#+REVEAL: split
+If the integrals over the domain $[0,1]$ are written as a sum piecewise sum of terms out of the adjacent subdomains, i.e. $[x_A,x_{A+1}]$, the so-called /element/ domains, we see
+  #+begin_export html
+  \[
+  \begin{align}
+    \boldsymbol{K} = \sum_{e=1}^{n_{el}} \boldsymbol{K}^e, \hspace{2em} & \boldsymbol{K}^e = [K_{AB}^e] \\
+    \boldsymbol{F} = \sum_{e=1}^{n_{el}} \boldsymbol{F}^e, \hspace{2em} & \boldsymbol{F}^e = [F_{A}^e] 
+  \end{align}
+  \]
+  #+end_export
+
+where 
+ #+begin_export html
+ \[
+ \begin{align}
+  {K}_{AB}^e & = a(N_A, N_B)^e = \int_{\Omega^e} N_{A,x} N_{B,x} dx \\
+  {F}_A^e & = (N_A,\mathscr{f})^e + \delta_{1e} \delta_{1A} \mathscr{h} - a(N_A,N_{n+1})^e \, \mathscr{g} \\
+     & = \int_{\Omega^e} N_A \mathscr{f} dx + \delta_{1e} \delta_{1A} \mathscr{h} - \int_{\Omega^e} N_{A,x} N_{n+1,x} dx \mathscr{g}
+ \end{align}
+ \]
+ #+end_export
+and $\Omega^e = [x_1^e,x_2^e]$, denote the *eth element/subdomain*. (Also note that the Kroenecker symbol $\delta_{1e}$ is required to ensure that the only contribution is from the respective element.)
+
+#+REVEAL: split
+An important observation to make is that $\boldsymbol{K}$ and $\boldsymbol{F}$ can be /constructed by summing the contributions of elemental matrices and vectors, respectively/. In the literature, this procedure is sometimes called the */direct stiffness method/*.
+
+#+ATTR_HTML: :width 1000px :style "display: block; margin: auto"
+[[./3.fig8-Ke.png]] 
+
+#+REVEAL: split
+In practice, we do not carry the full matrix containing many zeros but merely add in the *nonzero* terms to the /appropriate locations/. For this purpose, it is useful to define the */eth element stiffness matrix/*, $\boldsymbol{k}^e$ and */element force vector/*, $\boldsymbol{f}^e$ as follows:
+#+begin_export html
+\[
+\begin{align}
+& \boldsymbol{k}^e = \underbrace{[k_{ab}^e]}_{2\times 2}\,, \hspace{2em} \boldsymbol{f}^e = \underbrace{\{f_a^e\}}_{2\times 1}\,, \hspace{2em} a,b=1,2 \\
+& k_{ab}^e = a(N_a, N_b)^e = \int_{\Omega^e} N_{a,x} N_{b,x} dx\\
+& f_a^e = \int_{\Omega^e} N_a \mathscr{f} dx + \begin{cases} \delta_{1a} \mathscr{h} \hspace{2em} & e = 1\\ 0 & e = 2,3,\ldots,n_{el}-1 \\ -k_{a2}^e \mathscr{g} & e = n_{el} \end{cases}
+\end{align}
+\]
+#+end_export
+
+It is important to understand that while $\boldsymbol{k}^e$ and $\boldsymbol{f}^e$ are defined with respect to the /local/ ordering,  $\boldsymbol{K}^e$ and $\boldsymbol{F}^e$ are defined with respect to the global ordering. To determine the addressing or /mapping/ of the components of  $\boldsymbol{k}^e$ and $\boldsymbol{f}^e$ into the global forms, additional information will be injected into the data structures.
