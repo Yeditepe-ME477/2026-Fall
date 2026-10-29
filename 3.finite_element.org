@@ -218,3 +218,21 @@ In practice, we do not carry the full matrix containing many zeros but merely ad
 #+end_export
 
 It is important to understand that while $\boldsymbol{k}^e$ and $\boldsymbol{f}^e$ are defined with respect to the /local/ ordering,  $\boldsymbol{K}^e$ and $\boldsymbol{F}^e$ are defined with respect to the global ordering. To determine the addressing or /mapping/ of the components of  $\boldsymbol{k}^e$ and $\boldsymbol{f}^e$ into the global forms, additional information will be injected into the data structures.
+* ($\S1.14$) Assembly Procedures
+The assembly procedures require several definitions related with the problem such as
+- $n_{en}$: the number of element nodes
+- $n_{el}$: the number of elements
+- etc. 
+
+The action of the assemblage algorithm is denoted by $\mathcal{A}$, the /assembly operator/, vis.,
+\[ \boldsymbol{K} = \underset{e=1}{\overset{n_{el}}{\mathcal{A}}} (\boldsymbol{k}^e)  \]
+
+#+REVEAL: split
+The assembly procedure is shown below:
+#+ATTR_HTML: :width 600px :style "display: block; margin: auto"
+[[./3.fig9-assembly.png]]
+
+* ($\S1.15$) Explicit Computation of Element Arrays
+  :PROPERTIES:
+  :CUSTOM_ID: S1.15
+  :END:

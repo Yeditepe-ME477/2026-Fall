@@ -33,5 +33,4 @@ by Eren Kabarik, CCSA-1
 * How to Use =cgx=
 This is from the [[https://www.dhondt.de/][official CalculiX webpage]]. =cgx= is the pre- and post-processor for CalculiX. Here is a not so short [[https://www.dhondt.de/tutorial.txt][cgx tutorial]]. Read and apply. (2 points)
 
-* How to Run Tests in CalculiX
-This is from the CalculiX Discourse page. It is filed as [[https://calculix.discourse.group/t/how-to-run-calculix-tests/1810][thread#1810]]. Read and apply. (2 points)
+
