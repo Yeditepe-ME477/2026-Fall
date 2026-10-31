@@ -124,6 +124,9 @@ Given the coefficient matrix $\boldsymbol{K}$ and vector $\boldsymbol{F}$, find 
 [[./2.fig2-shapefunctions.png]]
 
 * Example: Bar Under Gravity Load
+:PROPERTIES:
+:CUSTOM_ID: Example1.6
+:END:
 We take a bar of constant circular cross-section, radius $r$, and length $l$, fixed to a horizontal ceiling wall from top and let to deform downwards under its weight. Assume the material behaves as a linearly elastic, isotropic and homogeneous medium, with elastic modulus $E$, and Poisson's ratio, $\nu$.
 
 #+ATTR_HTML: :width 1100px :style "display: block; margin: auto"

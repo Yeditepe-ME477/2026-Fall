@@ -240,16 +240,16 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge435697">Spatial Discretization Concepts</a></li>
-<li><a href="#org1897a2a">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</a></li>
-<li><a href="#orga212c6d">(\(\S1.6\)) Matrix Equations</a></li>
-<li><a href="#org4fdceaa">Example: Bar Under Gravity Load</a></li>
+<li><a href="#org4fe9cf5">Spatial Discretization Concepts</a></li>
+<li><a href="#org23c63ec">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</a></li>
+<li><a href="#orgd645d9c">(\(\S1.6\)) Matrix Equations</a></li>
+<li><a href="#Example1.6">Example: Bar Under Gravity Load</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge435697" class="outline-2">
-<h2 id="orge435697">Spatial Discretization Concepts</h2>
-<div class="outline-text-2" id="text-orge435697">
+<div id="outline-container-org4fe9cf5" class="outline-2">
+<h2 id="org4fe9cf5">Spatial Discretization Concepts</h2>
+<div class="outline-text-2" id="text-org4fe9cf5">
 <p>
 <a href="./1.fundamentals.html">\(\leftarrow\) Previous Lecture</a>
 </p>
@@ -260,7 +260,7 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 The superscript refers to the association of \(\delta^h\) and \(\mathscr{V}^h\) with a <b>mesh</b>, or <b>discretization</b>, of the domain \(\Omega\), parameterized by a characteristic length scale \(h\).
 </p>
 
-<div id="org44b3326" class="figure">
+<div id="orgf86759e" class="figure">
 <p><img src="./2.fig1-discretization.png" alt="2.fig1-discretization.png" width="1000px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
@@ -279,9 +279,9 @@ The finite element method : linear static and dynamic finite element analysis / 
 </ul>
 </div>
 </div>
-<div id="outline-container-org1897a2a" class="outline-2">
-<h2 id="org1897a2a">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</h2>
-<div class="outline-text-2" id="text-org1897a2a">
+<div id="outline-container-org23c63ec" class="outline-2">
+<h2 id="org23c63ec">(\(\S1.5\)) (Bubnov-) Galerkin Approximation</h2>
+<div class="outline-text-2" id="text-org23c63ec">
 <p>
 Remember the resctriction on the trial and weight functions, \(u\) and \(w\), at the <b>essential</b> boundaries (\(\mathscr{g}\) type):
 </p>
@@ -321,9 +321,9 @@ Given \(\mathscr{f}\), \(\mathscr{g}\), and \(\mathscr{h}\), as before, find \(u
 </ul>
 </div>
 </div>
-<div id="outline-container-orga212c6d" class="outline-2">
-<h2 id="orga212c6d">(\(\S1.6\)) Matrix Equations</h2>
-<div class="outline-text-2" id="text-orga212c6d">
+<div id="outline-container-orgd645d9c" class="outline-2">
+<h2 id="orgd645d9c">(\(\S1.6\)) Matrix Equations</h2>
+<div class="outline-text-2" id="text-orgd645d9c">
 <p>
 We will show that the (G) form will lead to a coupled system of linear algebraic equations. 
 </p>
@@ -392,9 +392,9 @@ The Galerkin approximation equations can be written in the form
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-orgb76844a" class="outline-3">
-<h3 id="orgb76844a">The Matrix Form (M)</h3>
-<div class="outline-text-3" id="text-orgb76844a">
+<div id="outline-container-org424abc1" class="outline-3">
+<h3 id="org424abc1">The Matrix Form (M)</h3>
+<div class="outline-text-3" id="text-org424abc1">
 <p>
 Given the coefficient matrix \(\boldsymbol{K}\) and vector \(\boldsymbol{F}\), find \(\boldsymbol{d}\) such that
 \[ \boldsymbol{K} \boldsymbol{d} = \boldsymbol{F} \]
@@ -407,33 +407,33 @@ Given the coefficient matrix \(\boldsymbol{K}\) and vector \(\boldsymbol{F}\), f
 </ul>
 </div>
 </div>
-<div id="outline-container-org0d4789a" class="outline-3">
-<h3 id="org0d4789a">Interpolation: a piecewise-linear set of <i>hat</i> functions</h3>
-<div class="outline-text-3" id="text-org0d4789a">
+<div id="outline-container-orgc290e73" class="outline-3">
+<h3 id="orgc290e73">Interpolation: a piecewise-linear set of <i>hat</i> functions</h3>
+<div class="outline-text-3" id="text-orgc290e73">
 
-<div id="org0f41961" class="figure">
+<div id="org8fd14b3" class="figure">
 <p><img src="./2.fig2-shapefunctions.png" alt="2.fig2-shapefunctions.png" width="1400px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org4fdceaa" class="outline-2">
-<h2 id="org4fdceaa">Example: Bar Under Gravity Load</h2>
-<div class="outline-text-2" id="text-org4fdceaa">
+<div id="outline-container-Example1.6" class="outline-2">
+<h2 id="Example1.6">Example: Bar Under Gravity Load</h2>
+<div class="outline-text-2" id="text-Example1.6">
 <p>
 We take a bar of constant circular cross-section, radius \(r\), and length \(l\), fixed to a horizontal ceiling wall from top and let to deform downwards under its weight. Assume the material behaves as a linearly elastic, isotropic and homogeneous medium, with elastic modulus \(E\), and Poisson&rsquo;s ratio, \(\nu\).
 </p>
 
 
-<div id="org2ce3583" class="figure">
+<div id="org01991ac" class="figure">
 <p><img src="./2.fig3-barexample.png" alt="2.fig3-barexample.png" width="1100px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 </div>
-<div id="outline-container-org94bf216" class="outline-3">
-<h3 id="org94bf216">Exercise: Bar Formulation</h3>
-<div class="outline-text-3" id="text-org94bf216">
+<div id="outline-container-org83292d5" class="outline-3">
+<h3 id="org83292d5">Exercise: Bar Formulation</h3>
+<div class="outline-text-3" id="text-org83292d5">
 <ul class="org-ul">
 <li>\[ \frac{d}{dy} (EA \frac{du}{dy}) - \rho g A = 0 \]</li>
 <li>subject to boundary conditions</li>
