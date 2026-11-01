@@ -1,4 +1,4 @@
-#+TITLE:  Homework 1: Initialization
+#+TITLE:  Homework 2: Toy Truss Problem
 #+AUTHOR: Fethi Okyar
 #+DATE: 2026 Fall
 #+SUBTITLE: Finite Element Method, ME 477
@@ -7,14 +7,18 @@
 #+REVEAL_THEME: simple
 #+REVEAL_INIT_OPTIONS: slideNumber:"c/t", width:1920, height:1080
 #+REVEAL_TITLE_SLIDE: <h2>%t</h2> <h3>%s</h3> <h4>%d</h4>
-#+OPTIONS: timestamp:nil toc:1 num:nil
+#+OPTIONS: timestamp:nil toc:nil num:nil
 #+REVEAL_EXTRA_CSS: ../style.css
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
 #+HTML_HEAD_EXTRA: <style>
 #+HTML_HEAD_EXTRA: pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 #+HTML_HEAD_EXTRA: </style>
 
-This classwork sheet consists of 1 parts and a total of 3 points.
+This homework sheet consists of 1 parts and a total of 10 points.
 
-* How to Run Tests in CalculiX
-This is from the CalculiX Discourse page. It is filed as [[https://calculix.discourse.group/t/how-to-run-calculix-tests/1810][thread#1810]]. Read and apply. (3 points)
+* [[../2.central_idea.html#/Example1.6][Suspended Bar Under Gravity]]
+1. [4pts] Using the explicit computation principles described in this week's lecture obtain the stiffness matrix and force vector using
+   + one element, and,
+   + two elements
+2. [4pts] Solve the problem using DLEARN.
+3. [2pts] Discuss the results from steps 1. and 2. 

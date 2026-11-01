@@ -40,9 +40,9 @@
 |      1 | [[./0.about.html][About]]           | Modus Operandi                 |             | [[https://git-scm.com/][git]], [[https://github.com][github]] |
 |      2 | [[./1.fundamentals.html][Fundamentals]]    | One-d BVP + Run Calculix       |             | [[./textbook/Ch1_p1.pdf	][Ch.1-p1]]     |
 |      3 | Teknopark visit | Yeditepe TTO A.Ş. Girişim      |             |             |
-|      4 | [[./2.central_idea.html][Central Idea]]    | Bubnov-Galerkin Method         | [[./assignments/1.classwork.html][CW#1]], [[./assignments/1.homework.html][HW#1]]  | [[./textbook/Ch1_p2.pdf][Ch.1-p2]]     |
+|      4 | [[./2.central_idea.html][Central Idea]]    | Bubnov-Galerkin Method         | [[./assignments/cw1.calculix.html][CW#1]], [[./assignments/hw1.CDth1810.html][HW#1]]  | [[./textbook/Ch1_p2.pdf][Ch.1-p2]]     |
 |      5 | [[./3.finite_element.html][Finite Element]]  | Localization of Concepts       | Quiz 1      | [[./textbook/Ch1_p3.pdf][Ch.1-p3]]     |
-|      6 | [[./3.finite_element.html#/S1.15][Array Compute]]   | Explicit Evaluations of Arrays |             |             |
+|      6 | [[./3.finite_element.html#/S1.15][Array Compute]]   | Explicit Evaluations of Arrays | [[./assignments/cw2.dlearn.html][CW#2]], [[./assignments/hw2.suspendbar.html][HW#2]]  | [[https://yeditepe-me477.github.io/fem_hughes/Manual.pdf][Dlearn]]      |
 |      7 | Sample Model    | A Cylindrical Vessel           |             | [[https://calculix.discourse.group/t/nonlinear-axial-compression-buckling-of-a-cylinder-not-converging/4027][THD#4027]]    |
 |      8 |                 |                                |             |             |
 |      9 |                 |                                |             |             |
@@ -70,7 +70,7 @@ Evaluation and grading of the assignments will mostly be based on the following 
 #+ATTR_REVEAL: :frag (appear appear appear ...)
 - CalculiX
 ** References
-1. <<Textbook>> Hughes, Thomas J. R. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall, 1987. [[/home/fethi/snkr/academic/courses/undergrad_courses/me477_fea/books/The_Finite_Element_Method-Thomas_Hughes.djvu][internal]]
+1. <<Textbook>> Hughes, Thomas J. R. The Finite Element Method: Linear Static and Dynamic Finite Element Analysis. Prentice-Hall, 1987. [[https://store.doverpublications.com/products/9780486411811][Dover Press]], [[/home/fethi/snkr/academic/courses/undergrad_courses/me477_fea/books/The_Finite_Element_Method-Thomas_Hughes.djvu][internal]]
 2. <<BW2005>> Bonet, J., Wood, R.D. Nonlinear Continuum Mechanics for Finite Element Analysis, 2nd ed., 2010 (Cambridge University Press): [[https://www.cambridge.org/core/books/nonlinear-continuum-mechanics-for-finite-element-analysis/67AD6DBAAB77E755C09E7FB82565DA0B?utm_campaign=shareaholic&utm_medium=copy_link&utm_source=bookmark][BW2005]], [[/home/fethi/snkr/academic/courses/undergrad_courses/me477_fea/books/Nonlinear_Continuum_Mechanics_for_Finite_Element_Analysis-Bonet_Wood.pdf][internal]]
 3. Dhondt, Guido. The Finite Element Method for Three-Dimensional Thermomechanical Applications. Wiley, 2004. [[https://onlinelibrary.wiley.com/doi/book/10.1002/0470021217][Dhondt2004]], [[/home/fethi/snkr/academic/courses/undergrad_courses/me477_fea/books/The_Finite_Element_Method_for_3D_Thermomechanical_Applications-Guido_Dhondt.pdf][internal]]
 

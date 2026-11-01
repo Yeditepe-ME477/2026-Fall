@@ -1,0 +1,27 @@
+#+TITLE:  Classwork 2: DLEARN
+#+AUTHOR: Fethi Okyar
+#+DATE: 2026 Fall
+#+SUBTITLE: Finite Element Method, ME 477
+#+DESCRIPTION: Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method
+#+STARTUP: overview
+#+REVEAL_THEME: simple
+#+REVEAL_INIT_OPTIONS: slideNumber:"c/t", width:1920, height:1080
+#+REVEAL_TITLE_SLIDE: <h2>%t</h2> <h3>%s</h3> <h4>%d</h4>
+#+OPTIONS: timestamp:nil toc:nil num:nil
+#+REVEAL_EXTRA_CSS: ../style.css
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
+#+HTML_HEAD_EXTRA: </style>
+
+This classwork sheet consists of 2 parts and a total of 5 points.
+* DLEARN
+- An extensive static and dynamic finite element analysis program, DLEARN, was specially prepared based on the text material. It is written using structured programming concepts and contains many advanced procedures.
+- DLEARN is described in detail with a User's Manual and Example problems in Ch.11 of the  [[https://store.doverpublications.com/products/9780486411811][Textbook]]. This file is provided in the corresponding repo below.
+- DLEARN is a freely distributable software under GPL-3 license. You can download, build and use it from the repo: https://github.com/Yeditepe-ME477/fem_hughes.git
+- In this lab session
+  1. we will go through the download and build
+  2. Solve an example problem (TU1)
+
+
+

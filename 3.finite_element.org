@@ -232,7 +232,7 @@ The assembly procedure is shown below:
 #+ATTR_HTML: :width 600px :style "display: block; margin: auto"
 [[./3.fig9-assembly.png]]
 
-* ($\S1.15$) Explicit Computation of Element Arrays
+* ($\S1.15$) Explicit Computation and Beyond
 :PROPERTIES:
 :CUSTOM_ID: S1.15
 :END:
@@ -277,5 +277,12 @@ The notation $\mathscr{f}^h$ is used to indicate that the approximation depends 
    \end{align}
 - Carrying out the integrations ($\int_{-1}^{+1} N_a N_b d\xi = (1 + \delta_{ab})/3$) yields
   \[ \mathscr{f}^e = \frac{h^e}{6} \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix} \begin{Bmatrix} \mathscr{f}_1 \\ \mathscr{f}_2 \end{Bmatrix} = \frac{h^e}{6} \begin{Bmatrix} 2 \mathscr{f}_1 + \mathscr{f}_2 \\ \mathscr{f}_1 + 2 \mathscr{f}_2 \end{Bmatrix} \hspace{1em} (+ \,\mathrm{boundary}\,\mathrm{terms}) \]
-** [[./2.central_idea.html#/Example1.6][Suspended Bar Under Gravity]]
-Solve this problem with one element and two elements and compare results with the analytical solution.
+** What Remains to be Studied?
+#+ATTR_REVEAL: :frag (appear)
+- [[./textbook/contents.pdf][Table of Contents]] of the [[https://store.doverpublications.com/products/9780486411811][Textbook]]
+- [[./textbook/glossary.pdf][Glossary of Notations]]
+- Possible Course routes that can be preferred
+  #+ATTR_HTML: :width 900px :style "display: block; margin: auto"
+  [[./3.fig11-routes.png]]
+- Our route: 1-2-3-7
+
