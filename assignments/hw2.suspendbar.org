@@ -21,4 +21,14 @@ This homework sheet consists of 1 parts and a total of 10 points.
    + one element, and,
    + two elements
 2. [4pts] Solve the problem using DLEARN.
+   Hint: the input file created by openAI GPT during the lecture can be accessed [[file:hw2.input.dat][here]]. The model parameters in this model are
+   | Parameter            | Value                            |
+   | Total length         | 2.0 m                            |
+   | Number of elements   | 2                                |
+   | Element length       | 1.0 m                            |
+   | Cross-sectional area | 1.0E-4 m²                        |
+   | Young's modulus      | @@html:<mark>200E9 Pa</mark>@@   |
+   | Density              | @@html:<mark>7850 kg/m³</mark>@@ |
+   | Gravity              | 9.81 m/s²                        |
+   Please use a polymer based material of your choice in your homework (change material parameters in your homework solution).  
 3. [2pts] Discuss the results from steps 1. and 2. 

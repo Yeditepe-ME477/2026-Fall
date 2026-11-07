@@ -207,16 +207,72 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 <p>
 This homework sheet consists of 1 parts and a total of 10 points.
 </p>
-<div id="outline-container-orga69d259" class="outline-2">
-<h2 id="orga69d259"><a href="../2.central_idea.html#/Example1.6">Suspended Bar Under Gravity</a></h2>
-<div class="outline-text-2" id="text-orga69d259">
+<div id="outline-container-org2fe7953" class="outline-2">
+<h2 id="org2fe7953"><a href="../2.central_idea.html#/Example1.6">Suspended Bar Under Gravity</a></h2>
+<div class="outline-text-2" id="text-org2fe7953">
 <ol class="org-ol">
 <li>[4pts] Using the explicit computation principles described in this week&rsquo;s lecture obtain the stiffness matrix and force vector using
 <ul class="org-ul">
 <li>one element, and,</li>
 <li>two elements</li>
 </ul></li>
-<li>[4pts] Solve the problem using DLEARN.</li>
+<li><p>
+[4pts] Solve the problem using DLEARN.
+Hint: the input file created by openAI GPT during the lecture can be accessed <a href="hw2.input.dat">here</a>. The model parameters in this model are
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Parameter</td>
+<td class="org-left">Value</td>
+</tr>
+
+<tr>
+<td class="org-left">Total length</td>
+<td class="org-left">2.0 m</td>
+</tr>
+
+<tr>
+<td class="org-left">Number of elements</td>
+<td class="org-left">2</td>
+</tr>
+
+<tr>
+<td class="org-left">Element length</td>
+<td class="org-left">1.0 m</td>
+</tr>
+
+<tr>
+<td class="org-left">Cross-sectional area</td>
+<td class="org-left">1.0E-4 m²</td>
+</tr>
+
+<tr>
+<td class="org-left">Young&rsquo;s modulus</td>
+<td class="org-left"><mark>200E9 Pa</mark></td>
+</tr>
+
+<tr>
+<td class="org-left">Density</td>
+<td class="org-left"><mark>7850 kg/m³</mark></td>
+</tr>
+
+<tr>
+<td class="org-left">Gravity</td>
+<td class="org-left">9.81 m/s²</td>
+</tr>
+</tbody>
+</table>
+<p>
+Please use a polymer based material of your choice in your homework (change material parameters in your homework solution).  
+</p></li>
 <li>[2pts] Discuss the results from steps 1. and 2.</li>
 </ol>
 </div>

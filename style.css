@@ -1,3 +1,18 @@
 .reveal {
     font-size: 24px;
 }
+/* Change the default yellow background of the <mark> tag */
+mark {
+  background-color: #ffde59; /* Custom soft yellow/gold */
+  color: #000000;            /* Black text for contrast */
+  padding: 0 4px;            /* Slight padding around the text */
+  border-radius: 3px;        /* Rounded corners */
+}
+
+/* Optional: Create a completely custom class name */
+.text-highlight {
+  background-color: #ff914d; /* Soft orange highlight */
+  color: #ffffff;            /* White text */
+  padding: 0 4px;
+  border-radius: 3px;
+}
