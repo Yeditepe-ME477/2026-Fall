@@ -1,0 +1,39 @@
+#+TITLE:  [[https://yeditepee-me477.github.io/2026-Fall/3.heat_equation.html][The Heat Equation]]
+#+AUTHOR: Fethi Okyar
+#+DATE: 2026 Fall
+#+SUBTITLE: Finite Element Method, ME 477
+#+DESCRIPTION: Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method
+#+STARTUP: overview
+#+REVEAL_THEME: simple
+#+REVEAL_INIT_OPTIONS: slideNumber:"c/t", width:1920, height:1080
+#+REVEAL_TITLE_SLIDE: <h2>%t</h2> <h3>%s</h3> <h4>%d</h4>
+#+OPTIONS: timestamp:nil toc:1 num:nil
+#+REVEAL_EXTRA_CSS: ./style.css
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_PLUGINS: (notes math)
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
+#+HTML_HEAD_EXTRA: </style>
+#+REVEAL_HEAD_PREAMBLE: <script>MathJax = { tex: { tags: 'ams' } };</script>
+
+* ($\S2.1,2$) Formulation of 2/3-D BVP's 
+[[./3.finite_element.html][$\leftarrow$ Previous Lecture]]
+#+ATTR_REVEAL: :frag (appear)
+-  
+  
+** 
+#+ATTR_REVEAL: :frag (appear)
+- 
+- 
+  #+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
+  [[./3.fig1-shapeFunctions.png]]
+
+#+REVEAL: split
+- 
+#+ATTR_REVEAL: :frag (appear)
+- 
+  #+ATTR_HTML: :width 1000px :style "display: block; margin: auto"
+  [[./3.fig2-typicalWeight.png]]
+- Note that while $w^h$ is continuous, it has discontinuous slope across each element boundary, i.e. its derivative $w_{,x}^h$ will be *@@html:<span title="That is why strains are considered as less accurate in comparison with the displacements.">piecewise constant</span>@@*.
+- 
+

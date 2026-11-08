@@ -1,193 +1,386 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>What is a Finite Element?</title>
-<meta name="author" content="Fethi Okyar"/>
-<meta name="description" content="Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method"/>
+<meta name="author" content="Fethi Okyar" />
+<meta name="description" content="Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method" />
+<meta name="generator" content="Org Mode" />
 <style type="text/css">
-.underline { text-decoration: underline; }
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
 </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/simple.css" id="theme"/>
-
-<link rel="stylesheet" href="./style.css"/>
-<script>MathJax = { tex: { tags: 'ams' } };</script>
 <style>
 pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
-<div class="reveal">
-<div class="slides">
-<section id="sec-title-slide">
-<h2>What is a Finite Element?</h2> <h3>Finite Element Method, ME 477</h3> <h4>2026 Fall</h4>
-</section>
-<section id="table-of-contents-section">
+<div id="content" class="content">
+<h1 class="title">What is a Finite Element?
+<br />
+<span class="subtitle">Finite Element Method, ME 477</span>
+</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-org4bf0f94">(\(\S1.8\)) Space of Piecewise Linear Functions</a></li>
-<li><a href="#/slide-orgeb93474">(\(\S1.9\)) Properties of \(\boldsymbol{K}\)</a></li>
-<li><a href="#/slide-org60b7895">(\(\S1.12\)) The Element Point of View</a></li>
-<li><a href="#/slide-org0449398">(\(\S1.13\)) Stiffness Matrix and Force Vector</a></li>
-<li><a href="#/slide-org3ef6723">(\(\S1.14\)) Assembly Procedures</a></li>
-<li><a href="#/slide-S1.15">(\(\S1.15\)) Explicit Computation and Beyond</a></li>
+<li><a href="#org903f7af">(\(\S1.8\)) Space of Piecewise Linear Functions</a></li>
+<li><a href="#org7c2ab52">(\(\S1.9\)) Properties of \(\boldsymbol{K}\)</a></li>
+<li><a href="#org4745745">(\(\S1.12\)) The Element Point of View</a></li>
+<li><a href="#orgc843f24">(\(\S1.13\)) Stiffness Matrix and Force Vector</a></li>
+<li><a href="#orgffb6a00">(\(\S1.14\)) Assembly Procedures</a></li>
+<li><a href="#S1.15">(\(\S1.15\)) Explicit Computation and Beyond</a></li>
 </ul>
 </div>
 </div>
-</section>
-<section>
-<section id="slide-org4bf0f94">
-<h2 id="org4bf0f94">(\(\S1.8\)) Space of Piecewise Linear Functions</h2>
+<div id="outline-container-org903f7af" class="outline-2">
+<h2 id="org903f7af">(\(\S1.8\)) Space of Piecewise Linear Functions</h2>
+<div class="outline-text-2" id="text-org903f7af">
 <p>
 <a href="./2.central_idea.html">\(\leftarrow\) Previous Lecture</a>
 </p>
-<ul>
-<li class="fragment appear">The bar example of the preceeding section employed so-called piecewise linear functions \(N_A(x)\). Spaces \(\mathscr{V}^h\) and \(\delta^h\) that are composed of such functions are called <i>piecewise linear finite element spaces</i>.</li>
-<li class="fragment appear">A general case in which \(\mathscr{V}^h\) is \(n\) dimensional, we partition the domain \([0,1]\) into \(n\) nonoverlapping subintervals. The typical subinterval is denoted by \([x_A,x_{A+1}]\), where \(x_A < x_{A+1}\) and \(A=1,2,\ldots,n\).</li>
-<li class="fragment appear">The \(x_A\)&rsquo;s are called <b><i>nodal points</i></b>, or simply <i>nodes</i>. The subintervals are referred to as <b><i>elements</i></b>.</li>
-<li class="fragment appear">The mesh parameter, \(h\), is taken to be the maximum element length.</li>
-
+<ul class="org-ul">
+<li>The bar example of the preceeding section employed so-called piecewise linear functions \(N_A(x)\). Spaces \(\mathscr{V}^h\) and \(\delta^h\) that are composed of such functions are called <i>piecewise linear finite element spaces</i>.</li>
+<li>A general case in which \(\mathscr{V}^h\) is \(n\) dimensional, we partition the domain \([0,1]\) into \(n\) nonoverlapping subintervals. The typical subinterval is denoted by \([x_A,x_{A+1}]\), where \(x_A < x_{A+1}\) and \(A=1,2,\ldots,n\).</li>
+<li>The \(x_A\)&rsquo;s are called <b><i>nodal points</i></b>, or simply <i>nodes</i>. The subintervals are referred to as <b><i>elements</i></b>.</li>
+<li>The mesh parameter, \(h\), is taken to be the maximum element length.</li>
 </ul>
-</section>
-<section id="slide-org23b99cf">
-<h3 id="org23b99cf">Shape Functions</h3>
-<ul>
-<li class="fragment appear"><p>
+</div>
+<div id="outline-container-orgd4ce7fc" class="outline-3">
+<h3 id="orgd4ce7fc">Shape Functions</h3>
+<div class="outline-text-3" id="text-orgd4ce7fc">
+<ul class="org-ul">
+<li><p>
 Associate to a typical internal node (i.e., \(2\leq A \leq N\))
 </p>
-<div>
  \begin{align} N_A(x) = \begin{cases}
 \frac{(x - x_{A-1})}{h_{A-1}}, \hspace{2em} & x_{A-1} \leq x \leq x_A \\
 \frac{(x_{A+1} - x)}{h_A}, & x_A \leq x \leq x_{A+1} \\
 0, & \mathrm{elsewhere} \end{cases} \end{align}
-
-</div>
 <p>
 whereas for the boundary nodes we have \(N_1(x) = \frac{x_2 - x}{h_1}\), and \(N_{n+1}(x) = \frac{x-x_n}{h_n}\).
 </p></li>
 
-<li class="fragment appear"><p>
+<li><p>
 The shape functions are also referred to as &ldquo;hat&rdquo;, or &ldquo;roof&rdquo; functions.
 </p>
 
-<div id="org5bbdcf5" class="figure">
+<div id="org8dc4a63" class="figure">
 <p><img src="./3.fig1-shapeFunctions.png" alt="3.fig1-shapeFunctions.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
-
 </ul>
 
-</section>
-<section>
-<ul>
+<ul class="org-ul">
 <li>Note that \(N_A(x_B) = \delta_{AB}\), where \(\delta_{AB}\) is the Kroenecker delta (i.e, \(\delta_{AB} = 1\) if \(A = B\), whereas \(\delta_{AB} = 0\) if \(A\neq B\)).</li>
-
 </ul>
-<ul>
-<li class="fragment appear"><p>
+<ul class="org-ul">
+<li><p>
 A typical member \(w^h \in \mathscr{V}^h\) has the form \(\sum_{A=1}^n c_A N_A\) and appear as below.
 </p>
 
-<div id="orgeab58f3" class="figure">
+<div id="orgad23960" class="figure">
 <p><img src="./3.fig2-typicalWeight.png" alt="3.fig2-typicalWeight.png" width="1000px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
-<li class="fragment appear">Note that while \(w^h\) is continuous, it has discontinuous slope across each element boundary, i.e. its derivative \(w_{,x}^h\) will be <b><span title="That is why strains are considered as less accurate in comparison with the displacements.">piecewise constant</span></b>.</li>
-<li class="fragment appear">Typical members of \(\delta^h\) are obtained by adding \(\mathscr{g}^h = \mathscr{g}N_{n+1}\) to a typical member of \(\mathscr{V}^h\).</li>
-
+<li>Note that while \(w^h\) is continuous, it has discontinuous slope across each element boundary, i.e. its derivative \(w_{,x}^h\) will be <b><span title="That is why strains are considered as less accurate in comparison with the displacements.">piecewise constant</span></b>.</li>
+<li>Typical members of \(\delta^h\) are obtained by adding \(\mathscr{g}^h = \mathscr{g}N_{n+1}\) to a typical member of \(\mathscr{V}^h\).</li>
 </ul>
-</section>
-</section>
-<section>
-<section id="slide-orgeb93474">
-<h2 id="orgeb93474">(\(\S1.9\)) Properties of \(\boldsymbol{K}\)</h2>
-<ul>
-<li class="fragment appear">The shape functions \(N_A,\, A = 1,2,\ldots,n+1\), are zero outside of the immediate neighborhood of node \(A\). As a results, many of the entries of \(\boldsymbol{K}\) are zero.</li>
-<li class="fragment appear">Let \(B > A+1\). Then
+</div>
+</div>
+</div>
+<div id="outline-container-org7c2ab52" class="outline-2">
+<h2 id="org7c2ab52">(\(\S1.9\)) Properties of \(\boldsymbol{K}\)</h2>
+<div class="outline-text-2" id="text-org7c2ab52">
+<ul class="org-ul">
+<li>The shape functions \(N_A,\, A = 1,2,\ldots,n+1\), are zero outside of the immediate neighborhood of node \(A\). As a results, many of the entries of \(\boldsymbol{K}\) are zero.</li>
+<li>Let \(B > A+1\). Then
 \[ K_{AB} = \int_0^1 \underbrace{N_{A,x} N_{B,x}}_0 dx = 0 \]</li>
-<li class="fragment appear">It can readily be seen that \(\boldsymbol{K}\) is symmetric, i.e. \(K_{AB} = K_{BA}\).</li>
-<li class="fragment appear"><p>
+<li>It can readily be seen that \(\boldsymbol{K}\) is symmetric, i.e. \(K_{AB} = K_{BA}\).</li>
+<li><p>
 With a matrix structure with zeros outside the <i>diagonal band</i>, \(\boldsymbol{K}\) is said to be <b><i>banded</i></b>. 
 </p>
 
-<div id="org6c51ac4" class="figure">
+<div id="orge31fc55" class="figure">
 <p><img src="./3.fig3-nonoverlapping.png" alt="3.fig3-nonoverlapping.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
-
 </ul>
 
-</section>
-<section>
 
-<div id="orgde9713a" class="figure">
+<div id="org2e8da4c" class="figure">
 <p><img src="./3.fig4-bandstructure.png" alt="3.fig4-bandstructure.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 
-</section>
-<section>
 <p>
 <b>Definition</b>. An \(n\times n\) matrix \(\boldsymbol{A}\) is said to be <b><i>positive definite</i></b> if
 </p>
-<ol>
+<ol class="org-ol">
 <li>\(\boldsymbol{c}^T \boldsymbol{A} \boldsymbol{c} \geq 0\) for all \(n\) vectors \(\boldsymbol{c}\); and</li>
 <li>\(\boldsymbol{c}^T \boldsymbol{A} \boldsymbol{c} = 0\) implies \(\boldsymbol{c} = \boldsymbol{0}\).</li>
-
 </ol>
 <p>
 <br>
 </p>
 
-<ul>
-<li class="fragment appear">It can be shown that the stiffness matrix has the above property, i.e. the \(n\times n\) matrix \(\boldsymbol{K}\) is positive definite.</li>
-<li class="fragment appear">A positive-definite matrix posesses a unique inverse (it can be inverted).</li>
-<li class="fragment appear">The eigenvalues of a positive-definite matrix are real and positive.</li>
-<li class="fragment appear"><b>Summary</b>: The stiffness matrix defined above is
-<ol>
+<ul class="org-ul">
+<li>It can be shown that the stiffness matrix has the above property, i.e. the \(n\times n\) matrix \(\boldsymbol{K}\) is positive definite.</li>
+<li>A positive-definite matrix posesses a unique inverse (it can be inverted).</li>
+<li>The eigenvalues of a positive-definite matrix are real and positive.</li>
+<li><b>Summary</b>: The stiffness matrix defined above is
+<ol class="org-ol">
 <li>Symmetric</li>
 <li>Banded</li>
 <li>Positive-definite</li>
-
 </ol></li>
-
 </ul>
 
-<aside class="notes">
+<div class="NOTES" id="org4d0414a">
 <p>
 The practical consequence of the above properties is that a very efficient computer solution of Kd=F may be performed.
 GPT: what are the standard sparse linear solvers?
 </p>
 
-</aside>
-</section>
-</section>
-<section>
-<section id="slide-org60b7895">
-<h2 id="org60b7895">(\(\S1.12\)) The Element Point of View</h2>
-<ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org4745745" class="outline-2">
+<h2 id="org4745745">(\(\S1.12\)) The Element Point of View</h2>
+<div class="outline-text-2" id="text-org4745745">
+<ul class="org-ul">
 <li>Up till now the Galerkin approximation method implied the selection of a finite number of <i>basis</i> functions without a general restriction on their region of influence.</li>
-
 </ul>
-<ul>
-<li class="fragment appear">Even when we restricted the <i>basis</i> functions to have influence only up to the nearest neighboring node(s), our approach may be termed as a <b><i>global</i> point of view</b>.</li>
-<li class="fragment appear">Now, we would like to come to the <span class="underline">crux of the matter,</span> by bringing the <b><i>local</i></b> or <b><i>element</i> point of view</b>.</li>
-
+<ul class="org-ul">
+<li>Even when we restricted the <i>basis</i> functions to have influence only up to the nearest neighboring node(s), our approach may be termed as a <b><i>global</i> point of view</b>.</li>
+<li>Now, we would like to come to the <span class="underline">crux of the matter,</span> by bringing the <b><i>local</i></b> or <b><i>element</i> point of view</b>.</li>
 </ul>
-</section>
-<section id="slide-org01c00c1">
-<h3 id="org01c00c1">What is a Finite Element?</h3>
-<ul>
+</div>
+<div id="outline-container-org11d3490" class="outline-3">
+<h3 id="org11d3490">What is a Finite Element?</h3>
+<div class="outline-text-3" id="text-org11d3490">
+<ul class="org-ul">
 <li>Two separate descriptions of the &ldquo;finite element&rdquo; will be provided based on the use of <i>global</i> versus <i>local</i> coordinates.</li>
-
 </ul>
-<ul>
-<li class="fragment appear"><b>Linear (two-noded) finite element (<i>global</i> coordinates)</b></li>
-<li class="fragment appear"><p>
+<ul class="org-ul">
+<li><b>Linear (two-noded) finite element (<i>global</i> coordinates)</b></li>
+<li><p>
 An individual element consists of the following quantities:
 </p>
 <table border="0" cellspacing="0" cellpadding="6" rules="none" frame="hsides">
@@ -235,18 +428,14 @@ An individual element consists of the following quantities:
 <p>
 \[ u^h(x) = N_A(x) d_A + N_{A+1}(x) d_{A+1} \]
 </p></li>
-
 </ul>
 
-</section>
-<section>
-<ul>
+<ul class="org-ul">
 <li>It is fruitful to introduce a <i>local</i> coordinate system \(tau\), and a set of <i>local</i> quantities, corresponding to the global ones, so that calculations for a typical element may be <i>standardized</i>.</li>
-
 </ul>
-<ul>
-<li class="fragment appear"><b>Linear (two-noded) finite element (<i>local</i> coordinates)</b></li>
-<li class="fragment appear"><p>
+<ul class="org-ul">
+<li><b>Linear (two-noded) finite element (<i>local</i> coordinates)</b></li>
+<li><p>
 An individual element consists of the following quantities:
 </p>
 <table border="0" cellspacing="0" cellpadding="6" rules="none" frame="hsides">
@@ -294,130 +483,119 @@ An individual element consists of the following quantities:
 <p>
 \[ u^h(\xi) = N_1(\xi) d_1 + N_2(\xi) d_2 \]
 </p></li>
-
 </ul>
-</section>
-<section id="slide-org73c62d1">
-<h3 id="org73c62d1">What is an &ldquo;Affine&rdquo; Transformation</h3>
-<ul>
-<li class="fragment appear">In relating the global and local coordinates, an &ldquo;affine&rdquo; transformation \(\xi:[x_A,x_{A+1}] \rightarrow [\xi_1,\xi_2]\), such that \(\xi(x_A) = \xi_1\) and \(\xi(x_{A+1}) = \xi_2\), where we take \(\xi_1 = -1\) and \(\xi_2 = +1\).</li>
-<li class="fragment appear"><p>
+</div>
+</div>
+<div id="outline-container-orgcced055" class="outline-3">
+<h3 id="orgcced055">What is an &ldquo;Affine&rdquo; Transformation</h3>
+<div class="outline-text-3" id="text-orgcced055">
+<ul class="org-ul">
+<li>In relating the global and local coordinates, an &ldquo;affine&rdquo; transformation \(\xi:[x_A,x_{A+1}] \rightarrow [\xi_1,\xi_2]\), such that \(\xi(x_A) = \xi_1\) and \(\xi(x_{A+1}) = \xi_2\), where we take \(\xi_1 = -1\) and \(\xi_2 = +1\).</li>
+<li><p>
 An affine (linear) mapping is provided by
 \[ \xi(x) = c_1 + c_2 x \]
 where \(c_1\) and \(c_2\) are determined by
 </p>
-<div>
 \begin{align} 
 \begin{array}{rl}
 -1 & = c_1 + x_A c_2 \\
  1 & = c_1 + x_{A+1} c_2
 \end{array}
-\end{align}
-
-</div></li>
-<li class="fragment appear"><p>
+\end{align}</li>
+<li><p>
 Solving this system yields the mapping \(\xi(x)\)
 </p>
-<div>
-\begin{equation} \xi(x) = (2x - x_A - x_{A+1})\,/\,{h_A} \label{eq:mapforw} \end{equation}
-
-</div></li>
-<li class="fragment appear">The inverse mapping \(x(\xi)\) can be obtained by solving the above for \(x\)
+\begin{equation} \xi(x) = (2x - x_A - x_{A+1})\,/\,{h_A} \label{eq:mapforw} \end{equation}</li>
+<li>The inverse mapping \(x(\xi)\) can be obtained by solving the above for \(x\)
 \[ x(\xi) = (h_A \xi + x_A + x_{A+1})\,/\,{2} \]</li>
-<li class="fragment appear">In \(\xi(x)\), \(\xi\) is a mapping and \(x\) is a point, whereas in \(x(\xi)\), \(x\) is a mapping and \(\xi\) is a point.</li>
-
+<li>In \(\xi(x)\), \(\xi\) is a mapping and \(x\) is a point, whereas in \(x(\xi)\), \(x\) is a mapping and \(\xi\) is a point.</li>
 </ul>
-</section>
-<section id="slide-orge2c8f38">
-<h4 id="orge2c8f38">Notational Convention</h4>
-<ul>
-<li class="fragment appear"><i>lowercase</i> subscripts pertain to the <i>local</i> numbering system, e.g. \(N_a\), or \(d_b\), etc.</li>
-<li class="fragment appear"><i>UPPERCASE</i> subscripts pertain to the <i>global</i> numbering system, e.g. \(F_A\), or \(N_B\), etc.</li>
-<li class="fragment appear">A superscript \(e\) denoted a quantitiy in the local description associated with element number \(e\), e.g.
+</div>
+<div id="outline-container-org6cb9d46" class="outline-4">
+<h4 id="org6cb9d46">Notational Convention</h4>
+<div class="outline-text-4" id="text-org6cb9d46">
+<ul class="org-ul">
+<li><i>lowercase</i> subscripts pertain to the <i>local</i> numbering system, e.g. \(N_a\), or \(d_b\), etc.</li>
+<li><i>UPPERCASE</i> subscripts pertain to the <i>global</i> numbering system, e.g. \(F_A\), or \(N_B\), etc.</li>
+<li>A superscript \(e\) denoted a quantitiy in the local description associated with element number \(e\), e.g.
 \[ d_a^e = d_A, \hspace{1em} N_a^e(\xi) = N_A(x^e(\xi)), \]
 where
 \[ x^e: [\xi_1, \xi_2] \rightarrow [x_1^e, x_2^e] = [x_A, x_{A+1}]. \]</li>
-
 </ul>
-</section>
-<section id="slide-orgfda6d36">
-<h3 id="orgfda6d36">Shape Functions (Local Description)</h3>
-<ul>
-<li class="fragment appear">In terms of the local coordinate \(\xi\), the shape functions take a standard form
+</div>
+</div>
+</div>
+<div id="outline-container-org3ac2a58" class="outline-3">
+<h3 id="org3ac2a58">Shape Functions (Local Description)</h3>
+<div class="outline-text-3" id="text-org3ac2a58">
+<ul class="org-ul">
+<li>In terms of the local coordinate \(\xi\), the shape functions take a standard form
 \[ N_a(\xi) = \frac{1}{2} (1+ \xi_a \xi), \hspace{2em} a=1,\,2 \]</li>
-<li class="fragment appear"><p>
+<li><p>
 The local and global descriptions of the $e$th element are depicted below
 </p>
 
-<div id="org8181758" class="figure">
+<div id="orga4a6952" class="figure">
 <p><img src="./3.fig5-mapping.png" alt="3.fig5-mapping.png" width="600px" style="&quot;display: block; margin: auto&quot;" /> 
 </p>
 </div></li>
-
 </ul>
-</section>
-<section id="slide-org65c3f55">
-<h4 id="org65c3f55">Isoparametric Mapping</h4>
-<ul>
-<li class="fragment appear">The mapping from the local to the global coordinates can be expressed in terms of the shape functions!
+</div>
+<div id="outline-container-orgf5f00a5" class="outline-4">
+<h4 id="orgf5f00a5">Isoparametric Mapping</h4>
+<div class="outline-text-4" id="text-orgf5f00a5">
+<ul class="org-ul">
+<li>The mapping from the local to the global coordinates can be expressed in terms of the shape functions!
 \[ x^e(\xi) = \sum_{a=1}^2 N_a(\xi) x_a^e \]</li>
-<li class="fragment appear">The shape function derivatives can be taken as
+<li>The shape function derivatives can be taken as
 \[ N_{a,\xi} = \frac{\xi_a}{2} = \frac{(-1)^a}{2} \]
 which are used to write
 \[ x_{,\xi}^e = \frac{h^e}{2} \]
 where \(h^e = x_2^e - x_1^e\)</li>
-<li class="fragment appear">The derivative of the inverse mapping can easily be found as
+<li>The derivative of the inverse mapping can easily be found as
 \[ \xi_{,x}^e = (x_{,\xi}^e)^{-1} = \frac{2}{h^e} \]</li>
-
 </ul>
-</section>
-</section>
-<section>
-<section id="slide-org0449398">
-<h2 id="org0449398">(\(\S1.13\)) Stiffness Matrix and Force Vector</h2>
-<ul>
-<li class="fragment appear">The difference between <i>global</i> and <i>local</i> become clear by looking at the two alternative approaches to the construction of the stiffness matrix and the force vector.</li>
-<li class="fragment appear"><p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc843f24" class="outline-2">
+<h2 id="orgc843f24">(\(\S1.13\)) Stiffness Matrix and Force Vector</h2>
+<div class="outline-text-2" id="text-orgc843f24">
+<ul class="org-ul">
+<li>The difference between <i>global</i> and <i>local</i> become clear by looking at the two alternative approaches to the construction of the stiffness matrix and the force vector.</li>
+<li><p>
 Start with the <i>global</i> approach <br />
 Assume that the model consists of \(n_{el}\) elements, numbered as shown below
 </p>
 
-<div id="org0b87f97" class="figure">
+<div id="orgde35861" class="figure">
 <p><img src="./3.fig6-numberingscheme.png" alt="3.fig6-numberingscheme.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
-<li class="fragment appear">Recall the definitions of the (global) stiffness matrix and force vector
+<li>Recall the definitions of the (global) stiffness matrix and force vector
 \[ \boldsymbol{K} = \underbrace{[K_{AB}]}_{n\times n}, \hspace{2em} \boldsymbol{F} = \underbrace{\{F_A\}}_{n\times 1} \]</li>
-
 </ul>
 
-</section>
-<section>
 <p>
 Components of the global stiffness matrix, \(K_{AB}\), and force vector, \(F_A\) are calculated by taking integrals over the domain, \(\Omega\) as
 </p>
-<ul>
-<li class="fragment appear">\[ K_{AB} = a(N_A, N_B) = \int_0^1 N_{A,x} N_{B,x} dx \]</li>
-<li class="fragment appear"><div>
-\begin{align}
+<ul class="org-ul">
+<li>\[ K_{AB} = a(N_A, N_B) = \int_0^1 N_{A,x} N_{B,x} dx \]</li>
+<li>\begin{align}
 F_A & = (N_A, \mathscr{f}) + \delta_{1A} \mathscr{h} - a(N_A, N_{n+1}) \mathscr{g} \\
     & = \int_0^1 N_A \mathscr{f} dx + \delta_{1A} \mathscr{h} - \int_0^1 N_{A,x} N_{n+1,x} dx\, \mathscr{g}
-\end{align}
-
-</div></li>
-<li class="fragment appear"><p>
+\end{align}</li>
+<li><p>
 Contributions from the left, mid and right node should be illustrated on board!
 </p>
 
-<div id="orgc3b129c" class="figure">
+<div id="orgcb53fbd" class="figure">
 <p><img src="./3.fig7-K.png" alt="3.fig7-K.png" width="1000px" style="&quot;display: block; margin: auto&quot;" /> 
 </p>
 </div></li>
-
 </ul>
 
-</section>
-<section>
 <p>
 If the integrals over the domain \([0,1]\) are written as a sum piecewise sum of terms out of the adjacent subdomains, i.e. \([x_A,x_{A+1}]\), the so-called <i>element</i> domains, we see
 </p>
@@ -442,20 +620,16 @@ where
 and \(\Omega^e = [x_1^e,x_2^e]\), denote the <b>eth element/subdomain</b>. (Also note that the Kroenecker symbol \(\delta_{1e}\) is required to ensure that the only contribution is from the respective element.)
 </p>
 
-</section>
-<section>
 <p>
 An important observation to make is that \(\boldsymbol{K}\) and \(\boldsymbol{F}\) can be <i>constructed by summing the contributions of elemental matrices and vectors, respectively</i>. In the literature, this procedure is sometimes called the <b><i>direct stiffness method</i></b>.
 </p>
 
 
-<div id="org2218a88" class="figure">
+<div id="org22e41db" class="figure">
 <p><img src="./3.fig8-Ke.png" alt="3.fig8-Ke.png" width="1000px" style="&quot;display: block; margin: auto&quot;" /> 
 </p>
 </div>
 
-</section>
-<section>
 <p>
 In practice, we do not carry the full matrix containing many zeros but merely add in the <b>nonzero</b> terms to the <i>appropriate locations</i>. For this purpose, it is useful to define the <b><i>eth element stiffness matrix</i></b>, \(\boldsymbol{k}^e\) and <b><i>element force vector</i></b>, \(\boldsymbol{f}^e\) as follows:
 </p>
@@ -470,19 +644,18 @@ In practice, we do not carry the full matrix containing many zeros but merely ad
 <p>
 It is important to understand that while \(\boldsymbol{k}^e\) and \(\boldsymbol{f}^e\) are defined with respect to the <i>local</i> ordering,  \(\boldsymbol{K}^e\) and \(\boldsymbol{F}^e\) are defined with respect to the global ordering. To determine the addressing or <i>mapping</i> of the components of  \(\boldsymbol{k}^e\) and \(\boldsymbol{f}^e\) into the global forms, additional information will be injected into the data structures.
 </p>
-</section>
-</section>
-<section>
-<section id="slide-org3ef6723">
-<h2 id="org3ef6723">(\(\S1.14\)) Assembly Procedures</h2>
+</div>
+</div>
+<div id="outline-container-orgffb6a00" class="outline-2">
+<h2 id="orgffb6a00">(\(\S1.14\)) Assembly Procedures</h2>
+<div class="outline-text-2" id="text-orgffb6a00">
 <p>
 The assembly procedures require several definitions related with the problem such as
 </p>
-<ul>
+<ul class="org-ul">
 <li>\(n_{en}\): the number of element nodes</li>
 <li>\(n_{el}\): the number of elements</li>
 <li>etc.</li>
-
 </ul>
 
 <p>
@@ -490,147 +663,114 @@ The action of the assemblage algorithm is denoted by \(\mathcal{A}\), the <i>ass
 \[ \boldsymbol{K} = \underset{e=1}{\overset{n_{el}}{\mathcal{A}}} (\boldsymbol{k}^e)  \]
 </p>
 
-</section>
-<section>
 <p>
 The assembly procedure is shown below:
 </p>
 
-<div id="orgcd1edaf" class="figure">
+<div id="org3bab119" class="figure">
 <p><img src="./3.fig9-assembly.png" alt="3.fig9-assembly.png" width="600px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
-</section>
-</section>
-<section>
-<section id="slide-S1.15">
+</div>
+</div>
+<div id="outline-container-S1.15" class="outline-2">
 <h2 id="S1.15">(\(\S1.15\)) Explicit Computation and Beyond</h2>
+<div class="outline-text-2" id="text-S1.15">
 <p>
 Two important rules from calculus will make it possible to transform the stiffness and force array computations from global to local coordinates.
 </p>
-</section>
-<section id="slide-orgb77232f">
-<h3 id="orgb77232f">Change of Integration Variable</h3>
+</div>
+<div id="outline-container-org04f000b" class="outline-3">
+<h3 id="org04f000b">Change of Integration Variable</h3>
+<div class="outline-text-3" id="text-org04f000b">
 <p>
 Let \(\mathscr{f}:[x_1,x_2] \rightarrow \mathbb{R}\) be an integrable function and let \(x:[\xi_1, \xi_2] \to [x_1, x_2]\) be continuously differentiable, with \(x(\xi_1) = x_1\) and \(x(\xi_2) = x_2\). Then
 \[ \int_{x_1}^{x_2} f(x) dx = \int_{\xi_1}^{\xi_2} f(x(\xi)) x_{,\xi}(\xi) d\xi \]
 </p>
-</section>
-<section id="slide-org9ef2929">
-<h3 id="org9ef2929">Chain Rule</h3>
+</div>
+</div>
+<div id="outline-container-org92aaae1" class="outline-3">
+<h3 id="org92aaae1">Chain Rule</h3>
+<div class="outline-text-3" id="text-org92aaae1">
 <p>
 Let \(\mathscr{f}\) and \(x\) as above, and, in addition, assume \(\mathscr{f}\) is differentiable. Then
 \[ \frac{\partial}{\partial \xi} \mathscr{f}(x(\xi)) = \mathscr{f}_{,x}(x(\xi)) x_{,\xi}(\xi) \]
 </p>
-</section>
-<section id="slide-orgdb065cb">
-<h3 id="orgdb065cb">Computation of \(\boldsymbol{k}^e\)</h3>
-<ul>
-<li class="fragment appear"><div>
-\begin{align}
+</div>
+</div>
+<div id="outline-container-org2b836cf" class="outline-3">
+<h3 id="org2b836cf">Computation of \(\boldsymbol{k}^e\)</h3>
+<div class="outline-text-3" id="text-org2b836cf">
+<ul class="org-ul">
+<li>\begin{align}
 k_{ab}^e & = \int_{\Omega^e} N_{a,x}(x) N_{b,x}(x) dx \\
  & = \int_{-1}^{+1}  N_{a,x}(x(\xi)) N_{b,x}(x(\xi))\, x_{,\xi}(\xi) d\xi \\
  & = \int_{-1}^{+1}  N_{a,\xi}(\xi) N_{b,\xi}(\xi)\, x_{,\xi}(\xi)^{-1} d\xi \\
  & = (-1)^{a+b}/h^e 
-\end{align}   
-
-</div></li>
-<li class="fragment appear">Thus
+\end{align}</li>
+<li>Thus
 \[ \boldsymbol{k}^e = \frac{1}{h^e} \left[ \begin{array}{rr} 1 & -1 \\ -1 & 1 \end{array} \right] \]</li>
-<li class="fragment appear">Observe that \(N_{a,\xi}\) is independent of any element particulars, thus the it does not have to be computed for each element.</li>
-<li class="fragment appear">But the derivatives \(x_{,\xi}\) and \(\xi_{,x}\) do depent on element particulars (in the present case \(h^e\)).</li>
-
+<li>Observe that \(N_{a,\xi}\) is independent of any element particulars, thus the it does not have to be computed for each element.</li>
+<li>But the derivatives \(x_{,\xi}\) and \(\xi_{,x}\) do depent on element particulars (in the present case \(h^e\)).</li>
 </ul>
-</section>
-<section id="slide-org0cd8678">
-<h3 id="org0cd8678">Computation of \(\boldsymbol{f}^e\)</h3>
-<ul>
-<li class="fragment appear">Suprisingly this requires more intuition than the stiffness computation.</li>
-<li class="fragment appear">The integral involves a given \(\mathscr{f}\) which may change from case to case, inhibiting automation of element computations.</li>
-<li class="fragment appear"><p>
+</div>
+</div>
+<div id="outline-container-org8a99e47" class="outline-3">
+<h3 id="org8a99e47">Computation of \(\boldsymbol{f}^e\)</h3>
+<div class="outline-text-3" id="text-org8a99e47">
+<ul class="org-ul">
+<li>Suprisingly this requires more intuition than the stiffness computation.</li>
+<li>The integral involves a given \(\mathscr{f}\) which may change from case to case, inhibiting automation of element computations.</li>
+<li><p>
 Generally, a convenient approximation is made, for example, by replacing \(\mathscr{f}\) by its linear interpolate over each element, namely,
 \[ \mathscr{f}^h = \sum_{a=1}^2 \mathscr{f}_a N_a \]
 where \(\mathscr{f}_a = \mathscr{f} (x(\xi_a))\); see figure below.
 </p>
 
-<div id="orgd689461" class="figure">
+<div id="org10fd301" class="figure">
 <p><img src="./3.fig10-f.png" alt="3.fig10-f.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
-
 </ul>
 
-</section>
-<section>
 <p>
 The notation \(\mathscr{f}^h\) is used to indicate that the approximation depends on the mesh. Based on this, standardization of input may be facilitated as
 </p>
-<ul>
-<li class="fragment appear"><div>
-\begin{align}
+<ul class="org-ul">
+<li>\begin{align}
  \int_{\Omega_e} N_a(x) \mathscr{f}^h(x) dx & = \int_{-1}^{+1} N_a(x(\xi)) \mathscr{f}^h(x(\xi))\, x_{,\xi}(\xi) d\xi \\
    & = \frac{h_e}{2} \int_{-1}^{+1} N_a(\xi) \sum_{b=1}^2 \mathscr{f}_b N_b(\xi)\, d\xi \\
    & = \frac{h_e}{2} \sum_{b=1}^2 \int_{-1}^{+1} N_a(\xi) N_b(\xi) d\xi \, \mathscr{f}_b
- \end{align}
-
-</div></li>
-<li class="fragment appear">Carrying out the integrations (\(\int_{-1}^{+1} N_a N_b d\xi = (1 + \delta_{ab})/3\)) yields
+ \end{align}</li>
+<li>Carrying out the integrations (\(\int_{-1}^{+1} N_a N_b d\xi = (1 + \delta_{ab})/3\)) yields
 \[ \mathscr{f}^e = \frac{h^e}{6} \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix} \begin{Bmatrix} \mathscr{f}_1 \\ \mathscr{f}_2 \end{Bmatrix} = \frac{h^e}{6} \begin{Bmatrix} 2 \mathscr{f}_1 + \mathscr{f}_2 \\ \mathscr{f}_1 + 2 \mathscr{f}_2 \end{Bmatrix} \hspace{1em} (+ \,\mathrm{boundary}\,\mathrm{terms}) \]</li>
-
 </ul>
-</section>
-<section id="slide-orgaf784eb">
-<h3 id="orgaf784eb">What Remains to be Studied?</h3>
-<ul>
-<li class="fragment appear"><a href="./textbook/contents.pdf">Table of Contents</a> of the <a href="https://store.doverpublications.com/products/9780486411811">Textbook</a></li>
-<li class="fragment appear"><a href="./textbook/glossary.pdf">Glossary of Notations</a></li>
-<li class="fragment appear"><p>
+</div>
+</div>
+<div id="outline-container-orgb35ddb9" class="outline-3">
+<h3 id="orgb35ddb9">What Remains to be Studied?</h3>
+<div class="outline-text-3" id="text-orgb35ddb9">
+<ul class="org-ul">
+<li><a href="./textbook/contents.pdf">Table of Contents</a> of the <a href="https://store.doverpublications.com/products/9780486411811">Textbook</a></li>
+<li><a href="./textbook/glossary.pdf">Glossary of Notations</a></li>
+<li><p>
 Possible Course routes that can be preferred
 </p>
 
-<div id="org5b82487" class="figure">
+<div id="orgb09707c" class="figure">
 <p><img src="./3.fig11-routes.png" alt="3.fig11-routes.png" width="900px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
-<li class="fragment appear">Our route: 1-2-3-7</li>
-
+<li>Our route: 1-2-3-7</li>
 </ul>
-</section>
-</section>
 </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/math/math.js"></script>
-<script>
-// Full list of configuration options available here:
-// https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
-
-controls: true,
-progress: true,
-history: false,
-center: true,
-slideNumber: 'c',
-rollingLinks: false,
-keyboard: true,
-mouseWheel: false,
-fragmentInURL: false,
-hashOneBasedIndex: false,
-pdfSeparateFragments: true,
-overview: true,
-
-transition: 'convex',
-transitionSpeed: 'default',
-
-// Plugins with reveal.js 4.x and later
-plugins: [ RevealNotes, RevealMath ],
-
-// Optional libraries used to extend reveal.js
-dependencies: [
-]
-
-});
-</script>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2026 Fall</p>
+<p class="author">Author: Fethi Okyar</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
 </body>
 </html>
