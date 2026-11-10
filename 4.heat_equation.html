@@ -29,15 +29,15 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-org4594735">(\(\S2.1,2\)) Formulation of 2/3-D BVP&rsquo;s</a></li>
-<li><a href="#/slide-orga9219fc">Linear Heat Conduction: Strong and Weak Forms</a></li>
+<li><a href="#/slide-orgdd7cc1d">(\(\S2.1,2\)) Formulation of 2/3-D BVP&rsquo;s</a></li>
+<li><a href="#/slide-org4d79ae6">Linear Heat Conduction: Strong and Weak Forms</a></li>
 </ul>
 </div>
 </div>
 </section>
 <section>
-<section id="slide-org4594735">
-<h2 id="org4594735">(\(\S2.1,2\)) Formulation of 2/3-D BVP&rsquo;s</h2>
+<section id="slide-orgdd7cc1d">
+<h2 id="orgdd7cc1d">(\(\S2.1,2\)) Formulation of 2/3-D BVP&rsquo;s</h2>
 <p>
 <a href="./3.finite_element.html">\(\leftarrow\) Previous Lecture</a>
 </p>
@@ -49,7 +49,7 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 \(\boldsymbol{x}\) and \(\boldsymbol{n}\) accept the following representations
 </p>
 
-<div id="org9b920d5" class="figure">
+<div id="org7bddcea" class="figure">
 <p><img src="./4.fig1-eqs2.2.1-2.png" alt="4.fig1-eqs2.2.1-2.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
@@ -60,11 +60,11 @@ where the notation \(\Box_i\) is known as the <i>index notation</i>.
 
 </ul>
 </section>
-<section id="slide-org4318c63">
-<h3 id="org4318c63">An Example 2-D Domain</h3>
+<section id="slide-org519ac1f">
+<h3 id="org519ac1f">An Example 2-D Domain</h3>
 
-<div id="org71145e8" class="figure">
-<p><img src="./4.fig2-2ddomain.png" alt="4.fig2-2ddomain.png" width="1400px" style="&quot;display: block; margin: auto&quot;" />
+<div id="orgbb4cf2e" class="figure">
+<p><img src="./4.fig2-2ddomain.png" alt="4.fig2-2ddomain.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 <ul>
@@ -76,8 +76,8 @@ where
 
 </ul>
 </section>
-<section id="slide-orgde7bea0">
-<h3 id="orgde7bea0">Indicial Notation</h3>
+<section id="slide-orgfebce46">
+<h3 id="orgfebce46">Indicial Notation</h3>
 <ul>
 <li class="fragment appear">Let the indices \(i\), \(j\), \(k\), \(l\), run over the values \(1,\ldots,n_{sd}\).</li>
 <li class="fragment appear">Differentiation is denoted by a comma (e.g., \(u_{,i} = u_{,x_i} = \partial u/\partial x_i\)).</li>
@@ -88,15 +88,15 @@ where
 
 </ul>
 </section>
-<section id="slide-org7180d88">
-<h3 id="org7180d88">Divergence Theorem (extended to 2/3-D)</h3>
+<section id="slide-org531e35a">
+<h3 id="org531e35a">Divergence Theorem (extended to 2/3-D)</h3>
 <p>
 Let \(f:\bar\Omega \to \mathbb{R}\; \mathrm{be} \; C^1\). Then
 \[ \int_\Omega f_{,i}\, d\Omega = \int_\Gamma fn_i\, d\Gamma \]
 </p>
 </section>
-<section id="slide-org3d14459">
-<h4 id="org3d14459">Integration by Parts</h4>
+<section id="slide-org18b35c2">
+<h4 id="org18b35c2">Integration by Parts</h4>
 <p>
 Let \(f\) be as above and also let \(g:\bar\Omega \to \mathbb{R}\; \mathrm{be} \; C^1\). Then
 \[ \int_\Omega f_{,i}g\, d\Omega = -\int_\Omega fg_{,i}\, d\Omega + \int_\Gamma fgn_i\,d\Gamma \]
@@ -104,8 +104,8 @@ Let \(f\) be as above and also let \(g:\bar\Omega \to \mathbb{R}\; \mathrm{be} \
 </section>
 </section>
 <section>
-<section id="slide-orga9219fc">
-<h2 id="orga9219fc">Linear Heat Conduction: Strong and Weak Forms</h2>
+<section id="slide-org4d79ae6">
+<h2 id="org4d79ae6">Linear Heat Conduction: Strong and Weak Forms</h2>
 <ul>
 <li class="fragment appear">Let \(q_i\) denote (Cartesian components of) <b><i>heat flux vector</i></b>, let \(u\) be the <b><i>temperature</i></b>, and let \(\mathscr{f}\) be the <b><i>heat supply per unit volume</i></b>.</li>
 <li class="fragment appear">Assume the heat flux vector is defined in terms of the temperature gradient by the <b><i>generalized Fourier&rsquo;s law</i></b>:
@@ -117,11 +117,48 @@ where <b><i>conductivities</i></b>, \(\kappa_{ij}\)&rsquo;s are given functions 
 
 </ul>
 </section>
-<section id="slide-orgfc23877">
-<h3 id="orgfc23877">Strong Form</h3>
+<section id="slide-orgacc8a5f">
+<h3 id="orgacc8a5f">Strong Form (\(S\))</h3>
 
-<div id="org3817929" class="figure">
-<p><img src="./4.fig3-strongform.png" alt="4.fig3-strongform.png" width="1400px" style="&quot;display: block; margin: auto&quot;" />
+<div id="org3ddfeed" class="figure">
+<p><img src="./4.fig3-strongform.png" alt="4.fig3-strongform.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div>
+
+</section>
+<section>
+<p>
+The weak formulation of the boundary-value problem can be constructed analogous to the 1-D problem.
+</p>
+<ul>
+<li>\(u = \mathscr{g} \hspace{1em} \mathrm{on}\; \Gamma_\mathscr{g}\) is treated as an <i>essential</i> B.C., while,</li>
+<li>\(-q_i n_i = \mathscr{h} \hspace{1em} \mathrm{on}\; \Gamma_\mathscr{h}\) is treated as a natural B.C.</li>
+<li>\(\mathscr{delta}\) and \(\mathscr{V}\) denote the trial and weight function sets.</li>
+<li>All functions in \(\mathscr{\delta}\) are expected to satisfy the essential B.C. while those in \(\mathscr{V}\) should obey
+\[ w = 0 \hspace{2em} \mathrm{on}\; \Gamma_\mathscr{g} \]</li>
+
+</ul>
+<p>
+With these definitions the weak formulation can be defined next.
+</p>
+</section>
+<section id="slide-orgae4b601">
+<h3 id="orgae4b601">Weak Form (\(W\))</h3>
+
+<div id="orgc7a5a0d" class="figure">
+<p><img src="./4.fig4-weakform.png" alt="4.fig4-weakform.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div>
+
+<p>
+and its proof&hellip;
+</p>
+</section>
+<section id="slide-org954da69">
+<h4 id="org954da69">Abstract Version of \(W\)</h4>
+
+<div id="org5013b1b" class="figure">
+<p><img src="./4.fig5-abstractversion.png" alt="4.fig5-abstractversion.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 </section>

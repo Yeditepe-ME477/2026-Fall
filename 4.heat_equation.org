@@ -59,6 +59,29 @@ Let $f$ be as above and also let $g:\bar\Omega \to \mathbb{R}\; \mathrm{be} \; C
 - The generalized fouried law is a */constitutive equation/*, or */equation of state/*. 
 - The */conductivity matrix/*, $\boldsymbol{\kappa} = [\kappa_{ij}]$, is assumed positive definite.
 - The most common situation in practice is the */isotropic case/* in which $\kappa_{ij}(\boldsymbol{x}) = \kappa(\boldsymbol{x}) \delta_{ij}$, where $\delta_{ij}$ is the Kronecker delta.
-** Strong Form
+** Strong Form ($S$)
 #+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
 [[./4.fig3-strongform.png]]
+#+REVEAL: split
+The weak formulation of the boundary-value problem can be constructed analogous to the 1-D problem.
+- $u = \mathscr{g} \; \mathrm{on}\; \Gamma_\mathscr{g}$ is treated as an /essential/ B.C., while,
+- $-q_i n_i = \mathscr{h} \; \mathrm{on}\; \Gamma_\mathscr{h}$ is treated as a natural B.C.
+- $\mathscr{\delta}$ and $\mathscr{V}$ denote the trial and weight function sets.
+- All functions in $\mathscr{\delta}$ are expected to satisfy the essential B.C. while those in $\mathscr{V}$ should obey
+  \[ w = 0 \hspace{1em} \mathrm{on}\; \Gamma_\mathscr{g} \]
+With these definitions the weak formulation can be defined next.
+** Weak Form ($W$)
+#+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
+[[./4.fig4-weakform.png]]
+
+and its proof...
+
+*** Abstract Version of ($W$) 
+#+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
+[[./4.fig5-abstractversion.png]]
+** Switching back to Tensor Notation
+#+ATTR_REVEAL: :frag (appear)
+- Although the index notation has just been introduced as a universal means to represent tensor algebra and calculus that is frequently displayed by fundamental laws of physics...
+- the situation becomes very complicated when the Galerkin procedure is introduced.
+- New indices (dof and equation labels) appear due to the discretization employed.
+- For this reason it is useful to adopt the usual *tensor notation*.
