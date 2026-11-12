@@ -1,0 +1,33 @@
+#+TITLE:  Classwork 3: Toy Heat Conduction w/ DLEARN
+#+AUTHOR: Fethi Okyar
+#+DATE: 2026 Fall
+#+SUBTITLE: Finite Element Method, ME 477
+#+DESCRIPTION: Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method
+#+STARTUP: overview
+#+REVEAL_THEME: simple
+#+REVEAL_INIT_OPTIONS: slideNumber:"c/t", width:1920, height:1080
+#+REVEAL_TITLE_SLIDE: <h2>%t</h2> <h3>%s</h3> <h4>%d</h4>
+#+OPTIONS: timestamp:nil toc:nil num:nil
+#+REVEAL_EXTRA_CSS: ../style.css
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
+#+HTML_HEAD_EXTRA: </style>
+
+This classwork sheet consists of  two parts. Only Part 1 will be graded in class (5 points).
+* Part 1: Create a Toy Heat Conduction Problem
+- Take a wall of thickness, $w$, subjected to a temperature gradient, due to differing temperatures on its left and right edges, $\mathscr{g}_l$ and $\mathscr{g}_r$, respectively.
+- Consider modeling part of the cross-section of the wall by modeling it as a rectangular domain, of size $w \times w$.
+- There will be "no heat flux" conditions assigned to its upper and lower edges.
+- Assume the wall is made of a particular isotropic material with a given conductivity, $\kappa$.
+- We would like to use a finite element model to solve for the "steady-state" temperature distribution.
+- Split the domain by a series of longitudinal elements spanning from bottom to the top, say two elements to begin with, and refine systematically to obtain better estimates of the solution (temperature distribution).
+- Call chatGPT to work out an input file for DLEARN
+- DLEARN can be downloaded and installed again from: https://github.com/Yeditepe-ME477/fem_hughes.git
+- Verify that the input file works
+- Tell GPT to write a python script that strips off a csv file writing the horizontal coordinate and temperature from a set of nodes aligned from the left to the right.
+- Verify this script by plotting the resulting CSV file, using [[https://gnuplot.info][gnuplot]], for example. 
+* Part 2: Repeat Part 1 Using CalculiX
+This part will be assigned as a homework.
+
+

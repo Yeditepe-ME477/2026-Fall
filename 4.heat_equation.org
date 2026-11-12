@@ -1,4 +1,4 @@
-#+TITLE:  [[https://yeditepee-me477.github.io/2026-Fall/3.heat_equation.html][The Heat Equation]]
+#+TITLE:  [[https://yeditepe-me477.github.io/2026-Fall/4.heat_equation.html][The Heat Equation]]
 #+AUTHOR: Fethi Okyar
 #+DATE: 2026 Fall
 #+SUBTITLE: Finite Element Method, ME 477
@@ -50,7 +50,7 @@ Let $f:\bar\Omega \to \mathbb{R}\; \mathrm{be} \; C^1$. Then
 *** Integration by Parts
 Let $f$ be as above and also let $g:\bar\Omega \to \mathbb{R}\; \mathrm{be} \; C^1$. Then
 \[ \int_\Omega f_{,i}g\, d\Omega = -\int_\Omega fg_{,i}\, d\Omega + \int_\Gamma fgn_i\,d\Gamma \]
-* Linear Heat Conduction: Strong and Weak Forms
+* ($\S2.3$) Linear Heat Conduction: Strong and Weak Forms
 #+ATTR_REVEAL: :frag (appear)
 - Let $q_i$ denote (Cartesian components of) */heat flux vector/*, let $u$ be the */temperature/*, and let $\mathscr{f}$ be the */heat supply per unit volume/*.
 - Assume the heat flux vector is defined in terms of the temperature gradient by the */generalized Fourier's law/*:
@@ -85,3 +85,57 @@ and its proof...
 - the situation becomes very complicated when the Galerkin procedure is introduced.
 - New indices (dof and equation labels) appear due to the discretization employed.
 - For this reason it is useful to adopt the usual *tensor notation*.
+- Let $\nabla$ denote the gradient operator (assume $n_{sd}= 2$)
+  \[\nabla u = \{u_{,i}\} = \begin{Bmatrix} u_{,1} \\ u_{,2} \end{Bmatrix} \hspace{2em} \nabla w = \{w_{,i}\} = \begin{Bmatrix} w_{,1} \\ w_{,2} \]
+
+#+REVEAL: split
+#+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
+[[./4.fig6-tensornotation.png]]
+* ($\S2.4$) Galerkin Formulation ($G$)
+#+ATTR_REVEAL: :frag (appear)
+- [[./4.fig7-2ddiscretization.png]]
+- We now view our domain as "discretized" into element domains $\Omega^e,\,1\leq e \leq n_{el}$.
+- In 2-D the element domains might be simply triangles and quadrilaterals.
+- Nodal points appear at locations such as element vertices and interelement boundaries.
+
+#+REVEAL: split  
+#+ATTR_REVEAL: :frag (appear)
+- Let $\mathscr{\delta}^h$ and $\mathscr{V}^h$ be finite-dimensional approximations to $\mathscr{\delta}$ and $\mathscr{V}$, respectively. We assume all members of $\mathscr{V}^h$ vanish, or approximately vanish, on $\Gamma_\mathscr{g}$ and that each member of $\mathscr{\delta}^h$ admits the representation
+  \[ u^h = v^h + g^h \]
+  where $v^h \in \mathscr{V}^h$ and $\mathscr{g}^h$ results in satisfaction, or at least approximate satisfaction, of the boundary condition $u=\mathscr{g}$ on $\Gamma_\mathscr{g}$.
+- The Galerkin formulation ($G$) reads:
+  [[./4.fig8-galerkinform.png]]
+** The Matrix Equations (in Global Scheme)
+#+ATTR_REVEAL: :frag (appear)
+- Let $\eta = \{1,2,\ldots,n_{np}\}$ the */set of global node numbers/*, where $n_{np}$ is the */number of nodal points/*.
+- In this terminology, $\mathscr{g}$ node refers to a node, $A$, at which the solution variable is prescribed, i.e., $u^h = \mathscr{g}$.
+- Let $\eta_\mathscr{g} \in \eta$ be the set of "$\mathscr{g}$ nodes".
+- The */complement of/* $\eta_\mathscr{g}$ */in/* $\eta$, denoted by $\eta - \eta_\mathscr{g}$, is the set of nodes at which the solution $u^h$ is to be determined.
+- The number of nodes in $\eta - \eta_\mathscr{g}$ equals $n_{eq}$, the */number of equations/*.
+*** A Typical Member of $\mathscr{V}^h$
+[[./4.fig9-globalshapefunctions.png]]
+*** Discretization Error
+[[./4.fig10-discretizationerror.png]]
+*** Indexing the Equations and Solution Variables
+[[./4.fig11-indexingequations.png]]
+*** Matrix Form of Equations ($M$)
+[[./4.fig12-matrixform.png]]
+#+ATTR_REVEAL: :frag (appear)
+- $1\leq P \leq n_{eq}$ refers to the equation number.
+- The dimension of ID array is $n_{np}$ (the solution components)
+- The nodes at which $\mathscr{g}$ is prescribed are assigned "equation number" zero.
+- $\boldsymbol{K}$ is symmetric and positive-definite.
+* ($\S2.5$) Element Stiffness and Force Arrays
+** Element Arrays in Global Scheme
+[[./4.fig13-elementarraysglobal.png]]
+** Element Arrays in /Local/ Scheme
+[[./4.fig14-elementarrayslocal.png]]
+** Finite Element "Jargon/" (Terminology)
+The element stiffness matrix can be written in terms of some custom variables intrinsic to the historical developments of finite elements (and it's programming)
+[[./4.fig15-straindisplacementmatrix.png]]
+#+ATTR_REVEAL: :frag (appear)
+$\boldsymbol{B}$ is widely acknowledged as the "strain-displacement" array although in the current setting it reflects the temperature gradient array.
+
+#+REVEAL: split
+- This completes the treatment of the 2-D heat conducion with finite elements.
+- More will be explained about the 2-D element formulation in Chapter 3.

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title><a href="https://yeditepee-me477.github.io/2026-Fall/3.heat_equation.html">The Heat Equation</a></title>
+<title><a href="https://yeditepe-me477.github.io/2026-Fall/4.heat_equation.html">The Heat Equation</a></title>
 <meta name="author" content="Fethi Okyar"/>
 <meta name="description" content="Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method"/>
 <style type="text/css">
@@ -22,22 +22,24 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h2><a href="https://yeditepee-me477.github.io/2026-Fall/3.heat_equation.html">The Heat Equation</a></h2> <h3>Finite Element Method, ME 477</h3> <h4>2026 Fall</h4>
+<h2><a href="https://yeditepe-me477.github.io/2026-Fall/4.heat_equation.html">The Heat Equation</a></h2> <h3>Finite Element Method, ME 477</h3> <h4>2026 Fall</h4>
 </section>
 <section id="table-of-contents-section">
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-orgdd7cc1d">(\(\S2.1,2\)) Formulation of 2/3-D BVP&rsquo;s</a></li>
-<li><a href="#/slide-org4d79ae6">Linear Heat Conduction: Strong and Weak Forms</a></li>
+<li><a href="#/slide-org7611cda">(\(\S2.1,2\)) Formulation of 2/3-D BVP&rsquo;s</a></li>
+<li><a href="#/slide-orgc577683">(\(\S2.3\)) Linear Heat Conduction: Strong and Weak Forms</a></li>
+<li><a href="#/slide-orgda8976b">(\(\S2.4\)) Galerkin Formulation (\(G\))</a></li>
+<li><a href="#/slide-org1bbac98">(\(\S2.5\)) Element Stiffness and Force Arrays</a></li>
 </ul>
 </div>
 </div>
 </section>
 <section>
-<section id="slide-orgdd7cc1d">
-<h2 id="orgdd7cc1d">(\(\S2.1,2\)) Formulation of 2/3-D BVP&rsquo;s</h2>
+<section id="slide-org7611cda">
+<h2 id="org7611cda">(\(\S2.1,2\)) Formulation of 2/3-D BVP&rsquo;s</h2>
 <p>
 <a href="./3.finite_element.html">\(\leftarrow\) Previous Lecture</a>
 </p>
@@ -49,7 +51,7 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 \(\boldsymbol{x}\) and \(\boldsymbol{n}\) accept the following representations
 </p>
 
-<div id="org7bddcea" class="figure">
+<div id="org398eb1b" class="figure">
 <p><img src="./4.fig1-eqs2.2.1-2.png" alt="4.fig1-eqs2.2.1-2.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
@@ -60,10 +62,10 @@ where the notation \(\Box_i\) is known as the <i>index notation</i>.
 
 </ul>
 </section>
-<section id="slide-org519ac1f">
-<h3 id="org519ac1f">An Example 2-D Domain</h3>
+<section id="slide-orge0df8fd">
+<h3 id="orge0df8fd">An Example 2-D Domain</h3>
 
-<div id="orgbb4cf2e" class="figure">
+<div id="orgec5b549" class="figure">
 <p><img src="./4.fig2-2ddomain.png" alt="4.fig2-2ddomain.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
@@ -76,8 +78,8 @@ where
 
 </ul>
 </section>
-<section id="slide-orgfebce46">
-<h3 id="orgfebce46">Indicial Notation</h3>
+<section id="slide-org1b6df19">
+<h3 id="org1b6df19">Indicial Notation</h3>
 <ul>
 <li class="fragment appear">Let the indices \(i\), \(j\), \(k\), \(l\), run over the values \(1,\ldots,n_{sd}\).</li>
 <li class="fragment appear">Differentiation is denoted by a comma (e.g., \(u_{,i} = u_{,x_i} = \partial u/\partial x_i\)).</li>
@@ -88,15 +90,15 @@ where
 
 </ul>
 </section>
-<section id="slide-org531e35a">
-<h3 id="org531e35a">Divergence Theorem (extended to 2/3-D)</h3>
+<section id="slide-orga267568">
+<h3 id="orga267568">Divergence Theorem (extended to 2/3-D)</h3>
 <p>
 Let \(f:\bar\Omega \to \mathbb{R}\; \mathrm{be} \; C^1\). Then
 \[ \int_\Omega f_{,i}\, d\Omega = \int_\Gamma fn_i\, d\Gamma \]
 </p>
 </section>
-<section id="slide-org18b35c2">
-<h4 id="org18b35c2">Integration by Parts</h4>
+<section id="slide-org230bdd3">
+<h4 id="org230bdd3">Integration by Parts</h4>
 <p>
 Let \(f\) be as above and also let \(g:\bar\Omega \to \mathbb{R}\; \mathrm{be} \; C^1\). Then
 \[ \int_\Omega f_{,i}g\, d\Omega = -\int_\Omega fg_{,i}\, d\Omega + \int_\Gamma fgn_i\,d\Gamma \]
@@ -104,8 +106,8 @@ Let \(f\) be as above and also let \(g:\bar\Omega \to \mathbb{R}\; \mathrm{be} \
 </section>
 </section>
 <section>
-<section id="slide-org4d79ae6">
-<h2 id="org4d79ae6">Linear Heat Conduction: Strong and Weak Forms</h2>
+<section id="slide-orgc577683">
+<h2 id="orgc577683">(\(\S2.3\)) Linear Heat Conduction: Strong and Weak Forms</h2>
 <ul>
 <li class="fragment appear">Let \(q_i\) denote (Cartesian components of) <b><i>heat flux vector</i></b>, let \(u\) be the <b><i>temperature</i></b>, and let \(\mathscr{f}\) be the <b><i>heat supply per unit volume</i></b>.</li>
 <li class="fragment appear">Assume the heat flux vector is defined in terms of the temperature gradient by the <b><i>generalized Fourier&rsquo;s law</i></b>:
@@ -117,35 +119,34 @@ where <b><i>conductivities</i></b>, \(\kappa_{ij}\)&rsquo;s are given functions 
 
 </ul>
 </section>
-<section id="slide-orgacc8a5f">
-<h3 id="orgacc8a5f">Strong Form (\(S\))</h3>
+<section id="slide-org2379368">
+<h3 id="org2379368">Strong Form (\(S\))</h3>
 
-<div id="org3ddfeed" class="figure">
+<div id="org71fa900" class="figure">
 <p><img src="./4.fig3-strongform.png" alt="4.fig3-strongform.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
-
 </section>
 <section>
 <p>
 The weak formulation of the boundary-value problem can be constructed analogous to the 1-D problem.
 </p>
 <ul>
-<li>\(u = \mathscr{g} \hspace{1em} \mathrm{on}\; \Gamma_\mathscr{g}\) is treated as an <i>essential</i> B.C., while,</li>
-<li>\(-q_i n_i = \mathscr{h} \hspace{1em} \mathrm{on}\; \Gamma_\mathscr{h}\) is treated as a natural B.C.</li>
-<li>\(\mathscr{delta}\) and \(\mathscr{V}\) denote the trial and weight function sets.</li>
+<li>\(u = \mathscr{g} \; \mathrm{on}\; \Gamma_\mathscr{g}\) is treated as an <i>essential</i> B.C., while,</li>
+<li>\(-q_i n_i = \mathscr{h} \; \mathrm{on}\; \Gamma_\mathscr{h}\) is treated as a natural B.C.</li>
+<li>\(\mathscr{\delta}\) and \(\mathscr{V}\) denote the trial and weight function sets.</li>
 <li>All functions in \(\mathscr{\delta}\) are expected to satisfy the essential B.C. while those in \(\mathscr{V}\) should obey
-\[ w = 0 \hspace{2em} \mathrm{on}\; \Gamma_\mathscr{g} \]</li>
+\[ w = 0 \hspace{1em} \mathrm{on}\; \Gamma_\mathscr{g} \]</li>
 
 </ul>
 <p>
 With these definitions the weak formulation can be defined next.
 </p>
 </section>
-<section id="slide-orgae4b601">
-<h3 id="orgae4b601">Weak Form (\(W\))</h3>
+<section id="slide-orga41b8a3">
+<h3 id="orga41b8a3">Weak Form (\(W\))</h3>
 
-<div id="orgc7a5a0d" class="figure">
+<div id="orge61531c" class="figure">
 <p><img src="./4.fig4-weakform.png" alt="4.fig4-weakform.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
@@ -154,13 +155,147 @@ With these definitions the weak formulation can be defined next.
 and its proof&hellip;
 </p>
 </section>
-<section id="slide-org954da69">
-<h4 id="org954da69">Abstract Version of \(W\)</h4>
+<section id="slide-org6aef4fd">
+<h4 id="org6aef4fd">Abstract Version of (\(W\))</h4>
 
-<div id="org5013b1b" class="figure">
+<div id="org3d31947" class="figure">
 <p><img src="./4.fig5-abstractversion.png" alt="4.fig5-abstractversion.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
+</section>
+<section id="slide-orgcd59ce6">
+<h3 id="orgcd59ce6">Switching back to Tensor Notation</h3>
+<ul>
+<li class="fragment appear">Although the index notation has just been introduced as a universal means to represent tensor algebra and calculus that is frequently displayed by fundamental laws of physics&hellip;</li>
+<li class="fragment appear">the situation becomes very complicated when the Galerkin procedure is introduced.</li>
+<li class="fragment appear">New indices (dof and equation labels) appear due to the discretization employed.</li>
+<li class="fragment appear">For this reason it is useful to adopt the usual <b>tensor notation</b>.</li>
+<li class="fragment appear">Let \(\nabla\) denote the gradient operator (assume \(n_{sd}= 2\))
+\[\nabla u = \{u_{,i}\} = \begin{Bmatrix} u_{,1} \\ u_{,2} \end{Bmatrix} \hspace{2em} \nabla w = \{w_{,i}\} = \begin{Bmatrix} w_{,1} \\ w_{,2} \]</li>
+
+</ul>
+
+</section>
+<section>
+
+<div id="org5af55a8" class="figure">
+<p><img src="./4.fig6-tensornotation.png" alt="4.fig6-tensornotation.png" width="1200px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgda8976b">
+<h2 id="orgda8976b">(\(\S2.4\)) Galerkin Formulation (\(G\))</h2>
+<ul>
+<li class="fragment appear"><img src="./4.fig7-2ddiscretization.png" alt="4.fig7-2ddiscretization.png" /></li>
+<li class="fragment appear">We now view our domain as &ldquo;discretized&rdquo; into element domains \(\Omega^e,\,1\leq e \leq n_{el}\).</li>
+<li class="fragment appear">In 2-D the element domains might be simply triangles and quadrilaterals.</li>
+<li class="fragment appear">Nodal points appear at locations such as element vertices and interelement boundaries.</li>
+
+</ul>
+
+</section>
+<section>
+<ul>
+<li class="fragment appear">Let \(\mathscr{\delta}^h\) and \(\mathscr{V}^h\) be finite-dimensional approximations to \(\mathscr{\delta}\) and \(\mathscr{V}\), respectively. We assume all members of \(\mathscr{V}^h\) vanish, or approximately vanish, on \(\Gamma_\mathscr{g}\) and that each member of \(\mathscr{\delta}^h\) admits the representation
+\[ u^h = v^h + g^h \]
+where \(v^h \in \mathscr{V}^h\) and \(\mathscr{g}^h\) results in satisfaction, or at least approximate satisfaction, of the boundary condition \(u=\mathscr{g}\) on \(\Gamma_\mathscr{g}\).</li>
+<li class="fragment appear">The Galerkin formulation (\(G\)) reads:
+<img src="./4.fig8-galerkinform.png" alt="4.fig8-galerkinform.png" /></li>
+
+</ul>
+</section>
+<section id="slide-orgad79c69">
+<h3 id="orgad79c69">The Matrix Equations (in Global Scheme)</h3>
+<ul>
+<li class="fragment appear">Let \(\eta = \{1,2,\ldots,n_{np}\}\) the <b><i>set of global node numbers</i></b>, where \(n_{np}\) is the <b><i>number of nodal points</i></b>.</li>
+<li class="fragment appear">In this terminology, \(\mathscr{g}\) node refers to a node, \(A\), at which the solution variable is prescribed, i.e., \(u^h = \mathscr{g}\).</li>
+<li class="fragment appear">Let \(\eta_\mathscr{g} \in \eta\) be the set of &ldquo;\(\mathscr{g}\) nodes&rdquo;.</li>
+<li class="fragment appear">The <b><i>complement of</i></b> \(\eta_\mathscr{g}\) <b><i>in</i></b> \(\eta\), denoted by \(\eta - \eta_\mathscr{g}\), is the set of nodes at which the solution \(u^h\) is to be determined.</li>
+<li class="fragment appear">The number of nodes in \(\eta - \eta_\mathscr{g}\) equals \(n_{eq}\), the <b><i>number of equations</i></b>.</li>
+
+</ul>
+</section>
+<section id="slide-orgfa28629">
+<h4 id="orgfa28629">A Typical Member of \(\mathscr{V}^h\)</h4>
+
+<div id="org6223046" class="figure">
+<p><img src="./4.fig9-globalshapefunctions.png" alt="4.fig9-globalshapefunctions.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgc7edd75">
+<h4 id="orgc7edd75">Discretization Error</h4>
+
+<div id="org17417bd" class="figure">
+<p><img src="./4.fig10-discretizationerror.png" alt="4.fig10-discretizationerror.png" />
+</p>
+</div>
+</section>
+<section id="slide-org64c0a54">
+<h4 id="org64c0a54">Indexing the Equations and Solution Variables</h4>
+
+<div id="orge33ccb8" class="figure">
+<p><img src="./4.fig11-indexingequations.png" alt="4.fig11-indexingequations.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgc84d47b">
+<h4 id="orgc84d47b">Matrix Form of Equations (\(M\))</h4>
+
+<div id="orgcf0142e" class="figure">
+<p><img src="./4.fig12-matrixform.png" alt="4.fig12-matrixform.png" />
+</p>
+</div>
+<ul>
+<li class="fragment appear">\(1\leq P \leq n_{eq}\) refers to the equation number.</li>
+<li class="fragment appear">The dimension of ID array is \(n_{np}\) (the solution components)</li>
+<li class="fragment appear">The nodes at which \(\mathscr{g}\) is prescribed are assigned &ldquo;equation number&rdquo; zero.</li>
+<li class="fragment appear">\(\boldsymbol{K}\) is symmetric and positive-definite.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org1bbac98">
+<h2 id="org1bbac98">(\(\S2.5\)) Element Stiffness and Force Arrays</h2>
+<div class="outline-text-2" id="text-org1bbac98">
+</div>
+</section>
+<section id="slide-org16acbda">
+<h3 id="org16acbda">Element Arrays in Global Scheme</h3>
+
+<div id="orgea052e5" class="figure">
+<p><img src="./4.fig13-elementarraysglobal.png" alt="4.fig13-elementarraysglobal.png" />
+</p>
+</div>
+</section>
+<section id="slide-org97341c8">
+<h3 id="org97341c8">Element Arrays in <i>Local</i> Scheme</h3>
+
+<div id="org7fadee4" class="figure">
+<p><img src="./4.fig14-elementarrayslocal.png" alt="4.fig14-elementarrayslocal.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgd90e22a">
+<h3 id="orgd90e22a">Finite Element &ldquo;Jargon/&rdquo; (Terminology)</h3>
+<p>
+The element stiffness matrix can be written in terms of some custom variables intrinsic to the historical developments of finite elements (and it&rsquo;s programming)
+<img src="./4.fig15-straindisplacementmatrix.png" alt="4.fig15-straindisplacementmatrix.png" />
+</p>
+<p class="fragment (appear)">
+\(\boldsymbol{B}\) is widely acknowledged as the &ldquo;strain-displacement&rdquo; array although in the current setting it reflects the temperature gradient array.
+</p>
+
+</section>
+<section>
+<ul>
+<li>This completes the treatment of the 2-D heat conducion with finite elements.</li>
+<li>More will be explained about the 2-D element formulation in Chapter 3.</li>
+
+</ul>
 </section>
 </section>
 </div>
