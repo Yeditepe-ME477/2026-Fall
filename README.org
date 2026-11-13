@@ -43,7 +43,7 @@
 |      4 | [[./2.central_idea.html][Central Idea]]    | Bubnov-Galerkin Method            | [[./assignments/cw1.calculix.html][CW#1]], [[./assignments/hw1.CDth1810.html][HW#1]]  | [[./textbook/Ch1_p2.pdf][Ch.1-p2]]     |
 |      5 | [[./3.finite_element.html][Finite Element]]  | Localization of Concepts          | Quiz 1      | [[./textbook/Ch1_p3.pdf][Ch.1-p3]]     |
 |      6 | [[./3.finite_element.html#/S1.15][Array Compute]]   | Explicit Evaluations of Arrays    | [[./assignments/cw2.dlearn.html][CW#2]], [[./assignments/hw2.suspendbar.html][HW#2]]  | [[./textbook/Ch11.pdf][Dlearn]]      |
-|      7 | [[./4.heat_equation.html][Heat Equation]]   | 2-D Formulation of scalar BVP's   | [[./assignments/cw3.toyheatconduction.html][CW#3]], HW#3  | [[https://dhondt.de][CalculiX]]    |
+|      7 | [[./4.heat_equation.html][Heat Equation]]   | 2-D Formulation of scalar BVP's   | [[./assignments/cw3.toyheatconduction.html][CW#3]], [[./assignments/hw3.heatincalculix.html][HW#3]]  | [[https://dhondt.de][CalculiX]]    |
 |      8 | Sample Model    | A Cylindrical Vessel              |             | [[https://calculix.discourse.group/t/nonlinear-axial-compression-buckling-of-a-cylinder-not-converging/4027][THD#4027]]    |
 |      9 |                 |                                   |             |             |
 |     10 |                 |                                   |             |             |
