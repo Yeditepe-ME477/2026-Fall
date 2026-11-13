@@ -239,9 +239,9 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 <p>
 This classwork sheet consists of  two parts. Only Part 1 will be graded in class (5 points).
 </p>
-<div id="outline-container-orgbb043ef" class="outline-2">
-<h2 id="orgbb043ef">Part 1: Create a Toy Heat Conduction Problem</h2>
-<div class="outline-text-2" id="text-orgbb043ef">
+<div id="outline-container-orgbe01a35" class="outline-2">
+<h2 id="orgbe01a35">Part 1: Create a Toy Heat Conduction Problem</h2>
+<div class="outline-text-2" id="text-orgbe01a35">
 <ul class="org-ul">
 <li>Take a wall of thickness, \(w\), subjected to a temperature gradient, due to differing temperatures on its left and right edges, \(\mathscr{g}_l\) and \(\mathscr{g}_r\), respectively.</li>
 <li>Consider modeling part of the cross-section of the wall by modeling it as a rectangular domain, of size \(w \times w\).</li>
@@ -251,18 +251,20 @@ This classwork sheet consists of  two parts. Only Part 1 will be graded in class
 <li>Split the domain by a series of longitudinal elements spanning from bottom to the top, say two elements to begin with, and refine systematically to obtain better estimates of the solution (temperature distribution).</li>
 <li>Call chatGPT to work out an input file for DLEARN</li>
 <li>DLEARN can be downloaded and installed again from: <a href="https://github.com/Yeditepe-ME477/fem_hughes.git">https://github.com/Yeditepe-ME477/fem_hughes.git</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org706182d" class="outline-2">
+<h2 id="org706182d">Part 2: Repeat Part 1 Using CalculiX</h2>
+<div class="outline-text-2" id="text-org706182d">
+<p>
+It turned out that DLEARN does not have an element suitable for a heat conduction analysis. For all practical reasons, CalculiX was found to be suitable to solve the topy problem and all subsequent efforts were concentrated in CalculiX
+</p>
+<ul class="org-ul">
 <li>Verify that the input file works</li>
 <li>Tell GPT to write a python script that strips off a csv file writing the horizontal coordinate and temperature from a set of nodes aligned from the left to the right.</li>
 <li>Verify this script by plotting the resulting CSV file, using <a href="https://gnuplot.info">gnuplot</a>, for example.</li>
 </ul>
-</div>
-</div>
-<div id="outline-container-org3c5a68b" class="outline-2">
-<h2 id="org3c5a68b">Part 2: Repeat Part 1 Using CalculiX</h2>
-<div class="outline-text-2" id="text-org3c5a68b">
-<p>
-This part will be assigned as a homework.
-</p>
 </div>
 </div>
 </div>

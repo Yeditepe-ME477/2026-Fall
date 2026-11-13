@@ -24,10 +24,10 @@ This classwork sheet consists of  two parts. Only Part 1 will be graded in class
 - Split the domain by a series of longitudinal elements spanning from bottom to the top, say two elements to begin with, and refine systematically to obtain better estimates of the solution (temperature distribution).
 - Call chatGPT to work out an input file for DLEARN
 - DLEARN can be downloaded and installed again from: https://github.com/Yeditepe-ME477/fem_hughes.git
+
+* Part 2: Repeat Part 1 Using CalculiX
+It turned out that DLEARN does not have an element suitable for a heat conduction analysis. For all practical reasons, CalculiX was found to be suitable to solve the topy problem and all subsequent efforts were concentrated in CalculiX
 - Verify that the input file works
 - Tell GPT to write a python script that strips off a csv file writing the horizontal coordinate and temperature from a set of nodes aligned from the left to the right.
 - Verify this script by plotting the resulting CSV file, using [[https://gnuplot.info][gnuplot]], for example. 
-* Part 2: Repeat Part 1 Using CalculiX
-This part will be assigned as a homework.
-
 
