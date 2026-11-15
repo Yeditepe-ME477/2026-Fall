@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title><a href="https://yeditepe-me477.github.io/2026-Fall/5.elastostatics.html">Elastostatics</a></title>
+<meta name="author" content="Fethi Okyar"/>
+<meta name="description" content="Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/simple.css" id="theme"/>
+
+<link rel="stylesheet" href="./style.css"/>
+<script>MathJax = { tex: { tags: 'ams' } };</script>
+<style>
+pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h2><a href="https://yeditepe-me477.github.io/2026-Fall/5.elastostatics.html">Elastostatics</a></h2> <h3>Finite Element Method, ME 477</h3> <h4>2026 Fall</h4>
+</section>
+<section id="table-of-contents-section">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#/slide-org773c171">Classical Linear Elastostatics</a></li>
+<li><a href="#/slide-orga78dbc9">(\(\S2.7\)) Strong (\(S\)) and Weak (\(W\)) Forms</a></li>
+<li><a href="#/slide-org90683bb">(\(\S2.8\)) Galerkin Formulation</a></li>
+<li><a href="#/slide-org164efce">(\(\S2.9\)) Element Arrays (Local Scheme)</a></li>
+<li><a href="#/slide-org1e6dd44">Examples</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<section id="slide-org773c171">
+<h2 id="org773c171">Classical Linear Elastostatics</h2>
+<p>
+<a href="./4.heat_equation.html">\(\leftarrow\) Previous Lecture</a>
+</p>
+<ul>
+<li class="fragment appear">Classical elastostatics is a rich subject in its own right.</li>
+<li class="fragment appear"><img src="./5.fig1-elasticityreferences.png" alt="5.fig1-elasticityreferences.png" /></li>
+<li class="fragment appear">Let \(\sigma_{ij}\) denote the <b><i>stress tensor</i></b>, let \(u_i\) denote the <b><i>displacement vector</i></b>, and let \(\mathscr{f}_i\) be the <b><i>prescribed body force per unit volume</i></b>. The <b><i>(infinitesimal) strain tensor</i></b>, \(\epsilon_{ij}\), is defined as the symmetric part of the displacement gradients, viz.,
+\[ \epsilon_{ij} = u_{(i,j)} = \frac{u_{i,j} + u_{j,i}}{2} \]
+These are also known as the <b><i>strain-displacement equations</i></b>.</li>
+
+</ul>
+</section>
+<section id="slide-org319fbd0">
+<h3 id="org319fbd0">Generalized Hooke&rsquo;s Law</h3>
+<ul>
+<li class="fragment appear"><p>
+The stress tensor is defined in terms of the strain tensor by the <b><i>generalized Hooke&rsquo;s law</i></b>:
+</p>
+<div>
+\begin{align} \sigma_{ij} & = c_{ijkl} \epsilon_{kl} \\ & = c_{ijkl} u_{(k,l)} \end{align}
+
+</div>
+<p>
+where the \(c_{ijkl}\)&rsquo;s, the <b><i>elastic coefficients</i></b>, are point functions. If these coefficients are constant througout, the body is called <b><i>homogeneous</i></b>. This is another <b><i>constitutive equation</i></b>. 
+</p></li>
+<li class="fragment appear">The elastic coefficients are assumed to satisfy symmetry properties which allow the interchanging indices
+<ul>
+<li class="fragment appear"><b><i>major symmetry</i></b>
+\[ c_{ijkl} = c_{klij} \]</li>
+<li class="fragment appear"><b><i>minor symmetries</i></b>
+\[ \begin{align*} c_{ijkl} = c_{jikl} \\ c_{ijkl} = c_{ijlk} \end{align*}\]</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org5d8ae4e">
+<h3 id="org5d8ae4e">Upgrading from a Scalar to a Vector Solution Variable</h3>
+<ul>
+<li class="fragment appear">The unknown solution variable is a vector, which necessitates the generalization of the boundary conditions <i>per vector component</i>:
+\[ \left. \begin{align*} \Gamma & = \overline{\Gamma_{\mathscr{g}_i} \cup \Gamma_{\mathscr{h}_i}} \\ \varnothing & = \overline{\Gamma_{\mathscr{g}_i} \cap \Gamma_{\mathscr{h}_i}} \end{align*} \right\} \hspace{2em} i=1,\ldots,n_{sd} \]</li>
+<li class="fragment appear"><img src="./5.fig2-generalizingbcs.png" alt="5.fig2-generalizingbcs.png" /></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orga78dbc9">
+<h2 id="orga78dbc9">(\(\S2.7\)) Strong (\(S\)) and Weak (\(W\)) Forms</h2>
+<div class="outline-text-2" id="text-orga78dbc9">
+</div>
+</section>
+<section id="slide-orgdc0658d">
+<h3 id="orgdc0658d">Strong Form</h3>
+<ul>
+<li class="fragment appear"><img src="./5.fig3-strongform.png" alt="5.fig3-strongform.png" /></li>
+<li class="fragment appear">The functions \(\mathscr{g}_i\) and \(\mathscr{h}_i\) are called the <b><i>prescribed boundary displacements</i></b> and <b><i>tractions</i></b>, respectively.</li>
+<li class="fragment appear">The additional complexity is that the unknown (i.e., \(\boldsymbol{u} = u_i\)) is vector-valued.</li>
+
+</ul>
+</section>
+<section id="slide-orgc2a5cb0">
+<h3 id="orgc2a5cb0">Weak Form</h3>
+<ul>
+<li class="fragment appear">Let \(\delta_i\) denote the trial solution space and \(\mathscr{V}_i\) the weight space. Each member \(u_i \in \delta_i\) satisfies \(u_i = \mathscr{g}_i\) on \(\Gamma_{\mathscr{g}_i}\), whereas each \(w_i \in \mathscr{V}_i\) satisfies \(w_i=0\) on \(\Gamma_{\mathscr{g}_i}\).</li>
+<li class="fragment appear">The weak formulation goes:</li>
+<li class="fragment appear"><img src="./5.fig4-weakform.png" alt="5.fig4-weakform.png" /></li>
+<li class="fragment appear">(\(W\)) is also referred to as the <b><i>principle of virtual work</i></b> or <b><i>principle of virtual displacements</i></b>.</li>
+<li class="fragment appear">Note the use of summation symbol in the last term in order to preserve the validity of the indicial expression (in the last term the index \(i\) repeats three times).</li>
+
+</ul>
+</section>
+<section id="slide-org3bea342">
+<h4 id="org3bea342">Proof</h4>
+<ul>
+<li class="fragment appear"><b>Lemma 1.</b> Let \(s_{ij}\) be a nonsymmetric second-rank tensor. Then \(s_{ij} = s_{(ij)} + s_{[ij]}\), where \(s_{(ij)}\) is symmetric (i.e., \(s_{(ij)} = s_{(ji)}\)) and \(s_{[ij]}\) is skew-symmetric (i.e., \(s_{[ij]} = - s_{[ji]}\)).</li>
+<li class="fragment appear"><b>Lemma 2.</b> Let \(s_{ij}\) be a nonsymmetric tensor and \(t_{ij}\) be a symmetric tensor. Then
+\[ s_{ij} t_{ij} = s_{(ij)} t_{ij} \]</li>
+<li class="fragment appear"><img src="./5.fig5-proofofweak.png" alt="5.fig5-proofofweak.png" /></li>
+
+</ul>
+</section>
+<section id="slide-org4d413c4">
+<h4 id="org4d413c4">Abstract Notation</h4>
+<p>
+With the operator definitions given below
+</p>
+
+
+<div id="org79598a5" class="figure">
+<p><img src="./5.fig6-abstractnotation.png" alt="5.fig6-abstractnotation.png" />
+</p>
+</div>
+
+<p>
+Note the replacement of \(w_{(i,j)} \sigma_{ij} = w_{(i,j)} c_{ijkl} u_{(i,j)}\).  The weak form can be re-written using these operators.
+</p>
+
+</section>
+<section>
+
+<div id="org210e936" class="figure">
+<p><img src="./5.fig7-weakformabstract.png" alt="5.fig7-weakformabstract.png" />
+</p>
+</div>
+</section>
+<section id="slide-orga15b1c3">
+<h4 id="orga15b1c3">Reorganizing Strain Tensor Components into a Strain Vector</h4>
+<ul>
+<li class="fragment appear">In order to increase the readability and facilitate computer implementation, the symmetric parts of the gradients of the weight and trial functions, i.e. \(w_{(i,j)}\) and \(u_{(i,j)}\), respectively, are recast into vector form, resulting with the definition of the so-called <b><i>strain vector operator</i></b>, \(\boldsymbol{\epsilon}\)</li>
+<li class="fragment appear"><img src="./5.fig8-reductionvariables.png" alt="5.fig8-reductionvariables.png" /></li>
+
+</ul>
+</section>
+<section id="slide-org16463f6">
+<h4 id="org16463f6">Reduced Elasticity Matrix Variants, \(\boldsymbol{D}\)</h4>
+<ul>
+<li class="fragment appear">This reduction of order necessitates a similar reduction of the fourth order elasticity tensor, \(c_{ijkl}\), to a second order tensor, \(D_{IJ}\).</li>
+<li class="fragment appear"><p>
+\(D_{IJ}\) are elasticity coefficients related to \(c_{ijkl}\), associated by the relations below.
+</p>
+
+
+<div id="orgc1ee003" class="figure">
+<p><img src="./5.fig17-conversionofd.png" alt="5.fig17-conversionofd.png" />
+</p>
+</div>
+
+<p>
+The above table of conversion is valid for a <b><i>2-D plane strain</i></b> model (\(\epsilon_{33} = 0\)).
+</p></li>
+<li class="fragment appear">Slight modification of the coefficients will be required for other 2-D model variants.
+<ul>
+<li>2-D Plane Stress Model, \(\sigma_{33} = 0\).</li>
+<li>2-D Axisymmetric Model.</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-orgf76761d">
+<h4 id="orgf76761d">Dimensional Reduction of \(w_{(i,j)}c_{ijkl} u_{(k,l)}\)</h4>
+<p>
+As a result of reorganizing the components of higher order tensors into lower order tensors, 
+</p>
+
+
+<div id="org1a25675" class="figure">
+<p><img src="./5.fig9-dimensionalreduction.png" alt="5.fig9-dimensionalreduction.png" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org90683bb">
+<h2 id="org90683bb">(\(\S2.8\)) Galerkin Formulation</h2>
+
+<div id="org5422071" class="figure">
+<p><img src="./5.fig10-galerkinform.png" alt="5.fig10-galerkinform.png" />
+</p>
+</div>
+</section>
+<section id="slide-orga09baaa">
+<h3 id="orga09baaa">Computer Implementation</h3>
+<ul>
+<li class="fragment appear">To define the global stiffness and load arrays for a vector-valued problem, it is necessary to introduce the ID array.</li>
+<li class="fragment appear">The variable \(n_\mathrm{dof}\), is defined as the number of <b><i>degrees of freedom per node</i></b>, is defined.</li>
+<li class="fragment appear"><img src="./5.fig11-idarray.png" alt="5.fig11-idarray.png" /></li>
+<li class="fragment appear">ID has dimensions \(n_\mathrm{dof} \times n_{np}\).</li>
+
+</ul>
+</section>
+<section id="slide-org031b58b">
+<h4 id="org031b58b">Modifying Sets and Introducing Shape Functions</h4>
+<ul>
+<li class="fragment appear">Recall the set of global node numbers, \(\eta = \{1,2,\ldots,n_{np}\}\).</li>
+<li class="fragment appear">Let \(\eta_{\mathscr{g}_i} \in \eta\) be the set of nodes at which \(u_i^h = \mathscr{g}_i\) and let \(\eta - \eta_{\mathscr{g}_i}\) be the complement of \(\eta_{\mathscr{g}_i}\).</li>
+<li class="fragment appear">For each node in \(\eta - \eta_{\mathscr{g}_i}\), the nodal value of \(u_i^h\) is to be determined.</li>
+<li class="fragment appear">The explicit representations of \(v_i^h\) and \(\mathscr{g}_i^h\), in terms of the shape functions and nodal values are
+<img src="./5.fig12-trialfunctions.png" alt="5.fig12-trialfunctions.png" /></li>
+
+</ul>
+</section>
+<section id="slide-org2d128e0">
+<h4 id="org2d128e0">Basis Vectors and Tensor Notation</h4>
+<ul>
+<li class="fragment appear"><p>
+Let \(\boldsymbol{e}_i\) denote the $i$th Euclidean basis vector for \(\mathbb{R}^{n_{sd}}\) as
+</p>
+
+
+<div id="org3007400" class="figure">
+<p><img src="./5.fig13-basisvectors.png" alt="5.fig13-basisvectors.png" />
+</p>
+</div></li>
+<li class="fragment appear"><p>
+The trial and weight functions can now be expressed in their tensor forms 
+</p>
+
+
+<div id="orgf0b2061" class="figure">
+<p><img src="./5.fig14-trialfunctionstensorform.png" alt="5.fig14-trialfunctionstensorform.png" />
+</p>
+</div></li>
+
+</ul>
+</section>
+<section id="slide-orgcd8d5cf">
+<h3 id="orgcd8d5cf">Matrix Form (Global Scheme)</h3>
+<p>
+Introducing the variables in their tensor forms into the Galerkin form in it&rsquo;s abstract notation, we get
+</p>
+
+
+<div id="org0edba65" class="figure">
+<p><img src="./5.fig15-abstractnotationtensorform.png" alt="5.fig15-abstractnotationtensorform.png" />
+</p>
+</div>
+
+</section>
+<section>
+<p>
+This is equivalent to the matrix equation
+</p>
+
+
+<div id="orgedfa051" class="figure">
+<p><img src="./5.fig16-matrixformglobalscheme.png" alt="5.fig16-matrixformglobalscheme.png" />
+</p>
+</div>
+</section>
+<section id="slide-org072e1ad">
+<h4 id="org072e1ad">Introducing the Strain-Displacement Operator</h4>
+<ul>
+<li class="fragment appear"><p>
+It is customary to express the stiffness components using the strain-displacement operator, \(\boldsymbol{B}\), which is defined for \(n_{sd}=2\) as
+</p>
+
+
+<div id="orgc6a7e4f" class="figure">
+<p><img src="./5.fig18-straindisplacement.png" alt="5.fig18-straindisplacement.png" />
+</p>
+</div></li>
+<li class="fragment appear"><p>
+With these, the stiffness components can be restated in their customary finite element  notation as
+</p>
+
+<p>
+<img src="./5.fig19-customarystiffnessglobal.png" alt="5.fig19-customarystiffnessglobal.png" />
+where \(P = \mathrm{ID}(i,A)\) and \(Q = \mathrm{ID}(j,B)\).
+</p></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org164efce">
+<h2 id="org164efce">(\(\S2.9\)) Element Arrays (Local Scheme)</h2>
+<ul>
+<li class="fragment appear">In defining \(\boldsymbol{k}^e\) and \(\boldsymbol{f}^e\), we introduce a number of additional programming parameters for convenience:
+<ul>
+<li class="fragment appear">\(n_{ed}\): number of element degrees of freedom per node. Note that it is possible to have \(n_{ed} \leq n_\mathrm{dof}\).</li>
+<li class="fragment appear">\(n_{en}\): number of nodes per element</li>
+<li class="fragment appear">\(n_{ee}\): number of element equations, \(n_{ee} = n_{ed} n_{en}\).</li>
+
+</ul></li>
+<li class="fragment appear"><img src="./5.fig20-2delementlocalscheme.png" alt="5.fig20-2delementlocalscheme.png" /></li>
+
+</ul>
+</section>
+<section id="slide-org19bcdc7">
+<h3 id="org19bcdc7">Element Calculations</h3>
+<ul>
+<li class="fragment appear">Let \(n_{sd} = 2\).  The displacement at node \(a\) in element \(e\) is
+\[ \boldsymbol{d}_a^e = \begin{Bmatrix} d_{1a}^e \\ d_{2a}^e \end{Bmatrix} \]
+where \(d_{ia}^e = u_i^h(x_a^e)\)</li>
+<li class="fragment appear">The stress at a given point \(\boldsymbol{x} \in \Omega^e\) can be calculated by
+\[ \boldsymbol{\sigma}(\boldsymbol{x}) = \boldsymbol{D} \sum_{a=1}^{n_{en}} \boldsymbol{B}_a(\boldsymbol{x}) \boldsymbol{d}_a^e \]</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org1e6dd44">
+<h2 id="org1e6dd44">Examples</h2>
+<div class="outline-text-2" id="text-org1e6dd44">
+</div>
+</section>
+<section id="slide-orgaa2e4a7">
+<h3 id="orgaa2e4a7">2-D Mesh</h3>
+<p>
+Study the essential B.C.&rsquo;s in the below mesh of four-node rectangular elements below
+<img src="./5.fig21-2dmeshwessentialbcs.png" alt="5.fig21-2dmeshwessentialbcs.png" />
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/math/math.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+
+transition: 'convex',
+transitionSpeed: 'default',
+
+// Plugins with reveal.js 4.x and later
+plugins: [ RevealNotes, RevealMath ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
+</body>
+</html>
