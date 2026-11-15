@@ -23,12 +23,11 @@
 - A general point is denoted by $\boldsymbol{x}$.
 - The */outward unit normal vector to/* $\Gamma$ is denoted by $\boldsymbol{n}$.
 - $\boldsymbol{x}$ and $\boldsymbol{n}$ accept the following representations
-  #+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
+  
   [[./4.fig1-eqs2.2.1-2.png]]
 
   where the notation $\Box_i$ is known as the /index notation/.  
 ** An Example 2-D Domain
-#+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
 [[./4.fig2-2ddomain.png]]
 #+ATTR_REVEAL: :frag (appear)
 - We assume that $\Gamma$ admits the decomposition
@@ -60,7 +59,6 @@ Let $f$ be as above and also let $g:\bar\Omega \to \mathbb{R}\; \mathrm{be} \; C
 - The */conductivity matrix/*, $\boldsymbol{\kappa} = [\kappa_{ij}]$, is assumed positive definite.
 - The most common situation in practice is the */isotropic case/* in which $\kappa_{ij}(\boldsymbol{x}) = \kappa(\boldsymbol{x}) \delta_{ij}$, where $\delta_{ij}$ is the Kronecker delta.
 ** Strong Form ($S$)
-#+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
 [[./4.fig3-strongform.png]]
 #+REVEAL: split
 The weak formulation of the boundary-value problem can be constructed analogous to the 1-D problem.
@@ -71,13 +69,11 @@ The weak formulation of the boundary-value problem can be constructed analogous 
   \[ w = 0 \hspace{1em} \mathrm{on}\; \Gamma_\mathscr{g} \]
 With these definitions the weak formulation can be defined next.
 ** Weak Form ($W$)
-#+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
 [[./4.fig4-weakform.png]]
 
 and its proof...
 
 *** Abstract Version of ($W$) 
-#+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
 [[./4.fig5-abstractversion.png]]
 ** Switching back to Tensor Notation
 #+ATTR_REVEAL: :frag (appear)
@@ -86,10 +82,9 @@ and its proof...
 - New indices (dof and equation labels) appear due to the discretization employed.
 - For this reason it is useful to adopt the usual *tensor notation*.
 - Let $\nabla$ denote the gradient operator (assume $n_{sd}= 2$)
-  \[\nabla u = \{u_{,i}\} = \begin{Bmatrix} u_{,1} \\ u_{,2} \end{Bmatrix} \hspace{2em} \nabla w = \{w_{,i}\} = \begin{Bmatrix} w_{,1} \\ w_{,2} \]
+  \[\nabla u = \{u_{,i}\} = \begin{Bmatrix} u_{,1} \\ u_{,2} \end{Bmatrix} \hspace{2em} \nabla w = \{w_{,i}\} = \begin{Bmatrix} w_{,1} \\ w_{,2} \end{Bmatrix} \]
 
 #+REVEAL: split
-#+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
 [[./4.fig6-tensornotation.png]]
 * ($\S2.4$) Galerkin Formulation ($G$)
 #+ATTR_REVEAL: :frag (appear)

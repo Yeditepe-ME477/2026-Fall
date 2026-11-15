@@ -34,14 +34,14 @@
  whereas for the boundary nodes we have $N_1(x) = \frac{x_2 - x}{h_1}$, and $N_{n+1}(x) = \frac{x-x_n}{h_n}$.
 
 - The shape functions are also referred to as "hat", or "roof" functions.
-  #+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
+
   [[./3.fig1-shapeFunctions.png]]
 
 #+REVEAL: split
 - Note that $N_A(x_B) = \delta_{AB}$, where $\delta_{AB}$ is the Kroenecker delta (i.e, $\delta_{AB} = 1$ if $A = B$, whereas $\delta_{AB} = 0$ if $A\neq B$).
 #+ATTR_REVEAL: :frag (appear)
 - A typical member $w^h \in \mathscr{V}^h$ has the form $\sum_{A=1}^n c_A N_A$ and appear as below.
-  #+ATTR_HTML: :width 1000px :style "display: block; margin: auto"
+
   [[./3.fig2-typicalWeight.png]]
 - Note that while $w^h$ is continuous, it has discontinuous slope across each element boundary, i.e. its derivative $w_{,x}^h$ will be *@@html:<span title="That is why strains are considered as less accurate in comparison with the displacements.">piecewise constant</span>@@*.
 - Typical members of $\delta^h$ are obtained by adding $\mathscr{g}^h = \mathscr{g}N_{n+1}$ to a typical member of $\mathscr{V}^h$.
@@ -53,11 +53,10 @@
   \[ K_{AB} = \int_0^1 \underbrace{N_{A,x} N_{B,x}}_0 dx = 0 \]
 - It can readily be seen that $\boldsymbol{K}$ is symmetric, i.e. $K_{AB} = K_{BA}$.
 - With a matrix structure with zeros outside the /diagonal band/, $\boldsymbol{K}$ is said to be */banded/*. 
-  #+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
+  
   [[./3.fig3-nonoverlapping.png]]
 
 #+REVEAL: split
-#+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
 [[./3.fig4-bandstructure.png]]
 
 #+REVEAL: split
@@ -140,7 +139,7 @@ GPT: what are the standard sparse linear solvers?
 - In terms of the local coordinate $\xi$, the shape functions take a standard form
   \[ N_a(\xi) = \frac{1}{2} (1+ \xi_a \xi), \hspace{2em} a=1,\,2 \]
 - The local and global descriptions of the $e$th element are depicted below
-  #+ATTR_HTML: :width 600px :style "display: block; margin: auto"
+  #+ATTR_HTML: :width 800px :style "display: block; margin: auto"
   [[./3.fig5-mapping.png]] 
 *** Isoparametric Mapping
 #+ATTR_REVEAL: :frag (appear)
@@ -158,7 +157,7 @@ GPT: what are the standard sparse linear solvers?
 - The difference between /global/ and /local/ become clear by looking at the two alternative approaches to the construction of the stiffness matrix and the force vector.
 - Start with the /global/ approach \\
   Assume that the model consists of $n_{el}$ elements, numbered as shown below
-  #+ATTR_HTML: :width 1200px :style "display: block; margin: auto"
+  
   [[./3.fig6-numberingscheme.png]]
 - Recall the definitions of the (global) stiffness matrix and force vector
   \[ \boldsymbol{K} = \underbrace{[K_{AB}]}_{n\times n}, \hspace{2em} \boldsymbol{F} = \underbrace{\{F_A\}}_{n\times 1} \]
@@ -173,7 +172,7 @@ Components of the global stiffness matrix, $K_{AB}$, and force vector, $F_A$ are
       & = \int_0^1 N_A \mathscr{f} dx + \delta_{1A} \mathscr{h} - \int_0^1 N_{A,x} N_{n+1,x} dx\, \mathscr{g}
   \end{align}
 - Contributions from the left, mid and right node should be illustrated on board!
-  #+ATTR_HTML: :width 1000px :style "display: block; margin: auto"
+  
   [[./3.fig7-K.png]] 
   
 #+REVEAL: split
@@ -202,7 +201,6 @@ and $\Omega^e = [x_1^e,x_2^e]$, denote the *eth element/subdomain*. (Also note t
 #+REVEAL: split
 An important observation to make is that $\boldsymbol{K}$ and $\boldsymbol{F}$ can be /constructed by summing the contributions of elemental matrices and vectors, respectively/. In the literature, this procedure is sometimes called the */direct stiffness method/*.
 
-#+ATTR_HTML: :width 1000px :style "display: block; margin: auto"
 [[./3.fig8-Ke.png]] 
 
 #+REVEAL: split
@@ -275,14 +273,14 @@ The notation $\mathscr{f}^h$ is used to indicate that the approximation depends 
      & = \frac{h_e}{2} \int_{-1}^{+1} N_a(\xi) \sum_{b=1}^2 \mathscr{f}_b N_b(\xi)\, d\xi \\
      & = \frac{h_e}{2} \sum_{b=1}^2 \int_{-1}^{+1} N_a(\xi) N_b(\xi) d\xi \, \mathscr{f}_b
    \end{align}
-- Carrying out the integrations ($\int_{-1}^{+1} N_a N_b d\xi = (1 + \delta_{ab})/3$) yields
-  \[ \mathscr{f}^e = \frac{h^e}{6} \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix} \begin{Bmatrix} \mathscr{f}_1 \\ \mathscr{f}_2 \end{Bmatrix} = \frac{h^e}{6} \begin{Bmatrix} 2 \mathscr{f}_1 + \mathscr{f}_2 \\ \mathscr{f}_1 + 2 \mathscr{f}_2 \end{Bmatrix} \hspace{1em} (+ \,\mathrm{boundary}\,\mathrm{terms}) \]
+- Carrying out the integrations ($\int_{-1}^{+ 1} N_a N_b d\xi = (1 + \delta_{ab})/3$) yields
+  \[ \mathscr{f}^e = \frac{h^e}{6} \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix} \begin{Bmatrix} \mathscr{f}_1 \\ \mathscr{f}_2 \end{Bmatrix} = \frac{h^e}{6} \begin{Bmatrix} 2 \mathscr{f}_1 + \mathscr{f}_2 \\ \mathscr{f}_1 + 2 \mathscr{f}_2 \end{Bmatrix} \hspace{1em} ( + \,\mathrm{boundary}\,\mathrm{terms}) \]
 ** What Remains to be Studied?
 #+ATTR_REVEAL: :frag (appear)
 - [[./textbook/contents.pdf][Table of Contents]] of the [[https://store.doverpublications.com/products/9780486411811][Textbook]]
 - [[./textbook/glossary.pdf][Glossary of Notations]]
 - Possible Course routes that can be preferred
-  #+ATTR_HTML: :width 900px :style "display: block; margin: auto"
+  #+ATTR_HTML: :width 800px :style "display: block; margin: auto"
   [[./3.fig11-routes.png]]
 - Our route: 1-2-3-7
 
