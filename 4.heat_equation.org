@@ -23,11 +23,12 @@
 - A general point is denoted by $\boldsymbol{x}$.
 - The */outward unit normal vector to/* $\Gamma$ is denoted by $\boldsymbol{n}$.
 - $\boldsymbol{x}$ and $\boldsymbol{n}$ accept the following representations
-  
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
   [[./4.fig1-eqs2.2.1-2.png]]
 
   where the notation $\Box_i$ is known as the /index notation/.  
 ** An Example 2-D Domain
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./4.fig2-2ddomain.png]]
 #+ATTR_REVEAL: :frag (appear)
 - We assume that $\Gamma$ admits the decomposition
@@ -59,6 +60,7 @@ Let $f$ be as above and also let $g:\bar\Omega \to \mathbb{R}\; \mathrm{be} \; C
 - The */conductivity matrix/*, $\boldsymbol{\kappa} = [\kappa_{ij}]$, is assumed positive definite.
 - The most common situation in practice is the */isotropic case/* in which $\kappa_{ij}(\boldsymbol{x}) = \kappa(\boldsymbol{x}) \delta_{ij}$, where $\delta_{ij}$ is the Kronecker delta.
 ** Strong Form ($S$)
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./4.fig3-strongform.png]]
 #+REVEAL: split
 The weak formulation of the boundary-value problem can be constructed analogous to the 1-D problem.
@@ -69,11 +71,13 @@ The weak formulation of the boundary-value problem can be constructed analogous 
   \[ w = 0 \hspace{1em} \mathrm{on}\; \Gamma_\mathscr{g} \]
 With these definitions the weak formulation can be defined next.
 ** Weak Form ($W$)
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./4.fig4-weakform.png]]
 
 and its proof...
 
-*** Abstract Version of ($W$) 
+*** Abstract Version of ($W$)
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./4.fig5-abstractversion.png]]
 ** Switching back to Tensor Notation
 #+ATTR_REVEAL: :frag (appear)
@@ -85,10 +89,12 @@ and its proof...
   \[\nabla u = \{u_{,i}\} = \begin{Bmatrix} u_{,1} \\ u_{,2} \end{Bmatrix} \hspace{2em} \nabla w = \{w_{,i}\} = \begin{Bmatrix} w_{,1} \\ w_{,2} \end{Bmatrix} \]
 
 #+REVEAL: split
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./4.fig6-tensornotation.png]]
 * ($\S2.4$) Galerkin Formulation ($G$)
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
+[[./4.fig7-2ddiscretization.png]]
 #+ATTR_REVEAL: :frag (appear)
-- [[./4.fig7-2ddiscretization.png]]
 - We now view our domain as "discretized" into element domains $\Omega^e,\,1\leq e \leq n_{el}$.
 - In 2-D the element domains might be simply triangles and quadrilaterals.
 - Nodal points appear at locations such as element vertices and interelement boundaries.
@@ -99,6 +105,7 @@ and its proof...
   \[ u^h = v^h + g^h \]
   where $v^h \in \mathscr{V}^h$ and $\mathscr{g}^h$ results in satisfaction, or at least approximate satisfaction, of the boundary condition $u=\mathscr{g}$ on $\Gamma_\mathscr{g}$.
 - The Galerkin formulation ($G$) reads:
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
   [[./4.fig8-galerkinform.png]]
 ** The Matrix Equations (in Global Scheme)
 #+ATTR_REVEAL: :frag (appear)
@@ -108,12 +115,16 @@ and its proof...
 - The */complement of/* $\eta_\mathscr{g}$ */in/* $\eta$, denoted by $\eta - \eta_\mathscr{g}$, is the set of nodes at which the solution $u^h$ is to be determined.
 - The number of nodes in $\eta - \eta_\mathscr{g}$ equals $n_{eq}$, the */number of equations/*.
 *** A Typical Member of $\mathscr{V}^h$
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./4.fig9-globalshapefunctions.png]]
 *** Discretization Error
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./4.fig10-discretizationerror.png]]
 *** Indexing the Equations and Solution Variables
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./4.fig11-indexingequations.png]]
 *** Matrix Form of Equations ($M$)
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./4.fig12-matrixform.png]]
 #+ATTR_REVEAL: :frag (appear)
 - $1\leq P \leq n_{eq}$ refers to the equation number.
@@ -122,11 +133,14 @@ and its proof...
 - $\boldsymbol{K}$ is symmetric and positive-definite.
 * ($\S2.5$) Element Stiffness and Force Arrays
 ** Element Arrays in Global Scheme
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./4.fig13-elementarraysglobal.png]]
 ** Element Arrays in /Local/ Scheme
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./4.fig14-elementarrayslocal.png]]
-** Finite Element "Jargon/" (Terminology)
+** Finite Element Jargon/Terminology
 The element stiffness matrix can be written in terms of some custom variables intrinsic to the historical developments of finite elements (and it's programming)
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./4.fig15-straindisplacementmatrix.png]]
 #+ATTR_REVEAL: :frag (appear)
 $\boldsymbol{B}$ is widely acknowledged as the "strain-displacement" array although in the current setting it reflects the temperature gradient array.

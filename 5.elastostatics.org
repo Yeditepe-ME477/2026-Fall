@@ -139,6 +139,16 @@ This is equivalent to the matrix equation
   + $n_{en}$: number of nodes per element
   + $n_{ee}$: number of element equations, $n_{ee} = n_{ed} n_{en}$.
 - [[./5.fig20-2delementlocalscheme.png]]
+** Nodal Submatrices
+#+ATTR_REVEAL: :frag (appear)
+- The */nodal submatrix/* is defined for programming purposes as
+  [[./5.fig22-nodalsubmatrix.png]]
+- By combining the nodal contributions into a single array
+  \[ \boldsymbol{B} = [\boldsymbol{B}_1, \boldsymbol{B}_2, \ldots, \boldsymbol{B}_{n_{en}}] \]
+- which enables writing the element stiffness matrix as
+  \[ \boldsymbol{k}^e = \int_{\Omega^e} \boldsymbol{B}^T \boldsymbol{D} \boldsymbol{B}\, d\Omega \]
+- For example, for $n_{sd} = 2$, four-noded element
+  [[./5.fig23-fournodedstiffness.png]]
 ** Element Calculations
 #+ATTR_REVEAL: :frag (appear)
 - Let $n_{sd} = 2$.  The displacement at node $a$ in element $e$ is
@@ -150,3 +160,11 @@ This is equivalent to the matrix equation
 ** 2-D Mesh
 Study the essential B.C.'s in the below mesh of four-node rectangular elements below
 [[./5.fig21-2dmeshwessentialbcs.png]]
+
+#+REVEAL: split
+[[./5.fig24-2dmesharrays.png]]
+** Four-noded Element
+[[./5.fig25-Q4addressing.png]]
+
+#+REVEAL: split
+[[./5.fig26-Q4map.png]]

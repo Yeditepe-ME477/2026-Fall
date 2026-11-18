@@ -240,16 +240,16 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdf7b85e">(\(\S2.1,2\)) Formulation of 2/3-D BVP&rsquo;s</a></li>
-<li><a href="#org3e7c0ad">(\(\S2.3\)) Linear Heat Conduction: Strong and Weak Forms</a></li>
-<li><a href="#orgde7e670">(\(\S2.4\)) Galerkin Formulation (\(G\))</a></li>
-<li><a href="#orga661236">(\(\S2.5\)) Element Stiffness and Force Arrays</a></li>
+<li><a href="#orgb4ba481">(\(\S2.1,2\)) Formulation of 2/3-D BVP&rsquo;s</a></li>
+<li><a href="#org919dc78">(\(\S2.3\)) Linear Heat Conduction: Strong and Weak Forms</a></li>
+<li><a href="#orgf7b2f90">(\(\S2.4\)) Galerkin Formulation (\(G\))</a></li>
+<li><a href="#orgd479161">(\(\S2.5\)) Element Stiffness and Force Arrays</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdf7b85e" class="outline-2">
-<h2 id="orgdf7b85e">(\(\S2.1,2\)) Formulation of 2/3-D BVP&rsquo;s</h2>
-<div class="outline-text-2" id="text-orgdf7b85e">
+<div id="outline-container-orgb4ba481" class="outline-2">
+<h2 id="orgb4ba481">(\(\S2.1,2\)) Formulation of 2/3-D BVP&rsquo;s</h2>
+<div class="outline-text-2" id="text-orgb4ba481">
 <p>
 <a href="./3.finite_element.html">\(\leftarrow\) Previous Lecture</a>
 </p>
@@ -261,9 +261,8 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 \(\boldsymbol{x}\) and \(\boldsymbol{n}\) accept the following representations
 </p>
 
-
-<div id="orgf3e1c2b" class="figure">
-<p><img src="./4.fig1-eqs2.2.1-2.png" alt="4.fig1-eqs2.2.1-2.png" />
+<div id="org68bb47a" class="figure">
+<p><img src="./4.fig1-eqs2.2.1-2.png" alt="4.fig1-eqs2.2.1-2.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 
@@ -272,12 +271,12 @@ where the notation \(\Box_i\) is known as the <i>index notation</i>.
 </p></li>
 </ul>
 </div>
-<div id="outline-container-orgdd1409a" class="outline-3">
-<h3 id="orgdd1409a">An Example 2-D Domain</h3>
-<div class="outline-text-3" id="text-orgdd1409a">
+<div id="outline-container-org3e76f9b" class="outline-3">
+<h3 id="org3e76f9b">An Example 2-D Domain</h3>
+<div class="outline-text-3" id="text-org3e76f9b">
 
-<div id="orgdc5aa93" class="figure">
-<p><img src="./4.fig2-2ddomain.png" alt="4.fig2-2ddomain.png" />
+<div id="org437e34f" class="figure">
+<p><img src="./4.fig2-2ddomain.png" alt="4.fig2-2ddomain.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 <ul class="org-ul">
@@ -289,9 +288,9 @@ where
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc0dcd18" class="outline-3">
-<h3 id="orgc0dcd18">Indicial Notation</h3>
-<div class="outline-text-3" id="text-orgc0dcd18">
+<div id="outline-container-org41e4824" class="outline-3">
+<h3 id="org41e4824">Indicial Notation</h3>
+<div class="outline-text-3" id="text-org41e4824">
 <ul class="org-ul">
 <li>Let the indices \(i\), \(j\), \(k\), \(l\), run over the values \(1,\ldots,n_{sd}\).</li>
 <li>Differentiation is denoted by a comma (e.g., \(u_{,i} = u_{,x_i} = \partial u/\partial x_i\)).</li>
@@ -302,17 +301,17 @@ where
 </ul>
 </div>
 </div>
-<div id="outline-container-org43fc4e7" class="outline-3">
-<h3 id="org43fc4e7">Divergence Theorem (extended to 2/3-D)</h3>
-<div class="outline-text-3" id="text-org43fc4e7">
+<div id="outline-container-orgdab0f04" class="outline-3">
+<h3 id="orgdab0f04">Divergence Theorem (extended to 2/3-D)</h3>
+<div class="outline-text-3" id="text-orgdab0f04">
 <p>
 Let \(f:\bar\Omega \to \mathbb{R}\; \mathrm{be} \; C^1\). Then
 \[ \int_\Omega f_{,i}\, d\Omega = \int_\Gamma fn_i\, d\Gamma \]
 </p>
 </div>
-<div id="outline-container-org2a8680e" class="outline-4">
-<h4 id="org2a8680e">Integration by Parts</h4>
-<div class="outline-text-4" id="text-org2a8680e">
+<div id="outline-container-org9a3efd2" class="outline-4">
+<h4 id="org9a3efd2">Integration by Parts</h4>
+<div class="outline-text-4" id="text-org9a3efd2">
 <p>
 Let \(f\) be as above and also let \(g:\bar\Omega \to \mathbb{R}\; \mathrm{be} \; C^1\). Then
 \[ \int_\Omega f_{,i}g\, d\Omega = -\int_\Omega fg_{,i}\, d\Omega + \int_\Gamma fgn_i\,d\Gamma \]
@@ -321,9 +320,9 @@ Let \(f\) be as above and also let \(g:\bar\Omega \to \mathbb{R}\; \mathrm{be} \
 </div>
 </div>
 </div>
-<div id="outline-container-org3e7c0ad" class="outline-2">
-<h2 id="org3e7c0ad">(\(\S2.3\)) Linear Heat Conduction: Strong and Weak Forms</h2>
-<div class="outline-text-2" id="text-org3e7c0ad">
+<div id="outline-container-org919dc78" class="outline-2">
+<h2 id="org919dc78">(\(\S2.3\)) Linear Heat Conduction: Strong and Weak Forms</h2>
+<div class="outline-text-2" id="text-org919dc78">
 <ul class="org-ul">
 <li>Let \(q_i\) denote (Cartesian components of) <b><i>heat flux vector</i></b>, let \(u\) be the <b><i>temperature</i></b>, and let \(\mathscr{f}\) be the <b><i>heat supply per unit volume</i></b>.</li>
 <li>Assume the heat flux vector is defined in terms of the temperature gradient by the <b><i>generalized Fourier&rsquo;s law</i></b>:
@@ -334,12 +333,12 @@ where <b><i>conductivities</i></b>, \(\kappa_{ij}\)&rsquo;s are given functions 
 <li>The most common situation in practice is the <b><i>isotropic case</i></b> in which \(\kappa_{ij}(\boldsymbol{x}) = \kappa(\boldsymbol{x}) \delta_{ij}\), where \(\delta_{ij}\) is the Kronecker delta.</li>
 </ul>
 </div>
-<div id="outline-container-org580bfa4" class="outline-3">
-<h3 id="org580bfa4">Strong Form (\(S\))</h3>
-<div class="outline-text-3" id="text-org580bfa4">
+<div id="outline-container-org576aa6a" class="outline-3">
+<h3 id="org576aa6a">Strong Form (\(S\))</h3>
+<div class="outline-text-3" id="text-org576aa6a">
 
-<div id="orgc481665" class="figure">
-<p><img src="./4.fig3-strongform.png" alt="4.fig3-strongform.png" />
+<div id="org7758102" class="figure">
+<p><img src="./4.fig3-strongform.png" alt="4.fig3-strongform.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 <p>
@@ -357,12 +356,12 @@ With these definitions the weak formulation can be defined next.
 </p>
 </div>
 </div>
-<div id="outline-container-org4ed61ff" class="outline-3">
-<h3 id="org4ed61ff">Weak Form (\(W\))</h3>
-<div class="outline-text-3" id="text-org4ed61ff">
+<div id="outline-container-orgcc87a99" class="outline-3">
+<h3 id="orgcc87a99">Weak Form (\(W\))</h3>
+<div class="outline-text-3" id="text-orgcc87a99">
 
-<div id="orgfc85515" class="figure">
-<p><img src="./4.fig4-weakform.png" alt="4.fig4-weakform.png" />
+<div id="orgbb02cce" class="figure">
+<p><img src="./4.fig4-weakform.png" alt="4.fig4-weakform.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 
@@ -370,20 +369,20 @@ With these definitions the weak formulation can be defined next.
 and its proof&hellip;
 </p>
 </div>
-<div id="outline-container-org295f0a7" class="outline-4">
-<h4 id="org295f0a7">Abstract Version of (\(W\))</h4>
-<div class="outline-text-4" id="text-org295f0a7">
+<div id="outline-container-orgd0eb0c4" class="outline-4">
+<h4 id="orgd0eb0c4">Abstract Version of (\(W\))</h4>
+<div class="outline-text-4" id="text-orgd0eb0c4">
 
-<div id="org59cf128" class="figure">
-<p><img src="./4.fig5-abstractversion.png" alt="4.fig5-abstractversion.png" />
+<div id="org3b64a8a" class="figure">
+<p><img src="./4.fig5-abstractversion.png" alt="4.fig5-abstractversion.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd0666d3" class="outline-3">
-<h3 id="orgd0666d3">Switching back to Tensor Notation</h3>
-<div class="outline-text-3" id="text-orgd0666d3">
+<div id="outline-container-org2a6908a" class="outline-3">
+<h3 id="org2a6908a">Switching back to Tensor Notation</h3>
+<div class="outline-text-3" id="text-org2a6908a">
 <ul class="org-ul">
 <li>Although the index notation has just been introduced as a universal means to represent tensor algebra and calculus that is frequently displayed by fundamental laws of physics&hellip;</li>
 <li>the situation becomes very complicated when the Galerkin procedure is introduced.</li>
@@ -394,18 +393,22 @@ and its proof&hellip;
 </ul>
 
 
-<div id="orgbb94b63" class="figure">
-<p><img src="./4.fig6-tensornotation.png" alt="4.fig6-tensornotation.png" />
+<div id="org070dbdb" class="figure">
+<p><img src="./4.fig6-tensornotation.png" alt="4.fig6-tensornotation.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgde7e670" class="outline-2">
-<h2 id="orgde7e670">(\(\S2.4\)) Galerkin Formulation (\(G\))</h2>
-<div class="outline-text-2" id="text-orgde7e670">
+<div id="outline-container-orgf7b2f90" class="outline-2">
+<h2 id="orgf7b2f90">(\(\S2.4\)) Galerkin Formulation (\(G\))</h2>
+<div class="outline-text-2" id="text-orgf7b2f90">
+
+<div id="org04a1ee1" class="figure">
+<p><img src="./4.fig7-2ddiscretization.png" alt="4.fig7-2ddiscretization.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div>
 <ul class="org-ul">
-<li><img src="./4.fig7-2ddiscretization.png" alt="4.fig7-2ddiscretization.png" /></li>
 <li>We now view our domain as &ldquo;discretized&rdquo; into element domains \(\Omega^e,\,1\leq e \leq n_{el}\).</li>
 <li>In 2-D the element domains might be simply triangles and quadrilaterals.</li>
 <li>Nodal points appear at locations such as element vertices and interelement boundaries.</li>
@@ -415,13 +418,19 @@ and its proof&hellip;
 <li>Let \(\mathscr{\delta}^h\) and \(\mathscr{V}^h\) be finite-dimensional approximations to \(\mathscr{\delta}\) and \(\mathscr{V}\), respectively. We assume all members of \(\mathscr{V}^h\) vanish, or approximately vanish, on \(\Gamma_\mathscr{g}\) and that each member of \(\mathscr{\delta}^h\) admits the representation
 \[ u^h = v^h + g^h \]
 where \(v^h \in \mathscr{V}^h\) and \(\mathscr{g}^h\) results in satisfaction, or at least approximate satisfaction, of the boundary condition \(u=\mathscr{g}\) on \(\Gamma_\mathscr{g}\).</li>
-<li>The Galerkin formulation (\(G\)) reads:
-<img src="./4.fig8-galerkinform.png" alt="4.fig8-galerkinform.png" /></li>
+<li><p>
+The Galerkin formulation (\(G\)) reads:
+</p>
+
+<div id="org6f65291" class="figure">
+<p><img src="./4.fig8-galerkinform.png" alt="4.fig8-galerkinform.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div></li>
 </ul>
 </div>
-<div id="outline-container-org6ec93eb" class="outline-3">
-<h3 id="org6ec93eb">The Matrix Equations (in Global Scheme)</h3>
-<div class="outline-text-3" id="text-org6ec93eb">
+<div id="outline-container-org32136fc" class="outline-3">
+<h3 id="org32136fc">The Matrix Equations (in Global Scheme)</h3>
+<div class="outline-text-3" id="text-org32136fc">
 <ul class="org-ul">
 <li>Let \(\eta = \{1,2,\ldots,n_{np}\}\) the <b><i>set of global node numbers</i></b>, where \(n_{np}\) is the <b><i>number of nodal points</i></b>.</li>
 <li>In this terminology, \(\mathscr{g}\) node refers to a node, \(A\), at which the solution variable is prescribed, i.e., \(u^h = \mathscr{g}\).</li>
@@ -430,42 +439,42 @@ where \(v^h \in \mathscr{V}^h\) and \(\mathscr{g}^h\) results in satisfaction, o
 <li>The number of nodes in \(\eta - \eta_\mathscr{g}\) equals \(n_{eq}\), the <b><i>number of equations</i></b>.</li>
 </ul>
 </div>
-<div id="outline-container-org0063cbb" class="outline-4">
-<h4 id="org0063cbb">A Typical Member of \(\mathscr{V}^h\)</h4>
-<div class="outline-text-4" id="text-org0063cbb">
+<div id="outline-container-org7736bcf" class="outline-4">
+<h4 id="org7736bcf">A Typical Member of \(\mathscr{V}^h\)</h4>
+<div class="outline-text-4" id="text-org7736bcf">
 
-<div id="org8f6f610" class="figure">
-<p><img src="./4.fig9-globalshapefunctions.png" alt="4.fig9-globalshapefunctions.png" />
+<div id="orgc3ae184" class="figure">
+<p><img src="./4.fig9-globalshapefunctions.png" alt="4.fig9-globalshapefunctions.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org8f4ec1b" class="outline-4">
-<h4 id="org8f4ec1b">Discretization Error</h4>
-<div class="outline-text-4" id="text-org8f4ec1b">
+<div id="outline-container-org2c003aa" class="outline-4">
+<h4 id="org2c003aa">Discretization Error</h4>
+<div class="outline-text-4" id="text-org2c003aa">
 
-<div id="org27acd46" class="figure">
-<p><img src="./4.fig10-discretizationerror.png" alt="4.fig10-discretizationerror.png" />
+<div id="orgc94eb75" class="figure">
+<p><img src="./4.fig10-discretizationerror.png" alt="4.fig10-discretizationerror.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org2308dee" class="outline-4">
-<h4 id="org2308dee">Indexing the Equations and Solution Variables</h4>
-<div class="outline-text-4" id="text-org2308dee">
+<div id="outline-container-org659159b" class="outline-4">
+<h4 id="org659159b">Indexing the Equations and Solution Variables</h4>
+<div class="outline-text-4" id="text-org659159b">
 
-<div id="org461d76c" class="figure">
-<p><img src="./4.fig11-indexingequations.png" alt="4.fig11-indexingequations.png" />
+<div id="org5813444" class="figure">
+<p><img src="./4.fig11-indexingequations.png" alt="4.fig11-indexingequations.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfb56b4d" class="outline-4">
-<h4 id="orgfb56b4d">Matrix Form of Equations (\(M\))</h4>
-<div class="outline-text-4" id="text-orgfb56b4d">
+<div id="outline-container-orga09f025" class="outline-4">
+<h4 id="orga09f025">Matrix Form of Equations (\(M\))</h4>
+<div class="outline-text-4" id="text-orga09f025">
 
-<div id="orgd367e4e" class="figure">
-<p><img src="./4.fig12-matrixform.png" alt="4.fig12-matrixform.png" />
+<div id="org3711406" class="figure">
+<p><img src="./4.fig12-matrixform.png" alt="4.fig12-matrixform.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 <ul class="org-ul">
@@ -478,37 +487,41 @@ where \(v^h \in \mathscr{V}^h\) and \(\mathscr{g}^h\) results in satisfaction, o
 </div>
 </div>
 </div>
-<div id="outline-container-orga661236" class="outline-2">
-<h2 id="orga661236">(\(\S2.5\)) Element Stiffness and Force Arrays</h2>
-<div class="outline-text-2" id="text-orga661236">
+<div id="outline-container-orgd479161" class="outline-2">
+<h2 id="orgd479161">(\(\S2.5\)) Element Stiffness and Force Arrays</h2>
+<div class="outline-text-2" id="text-orgd479161">
 </div>
-<div id="outline-container-org3f45303" class="outline-3">
-<h3 id="org3f45303">Element Arrays in Global Scheme</h3>
-<div class="outline-text-3" id="text-org3f45303">
+<div id="outline-container-org2206f12" class="outline-3">
+<h3 id="org2206f12">Element Arrays in Global Scheme</h3>
+<div class="outline-text-3" id="text-org2206f12">
 
-<div id="org8bed506" class="figure">
-<p><img src="./4.fig13-elementarraysglobal.png" alt="4.fig13-elementarraysglobal.png" />
+<div id="org8f48dfd" class="figure">
+<p><img src="./4.fig13-elementarraysglobal.png" alt="4.fig13-elementarraysglobal.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf32d1c5" class="outline-3">
-<h3 id="orgf32d1c5">Element Arrays in <i>Local</i> Scheme</h3>
-<div class="outline-text-3" id="text-orgf32d1c5">
+<div id="outline-container-org358ac0b" class="outline-3">
+<h3 id="org358ac0b">Element Arrays in <i>Local</i> Scheme</h3>
+<div class="outline-text-3" id="text-org358ac0b">
 
-<div id="orge9298f2" class="figure">
-<p><img src="./4.fig14-elementarrayslocal.png" alt="4.fig14-elementarrayslocal.png" />
+<div id="org2a3a850" class="figure">
+<p><img src="./4.fig14-elementarrayslocal.png" alt="4.fig14-elementarrayslocal.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org51042d6" class="outline-3">
-<h3 id="org51042d6">Finite Element &ldquo;Jargon/&rdquo; (Terminology)</h3>
-<div class="outline-text-3" id="text-org51042d6">
+<div id="outline-container-org5c2fa7d" class="outline-3">
+<h3 id="org5c2fa7d">Finite Element Jargon/Terminology</h3>
+<div class="outline-text-3" id="text-org5c2fa7d">
 <p>
 The element stiffness matrix can be written in terms of some custom variables intrinsic to the historical developments of finite elements (and it&rsquo;s programming)
-<img src="./4.fig15-straindisplacementmatrix.png" alt="4.fig15-straindisplacementmatrix.png" />
 </p>
+
+<div id="orgebde688" class="figure">
+<p><img src="./4.fig15-straindisplacementmatrix.png" alt="4.fig15-straindisplacementmatrix.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div>
 <p>
 \(\boldsymbol{B}\) is widely acknowledged as the &ldquo;strain-displacement&rdquo; array although in the current setting it reflects the temperature gradient array.
 </p>
