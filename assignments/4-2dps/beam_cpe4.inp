@@ -1,0 +1,83 @@
+** =====================================================================
+**  SHEAR LOCKING TEST - slender cantilever, plane strain, tip shear load
+**  L = 100 mm, h = 10 mm, unit thickness, E = 210000 MPa, nu = 0.3
+**  Total tip load P = 100 N downward (split over the end nodes)
+**  Mesh: 10 x 1 elements.  Element type: CPE4
+**
+**  Reference tip deflection: 1.74 mm (fine quadratic mesh; Timoshenko
+**  beam theory with plane-strain modulus gives 1.748 mm).
+**
+**  Experiments: (1) change CPE4 <-> CPE4R and compare the tip deflection
+**              (2) regenerate finer meshes with make_beam_decks.py
+** =====================================================================
+**
+*HEADING
+Cantilever, plane strain, 10x1 CPE4
+** ---- model data: nodes (number, x, y), elements, material, section ----
+*NODE, NSET=NALL
+1, 0, 0
+2, 10, 0
+3, 20, 0
+4, 30, 0
+5, 40, 0
+6, 50, 0
+7, 60, 0
+8, 70, 0
+9, 80, 0
+10, 90, 0
+11, 100, 0
+12, 0, 10
+13, 10, 10
+14, 20, 10
+15, 30, 10
+16, 40, 10
+17, 50, 10
+18, 60, 10
+19, 70, 10
+20, 80, 10
+21, 90, 10
+22, 100, 10
+*ELEMENT, TYPE=CPE4, ELSET=EALL
+1, 1, 2, 13, 12
+2, 2, 3, 14, 13
+3, 3, 4, 15, 14
+4, 4, 5, 16, 15
+5, 5, 6, 17, 16
+6, 6, 7, 18, 17
+7, 7, 8, 19, 18
+8, 8, 9, 20, 19
+9, 9, 10, 21, 20
+10, 10, 11, 22, 21
+** Material: linear elastic, E in MPa and Poisson ratio
+*MATERIAL, NAME=STEEL
+*ELASTIC
+210000.0, 0.3
+*SOLID SECTION, ELSET=EALL, MATERIAL=STEEL
+1.0
+** ---- node sets (wall = clamped end, tip = loaded end) ----
+*NSET, NSET=WALL
+1, 12
+*NSET, NSET=TIP
+11, 22
+** ---- step: clamp the wall (dofs 1-2), apply the tip load, request output ----
+*STEP
+*STATIC
+*BOUNDARY
+WALL, 1, 2
+** Consistent nodal forces of the end shear load (negative = downward)
+*CLOAD
+11, 2, -50
+22, 2, -50
+*NODE PRINT, NSET=TIP
+U
+** Total reaction at the clamped end: expect Fy = +100 N
+*NODE PRINT, NSET=WALL, TOTALS=ONLY
+RF
+*EL PRINT, ELSET=EALL
+COORD
+S
+*NODE FILE
+U, RF
+*EL FILE
+S, E
+*END STEP

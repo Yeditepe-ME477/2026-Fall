@@ -1,0 +1,91 @@
+** =====================================================================
+**  BLANK CALCULIX INPUT DECK  -  fill in every <...> and delete the notes
+**  Run with:   ccx <jobname>      (job name = file name without .inp)
+** =====================================================================
+**
+** HOW AN INPUT DECK IS BUILT
+**   * Lines starting with ** are comments.
+**   * A line starting with * is a KEYWORD; after a comma come PARAMETERS
+**     (TYPE=..., NSET=..., MATERIAL=...).
+**   * The lines that follow a keyword are its DATA (comma separated).
+**   * Order matters: nodes -> elements -> material -> section -> step.
+**   * Degrees of freedom: 1 = x, 2 = y.  2D elements lie in the x-y plane.
+**   * No units: choose a consistent set (e.g. N, mm, MPa).
+**   * Everything before *STEP is the MODEL; everything between *STEP and
+**     *END STEP is what HAPPENS to it (boundary conditions, loads, output).
+**
+** WHAT THE DLEARN CARDS BECOME HERE
+**     DLEARN input                     CalculiX keyword
+**     nodal coordinates ............. *NODE
+**     element group + connectivity .. *ELEMENT, TYPE=...
+**     material set (E, nu, thickness) *MATERIAL, *ELASTIC, *SOLID SECTION
+**     boundary condition codes ...... *BOUNDARY
+**     nodal forces (load vector) .... *CLOAD
+**     execution control (static) .... *STEP, *STATIC
+**     printed results ............... *NODE PRINT, *EL PRINT
+**
+** ---- PART A: MODEL ---------------------------------------------------
+*HEADING
+<one-line title of your problem>
+**
+** Nodes: node number, x, y
+*NODE, NSET=NALL
+<node>, <x>, <y>
+<node>, <x>, <y>
+**
+** Elements: element number, then its 4 nodes in counter-clockwise order.
+** Plane strain: CPE4 (full integration) or CPE4R (reduced integration).
+** Plane stress would be CPS4 / CPS4R.
+*ELEMENT, TYPE=<CPE4 or CPE4R>, ELSET=EALL
+<element>, <node1>, <node2>, <node3>, <node4>
+**
+** Material: Young's modulus, Poisson's ratio
+*MATERIAL, NAME=<material name>
+*ELASTIC
+<E>, <nu>
+**
+** Section: links the element set to the material; the data line is the
+** thickness (1.0 for a plane problem per unit thickness)
+*SOLID SECTION, ELSET=EALL, MATERIAL=<material name>
+<thickness>
+**
+** ---- PART B: NODE SETS (names you use below) --------------------------
+*NSET, NSET=<name, e.g. LEFTWALL>
+<node>, <node>
+**
+** ---- PART C: STEP ----------------------------------------------------
+*STEP
+*STATIC
+**
+** Boundary conditions: node (or set), first dof, last dof, [value]
+** e.g.  "5, 1, 1" blocks the x-motion of node 5; "5, 1, 2" blocks both.
+*BOUNDARY
+<node>, <first dof>, <last dof>
+**
+** Concentrated forces: node, dof, value  (consistent nodal loads of any
+** distributed load must be computed by you, as in DLEARN)
+*CLOAD
+<node>, <dof>, <force>
+**
+** ---- PART D: OUTPUT -------------------------------------------------
+** Text results go to <jobname>.dat
+*NODE PRINT, NSET=NALL
+U
+*NODE PRINT, NSET=<name of a set with supports>, TOTALS=YES
+RF
+** COORD = integration point coordinates, S = stresses, E = strains
+*EL PRINT, ELSET=EALL
+COORD
+S
+E
+** Results for the viewer CalculiX GraphiX go to <jobname>.frd
+*NODE FILE
+U, RF
+*EL FILE
+S, E
+*END STEP
+**
+** ---- CHECKLIST BEFORE RUNNING -----------------------------------
+**   [ ] every <...> replaced        [ ] element nodes counter-clockwise
+**   [ ] supports prevent rigid-body motion in x, y and rotation
+**   [ ] units consistent            [ ] set names spelled identically

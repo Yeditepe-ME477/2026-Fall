@@ -1,0 +1,78 @@
+** =====================================================================
+**  PATCH TEST  -  5 four-node elements, plane strain, uniform tension
+**  Units: N, mm, MPa (CalculiX has no units: you keep them consistent)
+**  Element type below: CPE4  (full 2x2 integration)
+**  To see the effect of reduced integration, change CPE4 to CPE4R
+**  in the *ELEMENT line and nothing else.
+** =====================================================================
+**
+** ---- 1. MODEL DEFINITION (nodes, elements, material, section) -------
+*HEADING
+Patch test, 5 Q4 elements, plane strain, uniform tension
+**
+*NODE, NSET=NALL
+1,  0.0,  0.0
+2, 10.0,  0.0
+3, 10.0,  6.0
+4,  0.0,  6.0
+5,  3.1,  1.8
+6,  7.2,  2.4
+7,  6.8,  4.2
+8,  2.8,  3.6
+**
+*ELEMENT, TYPE=CPE4, ELSET=EALL
+1, 1, 2, 6, 5
+2, 2, 3, 7, 6
+3, 3, 4, 8, 7
+4, 4, 1, 5, 8
+5, 5, 6, 7, 8
+**
+*MATERIAL, NAME=STEELISH
+*ELASTIC
+1000.0, 0.3
+**
+** Data line of *SOLID SECTION = thickness (plane strain: unit thickness)
+*SOLID SECTION, ELSET=EALL, MATERIAL=STEELISH
+1.0
+**
+** ---- 2. NODE SETS used for loads and printing ---------------------
+*NSET, NSET=LEFTWALL
+1, 4
+**
+** ---- 3. STEP (what happens: boundary conditions, loads, output) ----
+*STEP
+*STATIC
+**
+** Rollers: base nodes cannot move in y (dof 2), left nodes in x (dof 1).
+** Only the corner nodes lie on those edges in this mesh.
+*BOUNDARY
+1, 1, 2
+2, 2, 2
+4, 1, 1
+**
+** Consistent nodal forces of a uniform traction p = 10 MPa on the
+** right edge (length 6 mm, thickness 1): p*6/2 = 30 N at each end node.
+*CLOAD
+2, 1, 30.0
+3, 1, 30.0
+**
+** ---- 4. OUTPUT -----------------------------------------------------
+** .dat file (readable text, best for comparison with DLEARN):
+*NODE PRINT, NSET=NALL
+U
+** Total x-reaction of the left rollers (nodes 1 and 4): expect -60 N
+*NODE PRINT, NSET=LEFTWALL, TOTALS=YES
+RF
+** COORD prints the integration-point coordinates, so that points can be
+** matched with the ones printed by DLEARN. Stresses/strains are at the
+** integration points (CalculiX expands CPE4 to a brick: 8 points/element).
+*EL PRINT, ELSET=EALL
+COORD
+S
+E
+** .frd file (for CalculiX GraphiX, values extrapolated to the nodes):
+*NODE FILE
+U, RF
+*EL FILE
+S, E
+*END STEP
