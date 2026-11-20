@@ -1,0 +1,35 @@
+#+TITLE:  Homework 4: Plane Strain
+#+AUTHOR: Fethi Okyar
+#+DATE: 2026 Fall
+#+SUBTITLE: Finite Element Method, ME 477
+#+DESCRIPTION: Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method
+#+STARTUP: overview
+#+REVEAL_THEME: simple
+#+REVEAL_INIT_OPTIONS: slideNumber:"c/t", width:1920, height:1080
+#+REVEAL_TITLE_SLIDE: <h2>%t</h2> <h3>%s</h3> <h4>%d</h4>
+#+OPTIONS: timestamp:nil toc:nil num:nil
+#+REVEAL_EXTRA_CSS: ../style.css
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+HTML_HEAD_EXTRA: <style>
+#+HTML_HEAD_EXTRA: pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
+#+HTML_HEAD_EXTRA: </style>
+
+This homework sheet consists of 3 parts and a total of 8 points.
+
+* Study the [[file:4-2dps/lab_notes.md][lab_notes.md]]
+The above linked document was prepared by Claude LLM, in order to illustrate various issues that arise in a simple plane strain analysis. Work through the steps outlined in this document, study the tables and numbers produced from output files, read the output files, read the discussions that follow tables.
+
+Below find some questions related with some important concepts and issues from the lab. Try to answer them by reading through and discussing with your peers and GPT.
+
+** Hourglassing
+- What does hourglassing and hourglass control refer to in FEM? Can it be visually recognized from a deformed mesh picture? Do we have such behavior in our results?
+- Provide coutour plots of the sigma_11 (the normal stress in 1-direction) from CPE4 and CPE4R
+- What is B-bar? Find B in the lecture notes, and show it's difference with B-bar.
+** Reduced Integration
+- What is the effect of using elements with and without reduced integration? Is there agreement between DLEARN and CalculiX on this?
+- Can the reduced integration elements correctly produce the results of regular elements? Then why is it useful?
+- What does the word "pivot" refer to in the finite element method?
+** Shear Locking
+- What is this and how is this effect illustrated in the lab notes?
+- What is Timoshenko beam?
+
