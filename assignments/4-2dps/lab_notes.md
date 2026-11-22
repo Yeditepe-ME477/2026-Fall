@@ -4,9 +4,10 @@ Units everywhere: N, mm, MPa. Plane strain, unit thickness. All results below we
 with CalculiX 2.21 and DLEARN built from Hughes' Fortran sources (gfortran).
 
 ## Files
+The files in the below table can be downloaded from (https://yeditepe-me477.github.io/2026-Fall/assignments/cw4.zip)
 | File                                                 | Purpose                                                                      |
 |------------------------------------------------------|------------------------------------------------------------------------------|
-| `patch_dlearn.dat`                                   | Patch test, 5 Q4 elements, DLEARN (2x2 Gauss)                                |
+| `[patch_dlearn.dat]`                                   | Patch test, 5 Q4 elements, DLEARN (2x2 Gauss)                                |
 | `patch_cpe4.inp`, `patch_cpe4r.inp`                  | Same problem, CalculiX full / reduced integration                            |
 | `rankcheck_dlearn.dat`                               | Two stacked problems: 1 element, 2x2 Gauss vs one-point, with pivot printout |
 | `beam_dlearn.dat`, `beam_cpe4.inp`, `beam_cpe4r.inp` | Slender cantilever (10 x 1 elements) for shear locking                       |
