@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title><a href="https://yeditepe-me477.github.io/2026-Fall/6.elementaryconcepts.html">Elementary Concepts in Finite Elements</a></title>
+<meta name="author" content="Fethi Okyar"/>
+<meta name="description" content="Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/simple.css" id="theme"/>
+
+<link rel="stylesheet" href="./style.css"/>
+<script>MathJax = { tex: { tags: 'ams' } };</script>
+<style>
+pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h2><a href="https://yeditepe-me477.github.io/2026-Fall/6.elementaryconcepts.html">Elementary Concepts in Finite Elements</a></h2> <h3>Finite Element Method, ME 477</h3> <h4>2026 Fall</h4>
+</section>
+<section id="table-of-contents-section">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#/slide-orged8f015">(\(\S3.1\)) Preliminary Concepts</a></li>
+<li><a href="#/slide-org37cdd7c">(\(\S3.2\)) Bilinear Quad Element</a></li>
+<li><a href="#/slide-org30c77cc">(\(\S3.3\)) Isoparametric Elements</a></li>
+<li><a href="#/slide-orgd2ab7b7">(\(\S3.5\)) Trilinear Hex Element</a></li>
+<li><a href="#/slide-orga6bbfc3">(\(\S3.6\)) Lagrange Polynomials</a></li>
+<li><a href="#/slide-org6009b98">(\(\S3.8\)) Gaussian Quadrature</a></li>
+<li><a href="#/slide-org43cf26f">(\(\S3.9\)) Shape Function Subroutines</a></li>
+<li><a href="#/slide-orgb4fbf18">(\(\S3.10\)) Stiffness Coding Styles</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<section id="slide-orged8f015">
+<h2 id="orged8f015">(\(\S3.1\)) Preliminary Concepts</h2>
+<p>
+<a href="./5.elastostatics.html">\(\leftarrow\) Previous Lecture</a>
+</p>
+</section>
+<section id="slide-org062b504" data-background="./6.fig1-c0continuity.png" data-background-size="contain" data-background-position="center" data-background-opacity="0.3">
+<h3 id="org062b504">Basic convergence requirements</h3>
+<p>
+In designing elements, their shape functions are expected to obey the below requirements: (<a href="textbook/Ch3_p1.pdf">Chapter 3</a>, p.109)
+</p>
+<ul>
+<li class="fragment appear"><b>R1. smoothness</b>: smooth (i.e., at least \(C^1\)) on each element interior, \(\Omega^e\);</li>
+<li class="fragment appear"><b>R2. continuity</b>: continuous across each element boundary \(\Gamma^e\) (see Appendix 1.I, p.52, of <a href="textbook/Ch1_p3.pdf">Chapter 1</a>); and</li>
+<li class="fragment appear"><b>R3. completeness</b>.</li>
+
+</ul>
+</section>
+<section id="slide-org3008a9f" data-background="./6.fig1-c0continuity.png" data-background-size="contain" data-background-position="center" data-background-opacity="0.3">
+<h3 id="org3008a9f">Remarks on R1 and R2</h3>
+<ol>
+<li class="fragment appear">Conditions R1 and R2 guarantee that the first derivatives of the shape functions have, at worst, finite jumps across the element interfaces. This ensures that all integrals nevessary for computation of element arrays are <i>well-defined</i>.</li>
+<li class="fragment appear">Shape functions that satisfy R1 and R2 are of class \(C^0(\bar{\Omega})\), thus the name \(C^0\) elements.</li>
+<li class="fragment appear">For shape functions in elements with stiffness integrands involving derivatives of order \(m\), \(C^m\) continuity on \(\Omega^e\) and \(C^{m-1}\) continuity on \(\Gamma^e\) are required. Finite elements that satisfy this property are called <b><i>conforming</i></b>, or <b><i>compatible</i></b>.</li>
+
+</ol>
+</section>
+<section id="slide-orgb3be3e5" data-background="./6.fig1-c0continuity.png" data-background-size="contain" data-background-position="center" data-background-opacity="0.3">
+<h3 id="orgb3be3e5">Remarks on R3</h3>
+<ol>
+<li class="fragment appear">Completeness requires that the element interpolation function (\(u^h\)) is capable of exactly representing an arbitrary linear polynomial. This is especially important when higher order shape functions are utilized in the interpolation.</li>
+<li class="fragment appear">In elasticity, completeness ensures that in modeling deformation, all rigid motions and constant strain states are exactly represented.</li>
+
+</ol>
+</section>
+</section>
+<section>
+<section id="slide-org37cdd7c">
+<h2 id="org37cdd7c">(\(\S3.2\)) Bilinear Quad Element</h2>
+<ul>
+<li>The domain of a straight-edged quadrilateral element is defined by the locations of its four nodal points \(\boldsymbol{x}_a^e,\, a=1,\ldots,4\) in the \(\mathbb{R}^2\) plane.</li>
+<li>It is assumed that the nodes are labeled in ascending order and counterclockwise direction.</li>
+
+</ul>
+</section>
+<section id="slide-org152e8ec">
+<h3 id="org152e8ec">Element Mapping</h3>
+<p>
+We seek to map the given quadrilateral into the biunit square (also known as the <b><i>parent domain</i></b>).
+<img src="./6.fig2-quadparent.png" alt="6.fig2-quadparent.png" />
+</p>
+</section>
+<section id="slide-org1751130">
+<h3 id="org1751130">Change of Coordinates</h3>
+<p>
+The coordinates of a point
+<img src="./6.fig3-coordinatemaps.png" alt="6.fig3-coordinatemaps.png" />
+where \(\xi\) and \(\eta\) are sometimes called the <b><i>natural coordinates</i></b>.
+</p>
+
+</section>
+<section>
+<p>
+In tensor form this reads
+\[ \boldsymbol{x}(\boldsymbol{\xi}) = \sum_{a=1}^4 N_a(\boldsymbol{\xi}) \boldsymbol{x}_a^e \]
+The shape functions \(N_a\) are obtained by first assuming the &ldquo;bilinear expansions&rdquo;
+</p>
+
+
+<div id="orgd4a9f32" class="figure">
+<p><img src="./6.fig4-bilinearexpansions.png" alt="6.fig4-bilinearexpansions.png" />
+</p>
+</div>
+
+</section>
+<section>
+<p>
+Equations (3.2.6) to (3.2.9) lead to the following matrix equations:
+<img src="./6.fig5-bilinearfunctions.png" alt="6.fig5-bilinearfunctions.png" />
+</p>
+</section>
+<section id="slide-orgb2a5081">
+<h3 id="orgb2a5081">Computing the Jacobian</h3>
+</section>
+</section>
+<section>
+<section id="slide-org30c77cc">
+<h2 id="org30c77cc">(\(\S3.3\)) Isoparametric Elements</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgd2ab7b7">
+<h2 id="orgd2ab7b7">(\(\S3.5\)) Trilinear Hex Element</h2>
+</section>
+</section>
+<section>
+<section id="slide-orga6bbfc3">
+<h2 id="orga6bbfc3">(\(\S3.6\)) Lagrange Polynomials</h2>
+</section>
+</section>
+<section>
+<section id="slide-org6009b98">
+<h2 id="org6009b98">(\(\S3.8\)) Gaussian Quadrature</h2>
+</section>
+</section>
+<section>
+<section id="slide-org43cf26f">
+<h2 id="org43cf26f">(\(\S3.9\)) Shape Function Subroutines</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgb4fbf18">
+<h2 id="orgb4fbf18">(\(\S3.10\)) Stiffness Coding Styles</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/math/math.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+
+transition: 'convex',
+transitionSpeed: 'default',
+
+// Plugins with reveal.js 4.x and later
+plugins: [ RevealNotes, RevealMath ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
+</body>
+</html>
