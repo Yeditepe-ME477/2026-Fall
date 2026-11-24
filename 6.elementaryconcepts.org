@@ -61,21 +61,111 @@ We seek to map the given quadrilateral into the biunit square (also known as the
 The coordinates of a point
 [[./6.fig3-coordinatemaps.png]]
 where $\xi$ and $\eta$ are sometimes called the */natural coordinates/*.
-
-#+REVEAL: split
+*** Bilinear Expansions
 In tensor form this reads
 \[ \boldsymbol{x}(\boldsymbol{\xi}) = \sum_{a=1}^4 N_a(\boldsymbol{\xi}) \boldsymbol{x}_a^e \]
 The shape functions $N_a$ are obtained by first assuming the "bilinear expansions"
 
 [[./6.fig4-bilinearexpansions.png]]
+*** Bilinear Mapping Functions
+Equations (3.2.6) to (3.2.9) lead to the following matrix equations:
+
+[[./6.fig5-bilinearfunctions.png]]
+#+REVEAL: split
+The bilinear mapping functions are illustrated below.
+
+[[./6.fig6-bilinearmapping.png]]
+Notice that coordinate lines in $\boldsymbol{\xi}$ space (i.e., lines such that $\xi=$ constant or $\eta=$ constant) are mapped into straight lines in $\boldsymbol{x}$ space.
+** Isoparametric Assumption
+We shall /assume/ that the element shape functions are given by similar expansions in terms of the mapping functions:
+
+*Heat Conduction*
+\[ u^h (\boldsymbol{\xi}) = \sum_{a=1}^4 N_a(\boldsymbol{\xi}) d_a^e \]
+
+*Elastostatics*
+\[ u_i^h (\boldsymbol{\xi}) = \sum_{a=1}^4 N_a(\boldsymbol{\xi}) d_{ia}^e \]
+*** Properties of Bilinear Mapping Functions
+**** R1. Smoothness on $\Omega^e$.
+The smoothness condition can be shown to be valid for any quadrilateral for which all internal angles are less then 180$^\circ$.
+**** R2. Continuity across $\Gamma^e$.
+Satisfied.
+**** R3. Completeness.
+Satisfied.
+* ($\S3.3$) Isoparametric Elements
+The isoparametric proposition is generally attributed to Taig [6] and Irons [7]. (References from Ch.3 of textbook)
+[[./6.fig7-isoparametricdefinition.png]]
+** Convergence Conditions
+#+ATTR_REVEAL: :frag (appear)
+- *Definition 2.* A mapping $\boldsymbol{x}:\Box\to\bar\Omega^e\cup\mathbb{R}^{n_{sd}}$ is said to be */one-to-one/*, if for each point $\boldsymbol\xi^{(1)}$, $\boldsymbol\xi^{(2)}\in \Box$ such that $\boldsymbol\xi^{(1)}\neq\boldsymbol\xi^{(2)}$, then $\boldsymbol{x}^{(1)}\neq\boldsymbol{x}^{(2)}$
+- *Definition 1.* $\boldsymbol{x}:\Box\to\bar\Omega^e$ is said to be */onto/* if $\bar\Omega^e = \boldsymbol{x}(\Box)$. (i.e., each point in $\bar\Omega^e$ is the image of a point in $\Box$ under the mapping).
+- *Definition 4.* Let $\boldsymbol{x}:\Box\to\bar\Omega^e$ be a differentiable mapping. The determinant of the derivative, denoted by $j=\det(\partial\boldsymbol{x}/\partial\boldsymbol\xi)$ is called the */Jacobian determinant/*.
+
+  Translation in 2D:
+  \[ j = \det \begin{bmatrix} x_{,\xi} & x_{,\eta} \\ y_{,\xi} & y_{,\eta} \end{bmatrix} \]
+** Remarks
+#+ATTR_REVEAL: :frag (appear)
+- It is a consequence of the inverse function theorem that if $\boldsymbol{x}$ is
+  - one-to-one;
+  - onto;
+  - $C^k,\, k\geq 1$; and if
+  - $j(\boldsymbol\xi)>0$ for all $\boldsymbol\xi\in\Box$;
+  then the inverse mapping $\boldsymbol\xi=\boldsymbol{x}^{-1}:\bar\Omega^e\to\Box$ exists and is $C^k$.
+- *Proposition 1.* Let the bilinear mapping defined above satisfy (i) through (iv). Then the smoothness requirement (R1) is satisfied.
+- The mappings usually satisfy (i) through (iv).
+- In computations the sign of the Jacobian is monitored at special points to ensure condition (iv) is satisfied. If a zero or negative value is encountered, computations are terminated.
+* ($\S3.5$) Trilinear Hex Element
+#+ATTR_REVEAL: :frag (appear)
+- The trilinear hexahedral element is the basic element for three-dimensional analysis. The domain $\Omega^e$ is the image of the biunit cube in $\xi$ space under the trilinear mapping
+  \[x(\boldsymbol\xi) = \alpha_0 + \alpha_1\xi + \alpha_2\eta + \alpha_3\zeta + \alpha_4\xi\eta + \alpha_5\eta\zeta + \alpha_6\zeta\xi + alpha_7\xi\eta\zeta \]
+- [[./6.fig8-trilinearmapping.png]]
+- The coefficients $\alpha_0,\ldots,\alpha_7$ are determined by the conditions
+  \[ x(\boldsymbol{\xi_a}) = x_a^e,\hspace{2em} a = 1,\ldots,8 \]
+** Trilinear Shape Functions
+#+ATTR_REVEAL: :frag (appear)
+- Enforcing the above conditions gives rise to a system of linear algebraic equations, viz.,
+
+  [[./6.fig9-trilinearequations.png]]
+- Solving for $\alpha$'s and substituting into (3.5.3) yields
+  \[ x(\boldsymbol\xi) = \sum_{a=1}^8 N_a(\boldsymbol\xi) x_a^e \]
+  where
+  \[ N_a(\xi,\eta,\zeta) = \frac{1}{8} (1+\xi_a\xi)(1+\eta_a\eta)(1+\zeta_a\zeta) \]
+** Isoparametric Shape Functions
+#+ATTR_REVEAL: :frag (appear)
+- Invoking teh isoparametric concept, i.e.,
+  \[ u^h (\boldsymbol\xi) = \sum_{a=1}^8 N_a(\boldsymbol\xi) d_a^e \]
+- The hexahedron, or "brick" as it is often referred to, it the most generally useful shape in modeling three-dimensional domains.
+- However, it is often convenient to have a wedge-shaped element too, for which the technique of degeneration may be employed.
+  [[./6.fig10-degeneratewedge.png]]
+* ($\S3.6$) Higher Order Elements
+- Thus far we have considered element for which shape functions are constructed from products of the linear one-dimensional shape functions.
+- Systematic derivation of certain higher-order isoparametric elements may be performed with the aid of the one-dimensional Lagrange polynomials.
+** Lagrange Polynomials
+#+ATTR_REVEAL: :frag (appear)
+- The Lagrange polynomials are defined by
+  [[./6.fig11-generallagrange.png]]
+- The general property is
+  \[ l_a(\xi_b) = \delta_{ab} \]
+- We shall define the shape functions of an $n_{en}$ noded element in *one-dimension* by the relation
+  \[ N_a = l_a^{n_{en}-1} \]
+*** Three-noded Line Element
+As an example the shape functions of a three-noded line element are
+
+[[./6.fig12-threenodeline.png]]
+*** Bilinear Quad
+The shape functions for the bilinear quadrilateral may be set up by taking products of the first order Lagrange polynomials.
+[[./6.fig13-lagrangebilinear.png]]
+** Higher-order Lagrange Elements
+Higher order, two- and three-dimensional elements may be derived by taking products of Lagrange polynomials. This shall be illustrated by setting up the nine-node two-dimensional Lagrange element.
+
+[[./6.fig14-q9illustration.png]]
+*** Nine-node quadrilateral element (Q9)
+The formula for the shape function is
+\[ N_a (\xi,\eta) = l_b^2(\xi) l_c^2(\eta) \]
+where the relationship among the indices is given in the table below.
+[[./6.fig15-q9indices.png]]
 
 #+REVEAL: split
-Equations (3.2.6) to (3.2.9) lead to the following matrix equations:
-[[./6.fig5-bilinearfunctions.png]]
-** Computing the Jacobian
-* ($\S3.3$) Isoparametric Elements
-* ($\S3.5$) Trilinear Hex Element
-* ($\S3.6$) Lagrange Polynomials
+[[./6.fig16-q9typicalshapes.png]]
 * ($\S3.8$) Gaussian Quadrature
 * ($\S3.9$) Shape Function Subroutines
 * ($\S3.10$) Stiffness Coding Styles
