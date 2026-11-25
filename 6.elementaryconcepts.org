@@ -31,23 +31,11 @@ In designing elements, their shape functions are expected to obey the below requ
 + *R2. continuity*: continuous across each element boundary $\Gamma^e$ (see Appendix 1.I, p.52, of [[file:textbook/Ch1_p3.pdf][Chapter 1]]); and
 + *R3. completeness*.
 ** Remarks on R1 and R2
-:PROPERTIES:
-:REVEAL_BACKGROUND: ./6.fig1-c0continuity.png
-:REVEAL_BACKGROUND_SIZE: contain
-:REVEAL_BACKGROUND_POSITION: center
-:REVEAL_BACKGROUND_OPACITY: 0.3
-:END:
 #+ATTR_REVEAL: :frag (appear)
 1. Conditions R1 and R2 guarantee that the first derivatives of the shape functions have, at worst, finite jumps across the element interfaces. This ensures that all integrals nevessary for computation of element arrays are /well-defined/.
 2. Shape functions that satisfy R1 and R2 are of class $C^0(\bar{\Omega})$, thus the name $C^0$ elements.
 3. For shape functions in elements with stiffness integrands involving derivatives of order $m$, $C^m$ continuity on $\Omega^e$ and $C^{m-1}$ continuity on $\Gamma^e$ are required. Finite elements that satisfy this property are called */conforming/*, or */compatible/*.
 ** Remarks on R3
-:PROPERTIES:
-:REVEAL_BACKGROUND: ./6.fig1-c0continuity.png
-:REVEAL_BACKGROUND_SIZE: contain
-:REVEAL_BACKGROUND_POSITION: center
-:REVEAL_BACKGROUND_OPACITY: 0.3
-:END:
 #+ATTR_REVEAL: :frag (appear)
 1. Completeness requires that the element interpolation function ($u^h$) is capable of exactly representing an arbitrary linear polynomial. This is especially important when higher order shape functions are utilized in the interpolation.
 2. In elasticity, completeness ensures that in modeling deformation, all rigid motions and constant strain states are exactly represented.
@@ -167,5 +155,24 @@ where the relationship among the indices is given in the table below.
 #+REVEAL: split
 [[./6.fig16-q9typicalshapes.png]]
 * ($\S3.8$) Gaussian Quadrature
+Let $f:\Omega^e \in \mathbb{R}^{n_{sd}} \to \mathbb{R}$ be a given function. We are interested in computing
+\[ \int_{\Omega^e} f(\boldsymbol{x}) d\Omega \]
+for purposes of constructing element arrays. ($f$ may be thought of as any term in an integrand, such as the integrand in heat conduction $\boldsymbol{B}_a^T \boldsymbol{D} \boldsymbol{B}_a$).
+** Pullback to the Parent Domain
+#+ATTR_REVEAL: :frag (appear)
+- Throughout, we shall assume that $f$ is smooth and integrable.
+- We will pull back the integral over the element domain in $\boldsymbol{x}$ space to one over the parent domain (i.e., the biunit $n_{sd}$ cube).
+- For $n_{sd} = 1$;
+  \[ \int_{\Omega^e} f(x)\, dx = \int_{-1}^1 f(x(\xi)) x_{,\xi}(\xi)\, d\xi \]
+- For $n_{sd} = 2$;
+  \[ \int_{\Omega^e} f(x,y)\, d\Omega = \int_{-1}^1 \int_{-1}^1 f(x(\xi,\eta),y(\xi,\eta)) j(\xi,\eta)\, d\xi d\eta \]
+- Recall that $j=\det(\partial \boldsymbol{x}/\partial \boldsymbol{\xi})$, the Jacobian determinant.
+- In each case an integral of the below form has to be evaluated
+  [[./6.fig17-nsdtimesintegration.png]]
+** Numerical (Approximate) Integration
+Consider the one-dimensional case, in which we wish to evaluate
+
+[[./6.fig18-onedquadrature.png]]
+where $n_{int}$ is the number of integration (quadrature) points, $\tilde\xi_l$ is the coordinate of the $l\mathrm{th}$ integration point, $W_l$ is the "weight" of the $l\mathrm{th}$ integration point, and $R$ is the remainder. 
 * ($\S3.9$) Shape Function Subroutines
 * ($\S3.10$) Stiffness Coding Styles
