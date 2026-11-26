@@ -45,7 +45,7 @@
 |      6 | [[./3.finite_element.html#/S1.15][Array Compute]]    | Explicit Evaluations of Arrays   | [[./assignments/cw2.dlearn.html][CW#2]], [[./assignments/hw2.suspendbar.html][HW#2]]  | [[./textbook/Ch11.pdf][Dlearn]]           |
 |      7 | [[./4.heat_equation.html][Heat Equation]]    | 2-D Formulation of scalar BVP's  | [[./assignments/cw3.toyheatconduction.html][CW#3]], [[./assignments/hw3.heatincalculix.html][HW#3]]  | [[file:textbook/Ch2_p1.pdf][Ch2-1]], [[https://dhondt.de][CalculiX]]  |
 |      8 | [[./5.elastostatics.html][Elastostatics]]    | 2-D Formulation of vector BVP's  | [[file:assignments/hw4.planestrain.html][HW#4]]        | [[file:textbook/Ch2_p2.pdf][Ch2-2]], [[file:assignments/4-2dps/lab_notes.md][Lab Notes]] |
-|      9 | [[file:6.elementaryconceprt.html][Element Concepts]] | Isoparameter, Quadrature, Coding |             | [[file:textbook/Ch3_p1.pdf][Ch3-1]], [[file:textbook/Ch3_p2.pdf][Ch3-2]]     |
+|      9 | [[file:6.elementaryconcepts.html][Element Concepts]] | Isoparameter, Quadrature, Coding | Quiz 2      | [[file:textbook/Ch3_p1.pdf][Ch3-1]], [[file:textbook/Ch3_p2.pdf][Ch3-2]]     |
 |     10 | Sample Model     | A Cylindrical Vessel             |             | [[https://calculix.discourse.group/t/nonlinear-axial-compression-buckling-of-a-cylinder-not-converging/4027][THD#4027]]         |
 |     11 |                  |                                  |             |                  |
 | 11 (S) |                  |                                  |             |                  |

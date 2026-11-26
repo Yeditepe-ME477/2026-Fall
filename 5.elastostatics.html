@@ -1,137 +1,345 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta charset="utf-8"/>
-<title><a href="https://yeditepe-me477.github.io/2026-Fall/5.elastostatics.html">Elastostatics</a></title>
-<meta name="author" content="Fethi Okyar"/>
-<meta name="description" content="Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method"/>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[[https://yeditepe-me477.github.io/2026-Fall/5.elastostatics.html][Elastostatics]]</title>
+<meta name="author" content="Fethi Okyar" />
+<meta name="description" content="Mathematical Language used in Continuum Mechanics and thus in modern Finite Element Method" />
+<meta name="generator" content="Org Mode" />
 <style type="text/css">
-.underline { text-decoration: underline; }
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
 </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/simple.css" id="theme"/>
-
-<link rel="stylesheet" href="./style.css"/>
-<script>MathJax = { tex: { tags: 'ams' } };</script>
 <style>
 pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
-<div class="reveal">
-<div class="slides">
-<section id="sec-title-slide">
-<h2><a href="https://yeditepe-me477.github.io/2026-Fall/5.elastostatics.html">Elastostatics</a></h2> <h3>Finite Element Method, ME 477</h3> <h4>2026 Fall</h4>
-</section>
-<section id="table-of-contents-section">
+<div id="content" class="content">
+<h1 class="title"><a href="https://yeditepe-me477.github.io/2026-Fall/5.elastostatics.html">Elastostatics</a>
+<br />
+<span class="subtitle">Finite Element Method, ME 477</span>
+</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-orgfc9e69d">Classical Linear Elastostatics</a></li>
-<li><a href="#/slide-org9f22fce">(\(\S2.7\)) Strong (\(S\)) and Weak (\(W\)) Forms</a></li>
-<li><a href="#/slide-org784a16c">(\(\S2.8\)) Galerkin Formulation</a></li>
-<li><a href="#/slide-org5aec1aa">(\(\S2.9\)) Element Arrays (Local Scheme)</a></li>
-<li><a href="#/slide-org6c6e82c">Examples</a></li>
+<li><a href="#org1ca93ec">Classical Linear Elastostatics</a></li>
+<li><a href="#orgbf8117b">(\(\S2.7\)) Strong (\(S\)) and Weak (\(W\)) Forms</a></li>
+<li><a href="#org041f7fc">(\(\S2.8\)) Galerkin Formulation</a></li>
+<li><a href="#orgb3f7d8e">(\(\S2.9\)) Element Arrays (Local Scheme)</a></li>
+<li><a href="#orge250284">Examples</a></li>
 </ul>
 </div>
 </div>
-</section>
-<section>
-<section id="slide-orgfc9e69d">
-<h2 id="orgfc9e69d">Classical Linear Elastostatics</h2>
+<div id="outline-container-org1ca93ec" class="outline-2">
+<h2 id="org1ca93ec">Classical Linear Elastostatics</h2>
+<div class="outline-text-2" id="text-org1ca93ec">
 <p>
 <a href="./4.heat_equation.html">\(\leftarrow\) Previous Lecture</a>
 </p>
-<ul>
-<li class="fragment appear">Classical elastostatics is a rich subject in its own right.</li>
-<li class="fragment appear"><img src="./5.fig1-elasticityreferences.png" alt="5.fig1-elasticityreferences.png" /></li>
-<li class="fragment appear">Let \(\sigma_{ij}\) denote the <b><i>stress tensor</i></b>, let \(u_i\) denote the <b><i>displacement vector</i></b>, and let \(\mathscr{f}_i\) be the <b><i>prescribed body force per unit volume</i></b>. The <b><i>(infinitesimal) strain tensor</i></b>, \(\epsilon_{ij}\), is defined as the symmetric part of the displacement gradients, viz.,
+<ul class="org-ul">
+<li>Classical elastostatics is a rich subject in its own right.</li>
+<li><img src="./5.fig1-elasticityreferences.png" alt="5.fig1-elasticityreferences.png" width="700px" style="&quot;display: block; margin: auto&quot;" /></li>
+<li>Let \(\sigma_{ij}\) denote the <b><i>stress tensor</i></b>, let \(u_i\) denote the <b><i>displacement vector</i></b>, and let \(\mathscr{f}_i\) be the <b><i>prescribed body force per unit volume</i></b>. The <b><i>(infinitesimal) strain tensor</i></b>, \(\epsilon_{ij}\), is defined as the symmetric part of the displacement gradients, viz.,
 \[ \epsilon_{ij} = u_{(i,j)} = \frac{u_{i,j} + u_{j,i}}{2} \]
 These are also known as the <b><i>strain-displacement equations</i></b>.</li>
-
 </ul>
-</section>
-<section id="slide-orge1d4eae">
-<h3 id="orge1d4eae">Generalized Hooke&rsquo;s Law</h3>
-<ul>
-<li class="fragment appear"><p>
+</div>
+<div id="outline-container-org9695f0e" class="outline-3">
+<h3 id="org9695f0e">Generalized Hooke&rsquo;s Law</h3>
+<div class="outline-text-3" id="text-org9695f0e">
+<ul class="org-ul">
+<li><p>
 The stress tensor is defined in terms of the strain tensor by the <b><i>generalized Hooke&rsquo;s law</i></b>:
 </p>
-<div>
 \begin{align} \sigma_{ij} & = c_{ijkl} \epsilon_{kl} \\ & = c_{ijkl} u_{(k,l)} \end{align}
-
-</div>
 <p>
 where the \(c_{ijkl}\)&rsquo;s, the <b><i>elastic coefficients</i></b>, are point functions. If these coefficients are constant througout, the body is called <b><i>homogeneous</i></b>. This is another <b><i>constitutive equation</i></b>. 
 </p></li>
-<li class="fragment appear">The elastic coefficients are assumed to satisfy symmetry properties which allow the interchanging indices
-<ul>
-<li class="fragment appear"><b><i>major symmetry</i></b>
+<li>The elastic coefficients are assumed to satisfy symmetry properties which allow the interchanging indices
+<ul class="org-ul">
+<li><b><i>major symmetry</i></b>
 \[ c_{ijkl} = c_{klij} \]</li>
-<li class="fragment appear"><b><i>minor symmetries</i></b>
+<li><b><i>minor symmetries</i></b>
 \[ \begin{align*} c_{ijkl} = c_{jikl} \\ c_{ijkl} = c_{ijlk} \end{align*}\]</li>
-
 </ul></li>
-
 </ul>
-</section>
-<section id="slide-org194342e">
-<h3 id="org194342e">Upgrading from a Scalar to a Vector Solution Variable</h3>
-<ul>
-<li class="fragment appear">The unknown solution variable is a vector, which necessitates the generalization of the boundary conditions <i>per vector component</i>:
-\[ \left. \begin{align*} \Gamma & = \overline{\Gamma_{\mathscr{g}_i} \cup \Gamma_{\mathscr{h}_i}} \\ \varnothing & = \overline{\Gamma_{\mathscr{g}_i} \cap \Gamma_{\mathscr{h}_i}} \end{align*} \right\} \hspace{2em} i=1,\ldots,n_{sd} \]</li>
-<li class="fragment appear"><img src="./5.fig2-generalizingbcs.png" alt="5.fig2-generalizingbcs.png" /></li>
-
-</ul>
-</section>
-</section>
-<section>
-<section id="slide-org9f22fce">
-<h2 id="org9f22fce">(\(\S2.7\)) Strong (\(S\)) and Weak (\(W\)) Forms</h2>
-<div class="outline-text-2" id="text-org9f22fce">
 </div>
-</section>
-<section id="slide-org500c1d2">
-<h3 id="org500c1d2">Strong Form</h3>
-<ul>
-<li class="fragment appear"><img src="./5.fig3-strongform.png" alt="5.fig3-strongform.png" /></li>
-<li class="fragment appear">The functions \(\mathscr{g}_i\) and \(\mathscr{h}_i\) are called the <b><i>prescribed boundary displacements</i></b> and <b><i>tractions</i></b>, respectively.</li>
-<li class="fragment appear">The additional complexity is that the unknown (i.e., \(\boldsymbol{u} = u_i\)) is vector-valued.</li>
-
+</div>
+<div id="outline-container-org9569843" class="outline-3">
+<h3 id="org9569843">Upgrading from a Scalar to a Vector Solution Variable</h3>
+<div class="outline-text-3" id="text-org9569843">
+<ul class="org-ul">
+<li>The unknown solution variable is a vector, which necessitates the generalization of the boundary conditions <i>per vector component</i>:
+\[ \left. \begin{align*} \Gamma & = \overline{\Gamma_{\mathscr{g}_i} \cup \Gamma_{\mathscr{h}_i}} \\ \varnothing & = \overline{\Gamma_{\mathscr{g}_i} \cap \Gamma_{\mathscr{h}_i}} \end{align*} \right\} \hspace{2em} i=1,\ldots,n_{sd} \]</li>
+<li><img src="./5.fig2-generalizingbcs.png" alt="5.fig2-generalizingbcs.png" width="700px" style="&quot;display: block; margin: auto&quot;" /></li>
 </ul>
-</section>
-<section id="slide-orgc668f20">
-<h3 id="orgc668f20">Weak Form</h3>
-<ul>
-<li class="fragment appear">Let \(\delta_i\) denote the trial solution space and \(\mathscr{V}_i\) the weight space. Each member \(u_i \in \delta_i\) satisfies \(u_i = \mathscr{g}_i\) on \(\Gamma_{\mathscr{g}_i}\), whereas each \(w_i \in \mathscr{V}_i\) satisfies \(w_i=0\) on \(\Gamma_{\mathscr{g}_i}\).</li>
-<li class="fragment appear">The weak formulation goes:</li>
-<li class="fragment appear"><img src="./5.fig4-weakform.png" alt="5.fig4-weakform.png" /></li>
-<li class="fragment appear">(\(W\)) is also referred to as the <b><i>principle of virtual work</i></b> or <b><i>principle of virtual displacements</i></b>.</li>
-<li class="fragment appear">Note the use of summation symbol in the last term in order to preserve the validity of the indicial expression (in the last term the index \(i\) repeats three times).</li>
-
+</div>
+</div>
+</div>
+<div id="outline-container-orgbf8117b" class="outline-2">
+<h2 id="orgbf8117b">(\(\S2.7\)) Strong (\(S\)) and Weak (\(W\)) Forms</h2>
+<div class="outline-text-2" id="text-orgbf8117b">
+</div>
+<div id="outline-container-org37d26c4" class="outline-3">
+<h3 id="org37d26c4">Strong Form</h3>
+<div class="outline-text-3" id="text-org37d26c4">
+<ul class="org-ul">
+<li><img src="./5.fig3-strongform.png" alt="5.fig3-strongform.png" width="700px" style="&quot;display: block; margin: auto&quot;" /></li>
+<li>The functions \(\mathscr{g}_i\) and \(\mathscr{h}_i\) are called the <b><i>prescribed boundary displacements</i></b> and <b><i>tractions</i></b>, respectively.</li>
+<li>The additional complexity is that the unknown (i.e., \(\boldsymbol{u} = u_i\)) is vector-valued.</li>
 </ul>
-</section>
-<section id="slide-orged262ac">
-<h4 id="orged262ac">Proof</h4>
-<ul>
-<li class="fragment appear"><b>Lemma 1.</b> Let \(s_{ij}\) be a nonsymmetric second-rank tensor. Then \(s_{ij} = s_{(ij)} + s_{[ij]}\), where \(s_{(ij)}\) is symmetric (i.e., \(s_{(ij)} = s_{(ji)}\)) and \(s_{[ij]}\) is skew-symmetric (i.e., \(s_{[ij]} = - s_{[ji]}\)).</li>
-<li class="fragment appear"><b>Lemma 2.</b> Let \(s_{ij}\) be a nonsymmetric tensor and \(t_{ij}\) be a symmetric tensor. Then
+</div>
+</div>
+<div id="outline-container-orgff822b9" class="outline-3">
+<h3 id="orgff822b9">Weak Form</h3>
+<div class="outline-text-3" id="text-orgff822b9">
+<ul class="org-ul">
+<li>Let \(\delta_i\) denote the trial solution space and \(\mathscr{V}_i\) the weight space. Each member \(u_i \in \delta_i\) satisfies \(u_i = \mathscr{g}_i\) on \(\Gamma_{\mathscr{g}_i}\), whereas each \(w_i \in \mathscr{V}_i\) satisfies \(w_i=0\) on \(\Gamma_{\mathscr{g}_i}\).</li>
+<li>The weak formulation goes:</li>
+<li><img src="./5.fig4-weakform.png" alt="5.fig4-weakform.png" width="700px" style="&quot;display: block; margin: auto&quot;" /></li>
+<li>(\(W\)) is also referred to as the <b><i>principle of virtual work</i></b> or <b><i>principle of virtual displacements</i></b>.</li>
+<li>Note the use of summation symbol in the last term in order to preserve the validity of the indicial expression (in the last term the index \(i\) repeats three times).</li>
+</ul>
+</div>
+<div id="outline-container-org104c22c" class="outline-4">
+<h4 id="org104c22c">Proof</h4>
+<div class="outline-text-4" id="text-org104c22c">
+<ul class="org-ul">
+<li><b>Lemma 1.</b> Let \(s_{ij}\) be a nonsymmetric second-rank tensor. Then \(s_{ij} = s_{(ij)} + s_{[ij]}\), where \(s_{(ij)}\) is symmetric (i.e., \(s_{(ij)} = s_{(ji)}\)) and \(s_{[ij]}\) is skew-symmetric (i.e., \(s_{[ij]} = - s_{[ji]}\)).</li>
+<li><b>Lemma 2.</b> Let \(s_{ij}\) be a nonsymmetric tensor and \(t_{ij}\) be a symmetric tensor. Then
 \[ s_{ij} t_{ij} = s_{(ij)} t_{ij} \]</li>
-<li class="fragment appear"><img src="./5.fig5-proofofweak.png" alt="5.fig5-proofofweak.png" /></li>
-
+<li><img src="./5.fig5-proofofweak.png" alt="5.fig5-proofofweak.png" width="700px" style="&quot;display: block; margin: auto&quot;" /></li>
 </ul>
-</section>
-<section id="slide-org01022d3">
-<h4 id="org01022d3">Abstract Notation</h4>
+</div>
+</div>
+<div id="outline-container-orgb7dfa99" class="outline-4">
+<h4 id="orgb7dfa99">Abstract Notation</h4>
+<div class="outline-text-4" id="text-orgb7dfa99">
 <p>
 With the operator definitions given below
 </p>
 
 
-<div id="orgca875d3" class="figure">
-<p><img src="./5.fig6-abstractnotation.png" alt="5.fig6-abstractnotation.png" />
+<div id="orgbf71847" class="figure">
+<p><img src="./5.fig6-abstractnotation.png" alt="5.fig6-abstractnotation.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 
@@ -139,276 +347,262 @@ With the operator definitions given below
 Note the replacement of \(w_{(i,j)} \sigma_{ij} = w_{(i,j)} c_{ijkl} u_{(i,j)}\).  The weak form can be re-written using these operators.
 </p>
 
-</section>
-<section>
 
-<div id="org92057cd" class="figure">
-<p><img src="./5.fig7-weakformabstract.png" alt="5.fig7-weakformabstract.png" />
+<div id="orgff8992f" class="figure">
+<p><img src="./5.fig7-weakformabstract.png" alt="5.fig7-weakformabstract.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
-</section>
-<section id="slide-org984ee21">
-<h4 id="org984ee21">Reorganizing Strain Tensor Components into a Strain Vector</h4>
-<ul>
-<li class="fragment appear">In order to increase the readability and facilitate computer implementation, the symmetric parts of the gradients of the weight and trial functions, i.e. \(w_{(i,j)}\) and \(u_{(i,j)}\), respectively, are recast into vector form, resulting with the definition of the so-called <b><i>strain vector operator</i></b>, \(\boldsymbol{\epsilon}\)</li>
-<li class="fragment appear"><img src="./5.fig8-reductionvariables.png" alt="5.fig8-reductionvariables.png" /></li>
-
+</div>
+</div>
+<div id="outline-container-org8c86eb1" class="outline-4">
+<h4 id="org8c86eb1">Reorganizing Strain Tensor Components into a Strain Vector</h4>
+<div class="outline-text-4" id="text-org8c86eb1">
+<ul class="org-ul">
+<li>In order to increase the readability and facilitate computer implementation, the symmetric parts of the gradients of the weight and trial functions, i.e. \(w_{(i,j)}\) and \(u_{(i,j)}\), respectively, are recast into vector form, resulting with the definition of the so-called <b><i>strain vector operator</i></b>, \(\boldsymbol{\epsilon}\)</li>
+<li><img src="./5.fig8-reductionvariables.png" alt="5.fig8-reductionvariables.png" width="700px" style="&quot;display: block; margin: auto&quot;" /></li>
 </ul>
-</section>
-<section id="slide-org7b22b45">
-<h4 id="org7b22b45">Reduced Elasticity Matrix Variants, \(\boldsymbol{D}\)</h4>
-<ul>
-<li class="fragment appear">This reduction of order necessitates a similar reduction of the fourth order elasticity tensor, \(c_{ijkl}\), to a second order tensor, \(D_{IJ}\).</li>
-<li class="fragment appear"><p>
+</div>
+</div>
+<div id="outline-container-orgeff6165" class="outline-4">
+<h4 id="orgeff6165">Reduced Elasticity Matrix Variants, \(\boldsymbol{D}\)</h4>
+<div class="outline-text-4" id="text-orgeff6165">
+<ul class="org-ul">
+<li>This reduction of order necessitates a similar reduction of the fourth order elasticity tensor, \(c_{ijkl}\), to a second order tensor, \(D_{IJ}\).</li>
+<li><p>
 \(D_{IJ}\) are elasticity coefficients related to \(c_{ijkl}\), associated by the relations below.
 </p>
 
-
-<div id="org59f93a1" class="figure">
-<p><img src="./5.fig17-conversionofd.png" alt="5.fig17-conversionofd.png" />
-</p>
-</div>
-
-<p>
-The above table of conversion is valid for a <b><i>2-D plane strain</i></b> model (\(\epsilon_{33} = 0\)).
+<p width="700px" style="&quot;display: block; margin: auto&quot;">
+<img src="./5.fig17-conversionofd.png" alt="5.fig17-conversionofd.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
+  The above table of conversion is valid for a <b><i>2-D plane strain</i></b> model (\(\epsilon_{33} = 0\)).
 </p></li>
-<li class="fragment appear">Slight modification of the coefficients will be required for other 2-D model variants.
-<ul>
+<li>Slight modification of the coefficients will be required for other 2-D model variants.
+<ul class="org-ul">
 <li>2-D Plane Stress Model, \(\sigma_{33} = 0\).</li>
 <li>2-D Axisymmetric Model.</li>
-
 </ul></li>
-
 </ul>
-</section>
-<section id="slide-org07b068e">
-<h4 id="org07b068e">Dimensional Reduction of \(w_{(i,j)}c_{ijkl} u_{(k,l)}\)</h4>
+</div>
+</div>
+<div id="outline-container-org6bb4207" class="outline-4">
+<h4 id="org6bb4207">Dimensional Reduction of \(w_{(i,j)}c_{ijkl} u_{(k,l)}\)</h4>
+<div class="outline-text-4" id="text-org6bb4207">
 <p>
 As a result of reorganizing the components of higher order tensors into lower order tensors, 
 </p>
 
-
-<div id="orge97b536" class="figure">
-<p><img src="./5.fig9-dimensionalreduction.png" alt="5.fig9-dimensionalreduction.png" />
+<div id="org9719e67" class="figure">
+<p><img src="./5.fig9-dimensionalreduction.png" alt="5.fig9-dimensionalreduction.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
-</section>
-</section>
-<section>
-<section id="slide-org784a16c">
-<h2 id="org784a16c">(\(\S2.8\)) Galerkin Formulation</h2>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org041f7fc" class="outline-2">
+<h2 id="org041f7fc">(\(\S2.8\)) Galerkin Formulation</h2>
+<div class="outline-text-2" id="text-org041f7fc">
 
-<div id="orge59124d" class="figure">
-<p><img src="./5.fig10-galerkinform.png" alt="5.fig10-galerkinform.png" />
+<div id="org6dad6d9" class="figure">
+<p><img src="./5.fig10-galerkinform.png" alt="5.fig10-galerkinform.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
-</section>
-<section id="slide-org21859ae">
-<h3 id="org21859ae">Computer Implementation</h3>
-<ul>
-<li class="fragment appear">To define the global stiffness and load arrays for a vector-valued problem, it is necessary to introduce the ID array.</li>
-<li class="fragment appear">The variable \(n_\mathrm{dof}\), is defined as the number of <b><i>degrees of freedom per node</i></b>, is defined.</li>
-<li class="fragment appear"><img src="./5.fig11-idarray.png" alt="5.fig11-idarray.png" /></li>
-<li class="fragment appear">ID has dimensions \(n_\mathrm{dof} \times n_{np}\).</li>
-
+</div>
+<div id="outline-container-org6d9f5d7" class="outline-3">
+<h3 id="org6d9f5d7">Computer Implementation</h3>
+<div class="outline-text-3" id="text-org6d9f5d7">
+<ul class="org-ul">
+<li>To define the global stiffness and load arrays for a vector-valued problem, it is necessary to introduce the ID array.</li>
+<li>The variable \(n_\mathrm{dof}\), is defined as the number of <b><i>degrees of freedom per node</i></b>, is defined.</li>
+<li><img src="./5.fig11-idarray.png" alt="5.fig11-idarray.png" width="700px" style="&quot;display: block; margin: auto&quot;" /></li>
+<li>ID has dimensions \(n_\mathrm{dof} \times n_{np}\).</li>
 </ul>
-</section>
-<section id="slide-org1d7a1b3">
-<h4 id="org1d7a1b3">Modifying Sets and Introducing Shape Functions</h4>
-<ul>
-<li class="fragment appear">Recall the set of global node numbers, \(\eta = \{1,2,\ldots,n_{np}\}\).</li>
-<li class="fragment appear">Let \(\eta_{\mathscr{g}_i} \in \eta\) be the set of nodes at which \(u_i^h = \mathscr{g}_i\) and let \(\eta - \eta_{\mathscr{g}_i}\) be the complement of \(\eta_{\mathscr{g}_i}\).</li>
-<li class="fragment appear">For each node in \(\eta - \eta_{\mathscr{g}_i}\), the nodal value of \(u_i^h\) is to be determined.</li>
-<li class="fragment appear">The explicit representations of \(v_i^h\) and \(\mathscr{g}_i^h\), in terms of the shape functions and nodal values are
-<img src="./5.fig12-trialfunctions.png" alt="5.fig12-trialfunctions.png" /></li>
+</div>
+<div id="outline-container-orgd003f11" class="outline-4">
+<h4 id="orgd003f11">Modifying Sets and Introducing Shape Functions</h4>
+<div class="outline-text-4" id="text-orgd003f11">
+<ul class="org-ul">
+<li>Recall the set of global node numbers, \(\eta = \{1,2,\ldots,n_{np}\}\).</li>
+<li>Let \(\eta_{\mathscr{g}_i} \in \eta\) be the set of nodes at which \(u_i^h = \mathscr{g}_i\) and let \(\eta - \eta_{\mathscr{g}_i}\) be the complement of \(\eta_{\mathscr{g}_i}\).</li>
+<li>For each node in \(\eta - \eta_{\mathscr{g}_i}\), the nodal value of \(u_i^h\) is to be determined.</li>
+<li><p>
+The explicit representations of \(v_i^h\) and \(\mathscr{g}_i^h\), in terms of the shape functions and nodal values are
+</p>
 
+<div id="orgfe008a2" class="figure">
+<p><img src="./5.fig12-trialfunctions.png" alt="5.fig12-trialfunctions.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div></li>
 </ul>
-</section>
-<section id="slide-orgfb6c2c4">
-<h4 id="orgfb6c2c4">Basis Vectors and Tensor Notation</h4>
-<ul>
-<li class="fragment appear"><p>
+</div>
+</div>
+<div id="outline-container-orgc6feddd" class="outline-4">
+<h4 id="orgc6feddd">Basis Vectors and Tensor Notation</h4>
+<div class="outline-text-4" id="text-orgc6feddd">
+<ul class="org-ul">
+<li><p>
 Let \(\boldsymbol{e}_i\) denote the $i$th Euclidean basis vector for \(\mathbb{R}^{n_{sd}}\) as
 </p>
 
-
-<div id="org1e0b7c9" class="figure">
-<p><img src="./5.fig13-basisvectors.png" alt="5.fig13-basisvectors.png" />
+<div id="org0afd2fc" class="figure">
+<p><img src="./5.fig13-basisvectors.png" alt="5.fig13-basisvectors.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
-<li class="fragment appear"><p>
+<li><p>
 The trial and weight functions can now be expressed in their tensor forms 
 </p>
 
-
-<div id="org0660349" class="figure">
-<p><img src="./5.fig14-trialfunctionstensorform.png" alt="5.fig14-trialfunctionstensorform.png" />
+<div id="org01d8c93" class="figure">
+<p><img src="./5.fig14-trialfunctionstensorform.png" alt="5.fig14-trialfunctionstensorform.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
-
 </ul>
-</section>
-<section id="slide-org7f137e7">
-<h3 id="org7f137e7">Matrix Form (Global Scheme)</h3>
+</div>
+</div>
+</div>
+<div id="outline-container-orgce965bb" class="outline-3">
+<h3 id="orgce965bb">Matrix Form (Global Scheme)</h3>
+<div class="outline-text-3" id="text-orgce965bb">
 <p>
 Introducing the variables in their tensor forms into the Galerkin form in it&rsquo;s abstract notation, we get
 </p>
 
-
-<div id="orgd776b25" class="figure">
-<p><img src="./5.fig15-abstractnotationtensorform.png" alt="5.fig15-abstractnotationtensorform.png" />
+<div id="orgbabc4dd" class="figure">
+<p><img src="./5.fig15-abstractnotationtensorform.png" alt="5.fig15-abstractnotationtensorform.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 
-</section>
-<section>
 <p>
 This is equivalent to the matrix equation
 </p>
 
-
-<div id="org3ef33f7" class="figure">
-<p><img src="./5.fig16-matrixformglobalscheme.png" alt="5.fig16-matrixformglobalscheme.png" />
+<div id="org4f1f309" class="figure">
+<p><img src="./5.fig16-matrixformglobalscheme.png" alt="5.fig16-matrixformglobalscheme.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
-</section>
-<section id="slide-orga8c09b5">
-<h4 id="orga8c09b5">Introducing the Strain-Displacement Operator</h4>
-<ul>
-<li class="fragment appear"><p>
+</div>
+<div id="outline-container-orgf1e90a7" class="outline-4">
+<h4 id="orgf1e90a7">Introducing the Strain-Displacement Operator</h4>
+<div class="outline-text-4" id="text-orgf1e90a7">
+<ul class="org-ul">
+<li><p>
 It is customary to express the stiffness components using the strain-displacement operator, \(\boldsymbol{B}\), which is defined for \(n_{sd}=2\) as
 </p>
 
-
-<div id="org45f8add" class="figure">
-<p><img src="./5.fig18-straindisplacement.png" alt="5.fig18-straindisplacement.png" />
+<div id="orgad38527" class="figure">
+<p><img src="./5.fig18-straindisplacement.png" alt="5.fig18-straindisplacement.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div></li>
-<li class="fragment appear"><p>
+<li><p>
 With these, the stiffness components can be restated in their customary finite element  notation as
 </p>
-
-<p>
-<img src="./5.fig19-customarystiffnessglobal.png" alt="5.fig19-customarystiffnessglobal.png" />
+<p width="700px" style="&quot;display: block; margin: auto&quot;">
+<img src="./5.fig19-customarystiffnessglobal.png" alt="5.fig19-customarystiffnessglobal.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 where \(P = \mathrm{ID}(i,A)\) and \(Q = \mathrm{ID}(j,B)\).
 </p></li>
-
 </ul>
-</section>
-</section>
-<section>
-<section id="slide-org5aec1aa">
-<h2 id="org5aec1aa">(\(\S2.9\)) Element Arrays (Local Scheme)</h2>
-<ul>
-<li class="fragment appear">In defining \(\boldsymbol{k}^e\) and \(\boldsymbol{f}^e\), we introduce a number of additional programming parameters for convenience:
-<ul>
-<li class="fragment appear">\(n_{ed}\): number of element degrees of freedom per node. Note that it is possible to have \(n_{ed} \leq n_\mathrm{dof}\).</li>
-<li class="fragment appear">\(n_{en}\): number of nodes per element</li>
-<li class="fragment appear">\(n_{ee}\): number of element equations, \(n_{ee} = n_{ed} n_{en}\).</li>
-
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb3f7d8e" class="outline-2">
+<h2 id="orgb3f7d8e">(\(\S2.9\)) Element Arrays (Local Scheme)</h2>
+<div class="outline-text-2" id="text-orgb3f7d8e">
+<ul class="org-ul">
+<li>In defining \(\boldsymbol{k}^e\) and \(\boldsymbol{f}^e\), we introduce a number of additional programming parameters for convenience:
+<ul class="org-ul">
+<li>\(n_{ed}\): number of element degrees of freedom per node. Note that it is possible to have \(n_{ed} \leq n_\mathrm{dof}\).</li>
+<li>\(n_{en}\): number of nodes per element</li>
+<li>\(n_{ee}\): number of element equations, \(n_{ee} = n_{ed} n_{en}\).</li>
 </ul></li>
-<li class="fragment appear"><img src="./5.fig20-2delementlocalscheme.png" alt="5.fig20-2delementlocalscheme.png" /></li>
-
+<li><img src="./5.fig20-2delementlocalscheme.png" alt="5.fig20-2delementlocalscheme.png" width="700px" style="&quot;display: block; margin: auto&quot;" /></li>
 </ul>
-</section>
-<section id="slide-orgff0d3a1">
-<h3 id="orgff0d3a1">Nodal Submatrices</h3>
-<ul>
-<li class="fragment appear">The <b><i>nodal submatrix</i></b> is defined for programming purposes as
-<img src="./5.fig22-nodalsubmatrix.png" alt="5.fig22-nodalsubmatrix.png" /></li>
-<li class="fragment appear">By combining the nodal contributions into a single array
+</div>
+<div id="outline-container-org971478b" class="outline-3">
+<h3 id="org971478b">Nodal Submatrices</h3>
+<div class="outline-text-3" id="text-org971478b">
+<ul class="org-ul">
+<li><p>
+The <b><i>nodal submatrix</i></b> is defined for programming purposes as
+</p>
+
+<div id="orgff88c3e" class="figure">
+<p><img src="./5.fig22-nodalsubmatrix.png" alt="5.fig22-nodalsubmatrix.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div></li>
+<li>By combining the nodal contributions into a single array
 \[ \boldsymbol{B} = [\boldsymbol{B}_1, \boldsymbol{B}_2, \ldots, \boldsymbol{B}_{n_{en}}] \]</li>
-<li class="fragment appear">which enables writing the element stiffness matrix as
+<li>which enables writing the element stiffness matrix as
 \[ \boldsymbol{k}^e = \int_{\Omega^e} \boldsymbol{B}^T \boldsymbol{D} \boldsymbol{B}\, d\Omega \]</li>
-<li class="fragment appear">For example, for \(n_{sd} = 2\), four-noded element
-<img src="./5.fig23-fournodedstiffness.png" alt="5.fig23-fournodedstiffness.png" /></li>
+<li><p>
+For example, for \(n_{sd} = 2\), four-noded element
+</p>
 
+<div id="org9666332" class="figure">
+<p><img src="./5.fig23-fournodedstiffness.png" alt="5.fig23-fournodedstiffness.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div></li>
 </ul>
-</section>
-<section id="slide-org3397efb">
-<h3 id="org3397efb">Element Calculations</h3>
-<ul>
-<li class="fragment appear">Let \(n_{sd} = 2\).  The displacement at node \(a\) in element \(e\) is
+</div>
+</div>
+<div id="outline-container-org78db1f7" class="outline-3">
+<h3 id="org78db1f7">Element Calculations</h3>
+<div class="outline-text-3" id="text-org78db1f7">
+<ul class="org-ul">
+<li>Let \(n_{sd} = 2\).  The displacement at node \(a\) in element \(e\) is
 \[ \boldsymbol{d}_a^e = \begin{Bmatrix} d_{1a}^e \\ d_{2a}^e \end{Bmatrix} \]
 where \(d_{ia}^e = u_i^h(x_a^e)\)</li>
-<li class="fragment appear">The stress at a given point \(\boldsymbol{x} \in \Omega^e\) can be calculated by
+<li>The stress at a given point \(\boldsymbol{x} \in \Omega^e\) can be calculated by
 \[ \boldsymbol{\sigma}(\boldsymbol{x}) = \boldsymbol{D} \sum_{a=1}^{n_{en}} \boldsymbol{B}_a(\boldsymbol{x}) \boldsymbol{d}_a^e \]</li>
-
 </ul>
-</section>
-</section>
-<section>
-<section id="slide-org6c6e82c">
-<h2 id="org6c6e82c">Examples</h2>
-<div class="outline-text-2" id="text-org6c6e82c">
 </div>
-</section>
-<section id="slide-orge306d49">
-<h3 id="orge306d49">2-D Mesh</h3>
+</div>
+</div>
+<div id="outline-container-orge250284" class="outline-2">
+<h2 id="orge250284">Examples</h2>
+<div class="outline-text-2" id="text-orge250284">
+</div>
+<div id="outline-container-orgab03956" class="outline-3">
+<h3 id="orgab03956">2-D Mesh</h3>
+<div class="outline-text-3" id="text-orgab03956">
 <p>
 Study the essential B.C.&rsquo;s in the below mesh of four-node rectangular elements below
-<img src="./5.fig21-2dmeshwessentialbcs.png" alt="5.fig21-2dmeshwessentialbcs.png" />
 </p>
 
-</section>
-<section>
-
-<div id="org6609806" class="figure">
-<p><img src="./5.fig24-2dmesharrays.png" alt="5.fig24-2dmesharrays.png" />
-</p>
-</div>
-</section>
-<section id="slide-orgb91cb89">
-<h3 id="orgb91cb89">Four-noded Element</h3>
-
-<div id="org0f0c97f" class="figure">
-<p><img src="./5.fig25-Q4addressing.png" alt="5.fig25-Q4addressing.png" />
+<div id="org30133a4" class="figure">
+<p><img src="./5.fig21-2dmeshwessentialbcs.png" alt="5.fig21-2dmeshwessentialbcs.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
 
-</section>
-<section>
 
-<div id="org2f63d92" class="figure">
-<p><img src="./5.fig26-Q4map.png" alt="5.fig26-Q4map.png" />
+<div id="orge1b36b7" class="figure">
+<p><img src="./5.fig24-2dmesharrays.png" alt="5.fig24-2dmesharrays.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
 </p>
 </div>
-</section>
-</section>
 </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/math/math.js"></script>
-<script>
-// Full list of configuration options available here:
-// https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
+<div id="outline-container-org412fa27" class="outline-3">
+<h3 id="org412fa27">Four-noded Element</h3>
+<div class="outline-text-3" id="text-org412fa27">
 
-controls: true,
-progress: true,
-history: false,
-center: true,
-slideNumber: 'c',
-rollingLinks: false,
-keyboard: true,
-mouseWheel: false,
-fragmentInURL: false,
-hashOneBasedIndex: false,
-pdfSeparateFragments: true,
-overview: true,
+<div id="org64bf242" class="figure">
+<p><img src="./5.fig25-Q4addressing.png" alt="5.fig25-Q4addressing.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div>
 
-transition: 'convex',
-transitionSpeed: 'default',
 
-// Plugins with reveal.js 4.x and later
-plugins: [ RevealNotes, RevealMath ],
-
-// Optional libraries used to extend reveal.js
-dependencies: [
-]
-
-});
-</script>
+<div id="orge56d188" class="figure">
+<p><img src="./5.fig26-Q4map.png" alt="5.fig26-Q4map.png" width="700px" style="&quot;display: block; margin: auto&quot;" />
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2026 Fall</p>
+<p class="author">Author: Fethi Okyar</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
 </body>
 </html>

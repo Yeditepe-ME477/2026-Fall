@@ -29,27 +29,27 @@ pre.src { font-size: 0.8em; color: white; background: black; padding: 10px; }
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-org5630498">(\(\S3.1\)) Preliminary Concepts</a></li>
-<li><a href="#/slide-org33ae072">(\(\S3.2\)) Bilinear Quad Element</a></li>
-<li><a href="#/slide-org18142e2">(\(\S3.3\)) Isoparametric Elements</a></li>
-<li><a href="#/slide-orgb7295ca">(\(\S3.5\)) Trilinear Hex Element</a></li>
-<li><a href="#/slide-orgc826237">(\(\S3.6\)) Higher Order Elements</a></li>
-<li><a href="#/slide-org0899cd9">(\(\S3.8\)) Gaussian Quadrature</a></li>
-<li><a href="#/slide-org45e8556">(\(\S3.9\)) Shape Function Subroutines</a></li>
-<li><a href="#/slide-orga40dffc">(\(\S3.10\)) Stiffness Coding Styles</a></li>
+<li><a href="#/slide-org31b10b9">(\(\S3.1\)) Preliminary Concepts</a></li>
+<li><a href="#/slide-org2ed5fe3">(\(\S3.2\)) Bilinear Quad Element</a></li>
+<li><a href="#/slide-org2f598aa">(\(\S3.3\)) Isoparametric Elements</a></li>
+<li><a href="#/slide-orgb4729ad">(\(\S3.5\)) Trilinear Hex Element</a></li>
+<li><a href="#/slide-org5926c70">(\(\S3.6\)) Higher Order Elements</a></li>
+<li><a href="#/slide-org0ac0adc">(\(\S3.8\)) Gaussian Quadrature</a></li>
+<li><a href="#/slide-org62ad83d">(\(\S3.9\)) Shape Function Subroutines</a></li>
+<li><a href="#/slide-org91aedf4">(\(\S3.10\)) Stiffness Coding Styles</a></li>
 </ul>
 </div>
 </div>
 </section>
 <section>
-<section id="slide-org5630498">
-<h2 id="org5630498">(\(\S3.1\)) Preliminary Concepts</h2>
+<section id="slide-org31b10b9">
+<h2 id="org31b10b9">(\(\S3.1\)) Preliminary Concepts</h2>
 <p>
 <a href="./5.elastostatics.html">\(\leftarrow\) Previous Lecture</a>
 </p>
 </section>
-<section id="slide-orgd08f444" data-background="./6.fig1-c0continuity.png" data-background-size="contain" data-background-position="center" data-background-opacity="0.3">
-<h3 id="orgd08f444">Basic convergence requirements</h3>
+<section id="slide-org6407898" data-background="./6.fig1-c0continuity.png" data-background-size="contain" data-background-position="center" data-background-opacity="0.3">
+<h3 id="org6407898">Basic convergence requirements</h3>
 <p>
 In designing elements, their shape functions are expected to obey the below requirements: (<a href="textbook/Ch3_p1.pdf">Chapter 3</a>, p.109)
 </p>
@@ -60,8 +60,8 @@ In designing elements, their shape functions are expected to obey the below requ
 
 </ul>
 </section>
-<section id="slide-org9f384fd">
-<h3 id="org9f384fd">Remarks on R1 and R2</h3>
+<section id="slide-orgc164750">
+<h3 id="orgc164750">Remarks on R1 and R2</h3>
 <ol>
 <li class="fragment appear">Conditions R1 and R2 guarantee that the first derivatives of the shape functions have, at worst, finite jumps across the element interfaces. This ensures that all integrals nevessary for computation of element arrays are <i>well-defined</i>.</li>
 <li class="fragment appear">Shape functions that satisfy R1 and R2 are of class \(C^0(\bar{\Omega})\), thus the name \(C^0\) elements.</li>
@@ -69,8 +69,8 @@ In designing elements, their shape functions are expected to obey the below requ
 
 </ol>
 </section>
-<section id="slide-orge7de85b">
-<h3 id="orge7de85b">Remarks on R3</h3>
+<section id="slide-orgc375f56">
+<h3 id="orgc375f56">Remarks on R3</h3>
 <ol>
 <li class="fragment appear">Completeness requires that the element interpolation function (\(u^h\)) is capable of exactly representing an arbitrary linear polynomial. This is especially important when higher order shape functions are utilized in the interpolation.</li>
 <li class="fragment appear">In elasticity, completeness ensures that in modeling deformation, all rigid motions and constant strain states are exactly represented.</li>
@@ -79,31 +79,31 @@ In designing elements, their shape functions are expected to obey the below requ
 </section>
 </section>
 <section>
-<section id="slide-org33ae072">
-<h2 id="org33ae072">(\(\S3.2\)) Bilinear Quad Element</h2>
+<section id="slide-org2ed5fe3">
+<h2 id="org2ed5fe3">(\(\S3.2\)) Bilinear Quad Element</h2>
 <ul>
 <li>The domain of a straight-edged quadrilateral element is defined by the locations of its four nodal points \(\boldsymbol{x}_a^e,\, a=1,\ldots,4\) in the \(\mathbb{R}^2\) plane.</li>
 <li>It is assumed that the nodes are labeled in ascending order and counterclockwise direction.</li>
 
 </ul>
 </section>
-<section id="slide-orge337254">
-<h3 id="orge337254">Element Mapping</h3>
+<section id="slide-org9d2d48b">
+<h3 id="org9d2d48b">Element Mapping</h3>
 <p>
 We seek to map the given quadrilateral into the biunit square (also known as the <b><i>parent domain</i></b>).
 <img src="./6.fig2-quadparent.png" alt="6.fig2-quadparent.png" />
 </p>
 </section>
-<section id="slide-orgfd65a33">
-<h3 id="orgfd65a33">Change of Coordinates</h3>
+<section id="slide-orge0ae24d">
+<h3 id="orge0ae24d">Change of Coordinates</h3>
 <p>
 The coordinates of a point
 <img src="./6.fig3-coordinatemaps.png" alt="6.fig3-coordinatemaps.png" />
 where \(\xi\) and \(\eta\) are sometimes called the <b><i>natural coordinates</i></b>.
 </p>
 </section>
-<section id="slide-org13ab0ca">
-<h4 id="org13ab0ca">Bilinear Expansions</h4>
+<section id="slide-org504d40e">
+<h4 id="org504d40e">Bilinear Expansions</h4>
 <p>
 In tensor form this reads
 \[ \boldsymbol{x}(\boldsymbol{\xi}) = \sum_{a=1}^4 N_a(\boldsymbol{\xi}) \boldsymbol{x}_a^e \]
@@ -111,19 +111,19 @@ The shape functions \(N_a\) are obtained by first assuming the &ldquo;bilinear e
 </p>
 
 
-<div id="orgace502e" class="figure">
+<div id="org7b93b8d" class="figure">
 <p><img src="./6.fig4-bilinearexpansions.png" alt="6.fig4-bilinearexpansions.png" />
 </p>
 </div>
 </section>
-<section id="slide-org5615b7b">
-<h4 id="org5615b7b">Bilinear Mapping Functions</h4>
+<section id="slide-orgbcea01d">
+<h4 id="orgbcea01d">Bilinear Mapping Functions</h4>
 <p>
 Equations (3.2.6) to (3.2.9) lead to the following matrix equations:
 </p>
 
 
-<div id="org1cde832" class="figure">
+<div id="org89d6254" class="figure">
 <p><img src="./6.fig5-bilinearfunctions.png" alt="6.fig5-bilinearfunctions.png" />
 </p>
 </div>
@@ -138,8 +138,8 @@ The bilinear mapping functions are illustrated below.
 Notice that coordinate lines in \(\boldsymbol{\xi}\) space (i.e., lines such that \(\xi=\) constant or \(\eta=\) constant) are mapped into straight lines in \(\boldsymbol{x}\) space.
 </p>
 </section>
-<section id="slide-org76404e3">
-<h3 id="org76404e3">Isoparametric Assumption</h3>
+<section id="slide-org5dd58b9">
+<h3 id="org5dd58b9">Isoparametric Assumption</h3>
 <p>
 We shall <i>assume</i> that the element shape functions are given by similar expansions in terms of the mapping functions:
 </p>
@@ -154,22 +154,22 @@ We shall <i>assume</i> that the element shape functions are given by similar exp
 \[ u_i^h (\boldsymbol{\xi}) = \sum_{a=1}^4 N_a(\boldsymbol{\xi}) d_{ia}^e \]
 </p>
 </section>
-<section id="slide-org9e3a5a8">
-<h4 id="org9e3a5a8">Properties of Bilinear Mapping Functions</h4>
-<div class="outline-text-4" id="text-org9e3a5a8">
+<section id="slide-org2947838">
+<h4 id="org2947838">Properties of Bilinear Mapping Functions</h4>
+<div class="outline-text-4" id="text-org2947838">
 </div>
 <ul class="org-ul">
-<li><a id="orgd187aac"></a>R1. Smoothness on \(\Omega^e\).<br />
+<li><a id="orgd7cc011"></a>R1. Smoothness on \(\Omega^e\).<br />
 <p>
 The smoothness condition can be shown to be valid for any quadrilateral for which all internal angles are less then 180\(^\circ\).
 </p>
 </li>
-<li><a id="orgc481b7e"></a>R2. Continuity across \(\Gamma^e\).<br />
+<li><a id="orgf9ac134"></a>R2. Continuity across \(\Gamma^e\).<br />
 <p>
 Satisfied.
 </p>
 </li>
-<li><a id="org0c39e51"></a>R3. Completeness.<br />
+<li><a id="orgc3f5b34"></a>R3. Completeness.<br />
 <p>
 Satisfied.
 </p>
@@ -178,15 +178,15 @@ Satisfied.
 </section>
 </section>
 <section>
-<section id="slide-org18142e2">
-<h2 id="org18142e2">(\(\S3.3\)) Isoparametric Elements</h2>
+<section id="slide-org2f598aa">
+<h2 id="org2f598aa">(\(\S3.3\)) Isoparametric Elements</h2>
 <p>
 The isoparametric proposition is generally attributed to Taig [6] and Irons [7]. (References from Ch.3 of textbook)
 <img src="./6.fig7-isoparametricdefinition.png" alt="6.fig7-isoparametricdefinition.png" />
 </p>
 </section>
-<section id="slide-org5474842">
-<h3 id="org5474842">Convergence Conditions</h3>
+<section id="slide-orgee1c3d8">
+<h3 id="orgee1c3d8">Convergence Conditions</h3>
 <ul>
 <li class="fragment appear"><b>Definition 2.</b> A mapping \(\boldsymbol{x}:\Box\to\bar\Omega^e\cup\mathbb{R}^{n_{sd}}\) is said to be <b><i>one-to-one</i></b>, if for each point \(\boldsymbol\xi^{(1)}\), \(\boldsymbol\xi^{(2)}\in \Box\) such that \(\boldsymbol\xi^{(1)}\neq\boldsymbol\xi^{(2)}\), then \(\boldsymbol{x}^{(1)}\neq\boldsymbol{x}^{(2)}\)</li>
 <li class="fragment appear"><b>Definition 1.</b> \(\boldsymbol{x}:\Box\to\bar\Omega^e\) is said to be <b><i>onto</i></b> if \(\bar\Omega^e = \boldsymbol{x}(\Box)\). (i.e., each point in \(\bar\Omega^e\) is the image of a point in \(\Box\) under the mapping).</li>
@@ -201,8 +201,8 @@ Translation in 2D:
 
 </ul>
 </section>
-<section id="slide-org55453fa">
-<h3 id="org55453fa">Remarks</h3>
+<section id="slide-org8a3bf07">
+<h3 id="org8a3bf07">Remarks</h3>
 <ul>
 <li class="fragment appear"><p>
 It is a consequence of the inverse function theorem that if \(\boldsymbol{x}\) is
@@ -225,8 +225,8 @@ then the inverse mapping \(\boldsymbol\xi=\boldsymbol{x}^{-1}:\bar\Omega^e\to\Bo
 </section>
 </section>
 <section>
-<section id="slide-orgb7295ca">
-<h2 id="orgb7295ca">(\(\S3.5\)) Trilinear Hex Element</h2>
+<section id="slide-orgb4729ad">
+<h2 id="orgb4729ad">(\(\S3.5\)) Trilinear Hex Element</h2>
 <ul>
 <li class="fragment appear">The trilinear hexahedral element is the basic element for three-dimensional analysis. The domain \(\Omega^e\) is the image of the biunit cube in \(\xi\) space under the trilinear mapping
 \[x(\boldsymbol\xi) = \alpha_0 + \alpha_1\xi + \alpha_2\eta + \alpha_3\zeta + \alpha_4\xi\eta + \alpha_5\eta\zeta + \alpha_6\zeta\xi + alpha_7\xi\eta\zeta \]</li>
@@ -236,15 +236,15 @@ then the inverse mapping \(\boldsymbol\xi=\boldsymbol{x}^{-1}:\bar\Omega^e\to\Bo
 
 </ul>
 </section>
-<section id="slide-orgac26673">
-<h3 id="orgac26673">Trilinear Shape Functions</h3>
+<section id="slide-org912a811">
+<h3 id="org912a811">Trilinear Shape Functions</h3>
 <ul>
 <li class="fragment appear"><p>
 Enforcing the above conditions gives rise to a system of linear algebraic equations, viz.,
 </p>
 
 
-<div id="org5ebef2b" class="figure">
+<div id="org943a566" class="figure">
 <p><img src="./6.fig9-trilinearequations.png" alt="6.fig9-trilinearequations.png" />
 </p>
 </div></li>
@@ -255,8 +255,8 @@ where
 
 </ul>
 </section>
-<section id="slide-org239dde1">
-<h3 id="org239dde1">Isoparametric Shape Functions</h3>
+<section id="slide-orgfbd8458">
+<h3 id="orgfbd8458">Isoparametric Shape Functions</h3>
 <ul>
 <li class="fragment appear">Invoking teh isoparametric concept, i.e.,
 \[ u^h (\boldsymbol\xi) = \sum_{a=1}^8 N_a(\boldsymbol\xi) d_a^e \]</li>
@@ -268,16 +268,16 @@ where
 </section>
 </section>
 <section>
-<section id="slide-orgc826237">
-<h2 id="orgc826237">(\(\S3.6\)) Higher Order Elements</h2>
+<section id="slide-org5926c70">
+<h2 id="org5926c70">(\(\S3.6\)) Higher Order Elements</h2>
 <ul>
 <li>Thus far we have considered element for which shape functions are constructed from products of the linear one-dimensional shape functions.</li>
 <li>Systematic derivation of certain higher-order isoparametric elements may be performed with the aid of the one-dimensional Lagrange polynomials.</li>
 
 </ul>
 </section>
-<section id="slide-org73cadf8">
-<h3 id="org73cadf8">Lagrange Polynomials</h3>
+<section id="slide-org968c286">
+<h3 id="org968c286">Lagrange Polynomials</h3>
 <ul>
 <li class="fragment appear">The Lagrange polynomials are defined by
 <img src="./6.fig11-generallagrange.png" alt="6.fig11-generallagrange.png" /></li>
@@ -288,39 +288,39 @@ where
 
 </ul>
 </section>
-<section id="slide-org3a685dc">
-<h4 id="org3a685dc">Three-noded Line Element</h4>
+<section id="slide-orgd6f4f1d">
+<h4 id="orgd6f4f1d">Three-noded Line Element</h4>
 <p>
 As an example the shape functions of a three-noded line element are
 </p>
 
 
-<div id="org934939a" class="figure">
+<div id="orge4d5c57" class="figure">
 <p><img src="./6.fig12-threenodeline.png" alt="6.fig12-threenodeline.png" />
 </p>
 </div>
 </section>
-<section id="slide-org26345fe">
-<h4 id="org26345fe">Bilinear Quad</h4>
+<section id="slide-orgf793f7f">
+<h4 id="orgf793f7f">Bilinear Quad</h4>
 <p>
 The shape functions for the bilinear quadrilateral may be set up by taking products of the first order Lagrange polynomials.
 <img src="./6.fig13-lagrangebilinear.png" alt="6.fig13-lagrangebilinear.png" />
 </p>
 </section>
-<section id="slide-orgc959e0c">
-<h3 id="orgc959e0c">Higher-order Lagrange Elements</h3>
+<section id="slide-org987e361">
+<h3 id="org987e361">Higher-order Lagrange Elements</h3>
 <p>
 Higher order, two- and three-dimensional elements may be derived by taking products of Lagrange polynomials. This shall be illustrated by setting up the nine-node two-dimensional Lagrange element.
 </p>
 
 
-<div id="org631ff0d" class="figure">
+<div id="orgf2f84f3" class="figure">
 <p><img src="./6.fig14-q9illustration.png" alt="6.fig14-q9illustration.png" />
 </p>
 </div>
 </section>
-<section id="slide-org7281432">
-<h4 id="org7281432">Nine-node quadrilateral element (Q9)</h4>
+<section id="slide-org0ce82ed">
+<h4 id="org0ce82ed">Nine-node quadrilateral element (Q9)</h4>
 <p>
 The formula for the shape function is
 \[ N_a (\xi,\eta) = l_b^2(\xi) l_c^2(\eta) \]
@@ -331,23 +331,23 @@ where the relationship among the indices is given in the table below.
 </section>
 <section>
 
-<div id="orgbd34e21" class="figure">
+<div id="org51c8d1b" class="figure">
 <p><img src="./6.fig16-q9typicalshapes.png" alt="6.fig16-q9typicalshapes.png" />
 </p>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org0899cd9">
-<h2 id="org0899cd9">(\(\S3.8\)) Gaussian Quadrature</h2>
+<section id="slide-org0ac0adc">
+<h2 id="org0ac0adc">(\(\S3.8\)) Gaussian Quadrature</h2>
 <p>
 Let \(f:\Omega^e \in \mathbb{R}^{n_{sd}} \to \mathbb{R}\) be a given function. We are interested in computing
 \[ \int_{\Omega^e} f(\boldsymbol{x}) d\Omega \]
 for purposes of constructing element arrays. (\(f\) may be thought of as any term in an integrand, such as the integrand in heat conduction \(\boldsymbol{B}_a^T \boldsymbol{D} \boldsymbol{B}_a\)).
 </p>
 </section>
-<section id="slide-orgdaf72c6">
-<h3 id="orgdaf72c6">Pullback to the Parent Domain</h3>
+<section id="slide-org2addb2e">
+<h3 id="org2addb2e">Pullback to the Parent Domain</h3>
 <ul>
 <li class="fragment appear">Throughout, we shall assume that \(f\) is smooth and integrable.</li>
 <li class="fragment appear">We will pull back the integral over the element domain in \(\boldsymbol{x}\) space to one over the parent domain (i.e., the biunit \(n_{sd}\) cube).</li>
@@ -361,26 +361,68 @@ for purposes of constructing element arrays. (\(f\) may be thought of as any ter
 
 </ul>
 </section>
-<section id="slide-org8c15ad3">
-<h3 id="org8c15ad3">Numerical (Approximate) Integration</h3>
+<section id="slide-org6f23250">
+<h3 id="org6f23250">Numerical (Approximate) Integration</h3>
 <p>
 Consider the one-dimensional case, in which we wish to evaluate
 </p>
 
 <p>
 <img src="./6.fig18-onedquadrature.png" alt="6.fig18-onedquadrature.png" />
-where \(n_{int}\) is the number of integration (quadrature) points, \(\tilde\xi_l\) is the coordinate of the \(l\mathrm{th}\) integration point, \(W_l\) is the &ldquo;weight&rdquo; of the \(l\mathrm{th}\) integration point, and \(R\) is the remainder. 
+where \(n_{int}\) is the number of integration (quadrature) points, \(\tilde\xi_l\) is the coordinate of the \(l\mathrm{th}\) integration point, \(W_l\) is the &ldquo;weight&rdquo; of the \(l\mathrm{th}\) integration point, and \(R\) is the remainder.
 </p>
 </section>
+<section id="slide-org9327ae9">
+<h4 id="org9327ae9">Trapezoidal Rule</h4>
+<ul>
+<li class="fragment appear"><div>
+\begin{align}
+n_\mathrm{int} & = 2\\
+\tilde{\xi}_1 & = -1\\
+\tilde\xi_2 & = 1\\
+W_l & = 1,\hspace{2em} l=1,2\\
+R & = -\frac{2}{3}g_{,\xi\xi}(\tilde\xi)
+\end{align}
+
+</div></li>
+<li class="fragment appear">\(\tilde\xi\) denotes some point in the interval \([-1,1]\).</li>
+<li class="fragment appear">The trapezoidal rule is exact for constants and linear poynomials but only approximate for higher order polynomials.</li>
+<li class="fragment appear">It is said to be &ldquo;second-order accurate&rdquo;.</li>
+
+</ul>
+</section>
+<section id="slide-org3cc826d">
+<h4 id="org3cc826d">Simpson&rsquo;s Rule</h4>
+<ul>
+<li class="fragment appear"><div>
+\begin{align}
+n_\mathrm{int} & = 3\\
+\tilde{\xi}_1 & = -1\\
+\tilde\xi_2 & = 0\\
+\tilde\xi_3 & = -1\\
+W_1 = W_3 & = 1/3\\
+W_2 & = 4/3\\
+R & = \frac{-g^{(4)}(\tilde\xi)}{90}
+\end{align}
+
+</div></li>
+<li class="fragment appear">\(g^{(4)} = g_{,\xi\xi\xi\xi}\). Simpson&rsquo;s rule integrates general cubic polynomials exactly and is thus said to be &ldquo;fourth-order accurate&rdquo;</li>
+<li class="fragment appear">Trapezoidal and Simpson&rsquo;s rules are widely used, but there exists integration rules that are just as accurate but involve fewer integration points.</li>
+
+</ul>
+</section>
+<section id="slide-orgbdab861">
+<h3 id="orgbdab861">Gaussian Quadrature</h3>
+</section>
 </section>
 <section>
-<section id="slide-org45e8556">
-<h2 id="org45e8556">(\(\S3.9\)) Shape Function Subroutines</h2>
+<section id="slide-org62ad83d">
+<h2 id="org62ad83d">(\(\S3.9\)) Shape Function Subroutines</h2>
 </section>
 </section>
 <section>
-<section id="slide-orga40dffc">
-<h2 id="orga40dffc">(\(\S3.10\)) Stiffness Coding Styles</h2>
+<section id="slide-org91aedf4">
+<h2 id="org91aedf4">(\(\S3.10\)) Stiffness Coding Styles</h2>
 </section>
 </section>
 </div>

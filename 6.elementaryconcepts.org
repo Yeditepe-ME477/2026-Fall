@@ -173,6 +173,35 @@ for purposes of constructing element arrays. ($f$ may be thought of as any term 
 Consider the one-dimensional case, in which we wish to evaluate
 
 [[./6.fig18-onedquadrature.png]]
-where $n_{int}$ is the number of integration (quadrature) points, $\tilde\xi_l$ is the coordinate of the $l\mathrm{th}$ integration point, $W_l$ is the "weight" of the $l\mathrm{th}$ integration point, and $R$ is the remainder. 
+where $n_{int}$ is the number of integration (quadrature) points, $\tilde\xi_l$ is the coordinate of the $l\mathrm{th}$ integration point, $W_l$ is the "weight" of the $l\mathrm{th}$ integration point, and $R$ is the remainder.
+*** Trapezoidal Rule
+#+ATTR_REVEAL: :frag (appear)
+- 
+   \begin{align}
+   n_\mathrm{int} & = 2\\
+   \tilde{\xi}_1 & = -1\\
+   \tilde\xi_2 & = 1\\
+   W_l & = 1,\hspace{2em} l=1,2\\
+   R & = -\frac{2}{3}g_{,\xi\xi}(\tilde\xi)
+   \end{align}
+- $\tilde\xi$ denotes some point in the interval $[-1,1]$.
+- The trapezoidal rule is exact for constants and linear poynomials but only approximate for higher order polynomials.
+- It is said to be "second-order accurate".
+*** Simpson's Rule
+#+ATTR_REVEAL: :frag (appear)
+- 
+   \begin{align}
+   n_\mathrm{int} & = 3\\
+   \tilde{\xi}_1 & = -1\\
+   \tilde\xi_2 & = 0\\
+   \tilde\xi_3 & = -1\\
+   W_1 = W_3 & = 1/3\\
+   W_2 & = 4/3\\
+   R & = \frac{-g^{(4)}(\tilde\xi)}{90}
+   \end{align}
+- $g^{(4)} = g_{,\xi\xi\xi\xi}$. Simpson's rule integrates general cubic polynomials exactly and is thus said to be "fourth-order accurate"
+- Trapezoidal and Simpson's rules are widely used, but there exists integration rules that are just as accurate but involve fewer integration points.
+** Gaussian Quadrature
+
 * ($\S3.9$) Shape Function Subroutines
 * ($\S3.10$) Stiffness Coding Styles

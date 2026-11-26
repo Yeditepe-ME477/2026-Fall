@@ -20,7 +20,9 @@
 [[./4.heat_equation.html][$\leftarrow$ Previous Lecture]]
 #+ATTR_REVEAL: :frag (appear)
 - Classical elastostatics is a rich subject in its own right.
-- [[./5.fig1-elasticityreferences.png]]
+- 
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
+  [[./5.fig1-elasticityreferences.png]]
 - Let $\sigma_{ij}$ denote the */stress tensor/*, let $u_i$ denote the */displacement vector/*, and let $\mathscr{f}_i$ be the */prescribed body force per unit volume/*. The */(infinitesimal) strain tensor/*, $\epsilon_{ij}$, is defined as the symmetric part of the displacement gradients, viz.,
   \[ \epsilon_{ij} = u_{(i,j)} = \frac{u_{i,j} + u_{j,i}}{2} \]
   These are also known as the */strain-displacement equations/*.
@@ -41,19 +43,25 @@
 #+ATTR_REVEAL: :frag (appear)
 - The unknown solution variable is a vector, which necessitates the generalization of the boundary conditions /per vector component/:
   \[ \left. \begin{align*} \Gamma & = \overline{\Gamma_{\mathscr{g}_i} \cup \Gamma_{\mathscr{h}_i}} \\ \varnothing & = \overline{\Gamma_{\mathscr{g}_i} \cap \Gamma_{\mathscr{h}_i}} \end{align*} \right\} \hspace{2em} i=1,\ldots,n_{sd} \]
-- [[./5.fig2-generalizingbcs.png]]
+- 
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
+  [[./5.fig2-generalizingbcs.png]]
 
 * ($\S2.7$) Strong ($S$) and Weak ($W$) Forms
 ** Strong Form
 #+ATTR_REVEAL: :frag (appear)
-- [[./5.fig3-strongform.png]]
+- 
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
+  [[./5.fig3-strongform.png]]
 - The functions $\mathscr{g}_i$ and $\mathscr{h}_i$ are called the */prescribed boundary displacements/* and */tractions/*, respectively.
 - The additional complexity is that the unknown (i.e., $\boldsymbol{u} = u_i$) is vector-valued.
 ** Weak Form  
 #+ATTR_REVEAL: :frag (appear)
 - Let $\delta_i$ denote the trial solution space and $\mathscr{V}_i$ the weight space. Each member $u_i \in \delta_i$ satisfies $u_i = \mathscr{g}_i$ on $\Gamma_{\mathscr{g}_i}$, whereas each $w_i \in \mathscr{V}_i$ satisfies $w_i=0$ on $\Gamma_{\mathscr{g}_i}$.
 - The weak formulation goes:
-- [[./5.fig4-weakform.png]]
+- 
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
+  [[./5.fig4-weakform.png]]
 - ($W$) is also referred to as the */principle of virtual work/* or */principle of virtual displacements/*.
 - Note the use of summation symbol in the last term in order to preserve the validity of the indicial expression (in the last term the index $i$ repeats three times).
 *** Proof
@@ -61,42 +69,51 @@
 - *Lemma 1.* Let $s_{ij}$ be a nonsymmetric second-rank tensor. Then $s_{ij} = s_{(ij)} + s_{[ij]}$, where $s_{(ij)}$ is symmetric (i.e., $s_{(ij)} = s_{(ji)}$) and $s_{[ij]}$ is skew-symmetric (i.e., $s_{[ij]} = - s_{[ji]}$).
 - *Lemma 2.* Let $s_{ij}$ be a nonsymmetric tensor and $t_{ij}$ be a symmetric tensor. Then
   \[ s_{ij} t_{ij} = s_{(ij)} t_{ij} \]
-- [[./5.fig5-proofofweak.png]]
+- 
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
+  [[./5.fig5-proofofweak.png]]
 *** Abstract Notation
 With the operator definitions given below
 
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./5.fig6-abstractnotation.png]]
 
 Note the replacement of $w_{(i,j)} \sigma_{ij} = w_{(i,j)} c_{ijkl} u_{(i,j)}$.  The weak form can be re-written using these operators.
 
 #+REVEAL: split
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./5.fig7-weakformabstract.png]]
 *** Reorganizing Strain Tensor Components into a Strain Vector
 #+ATTR_REVEAL: :frag (appear)
 - In order to increase the readability and facilitate computer implementation, the symmetric parts of the gradients of the weight and trial functions, i.e. $w_{(i,j)}$ and $u_{(i,j)}$, respectively, are recast into vector form, resulting with the definition of the so-called */strain vector operator/*, $\boldsymbol{\epsilon}$
-- [[./5.fig8-reductionvariables.png]]
+- 
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
+  [[./5.fig8-reductionvariables.png]]
 *** Reduced Elasticity Matrix Variants, $\boldsymbol{D}$
 #+ATTR_REVEAL: :frag (appear)
 - This reduction of order necessitates a similar reduction of the fourth order elasticity tensor, $c_{ijkl}$, to a second order tensor, $D_{IJ}$.
 - $D_{IJ}$ are elasticity coefficients related to $c_{ijkl}$, associated by the relations below.
-
+ 
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
   [[./5.fig17-conversionofd.png]]
-  
-  The above table of conversion is valid for a */2-D plane strain/* model ($\epsilon_{33} = 0$).
+    The above table of conversion is valid for a */2-D plane strain/* model ($\epsilon_{33} = 0$).
 - Slight modification of the coefficients will be required for other 2-D model variants.
   + 2-D Plane Stress Model, $\sigma_{33} = 0$.
   + 2-D Axisymmetric Model.
 *** Dimensional Reduction of $w_{(i,j)}c_{ijkl} u_{(k,l)}$
 As a result of reorganizing the components of higher order tensors into lower order tensors, 
-
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./5.fig9-dimensionalreduction.png]]
 * ($\S2.8$) Galerkin Formulation
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./5.fig10-galerkinform.png]]
 ** Computer Implementation
 #+ATTR_REVEAL: :frag (appear)
 - To define the global stiffness and load arrays for a vector-valued problem, it is necessary to introduce the ID array.
 - The variable $n_\mathrm{dof}$, is defined as the number of */degrees of freedom per node/*, is defined.
-- [[./5.fig11-idarray.png]]
+-
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
+  [[./5.fig11-idarray.png]]
 - ID has dimensions $n_\mathrm{dof} \times n_{np}$.
 *** Modifying Sets and Introducing Shape Functions
 #+ATTR_REVEAL: :frag (appear)
@@ -104,31 +121,32 @@ As a result of reorganizing the components of higher order tensors into lower or
 - Let $\eta_{\mathscr{g}_i} \in \eta$ be the set of nodes at which $u_i^h = \mathscr{g}_i$ and let $\eta - \eta_{\mathscr{g}_i}$ be the complement of $\eta_{\mathscr{g}_i}$.
 - For each node in $\eta - \eta_{\mathscr{g}_i}$, the nodal value of $u_i^h$ is to be determined.
 - The explicit representations of $v_i^h$ and $\mathscr{g}_i^h$, in terms of the shape functions and nodal values are
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
   [[./5.fig12-trialfunctions.png]]
 *** Basis Vectors and Tensor Notation
 #+ATTR_REVEAL: :frag (appear)
 - Let $\boldsymbol{e}_i$ denote the $i$th Euclidean basis vector for $\mathbb{R}^{n_{sd}}$ as
-
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
   [[./5.fig13-basisvectors.png]]
 - The trial and weight functions can now be expressed in their tensor forms 
-
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
   [[./5.fig14-trialfunctionstensorform.png]]
 ** Matrix Form (Global Scheme)
 Introducing the variables in their tensor forms into the Galerkin form in it's abstract notation, we get
-
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./5.fig15-abstractnotationtensorform.png]]
 
 #+REVEAL: split
 This is equivalent to the matrix equation
-
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./5.fig16-matrixformglobalscheme.png]]
 *** Introducing the Strain-Displacement Operator
 #+ATTR_REVEAL: :frag (appear)
 - It is customary to express the stiffness components using the strain-displacement operator, $\boldsymbol{B}$, which is defined for $n_{sd}=2$ as
-
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
   [[./5.fig18-straindisplacement.png]]
 - With these, the stiffness components can be restated in their customary finite element  notation as
-
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
   [[./5.fig19-customarystiffnessglobal.png]]
   where $P = \mathrm{ID}(i,A)$ and $Q = \mathrm{ID}(j,B)$.
 * ($\S2.9$) Element Arrays (Local Scheme)
@@ -138,16 +156,20 @@ This is equivalent to the matrix equation
   + $n_{ed}$: number of element degrees of freedom per node. Note that it is possible to have $n_{ed} \leq n_\mathrm{dof}$.
   + $n_{en}$: number of nodes per element
   + $n_{ee}$: number of element equations, $n_{ee} = n_{ed} n_{en}$.
-- [[./5.fig20-2delementlocalscheme.png]]
+-
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
+  [[./5.fig20-2delementlocalscheme.png]]
 ** Nodal Submatrices
 #+ATTR_REVEAL: :frag (appear)
 - The */nodal submatrix/* is defined for programming purposes as
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
   [[./5.fig22-nodalsubmatrix.png]]
 - By combining the nodal contributions into a single array
   \[ \boldsymbol{B} = [\boldsymbol{B}_1, \boldsymbol{B}_2, \ldots, \boldsymbol{B}_{n_{en}}] \]
 - which enables writing the element stiffness matrix as
   \[ \boldsymbol{k}^e = \int_{\Omega^e} \boldsymbol{B}^T \boldsymbol{D} \boldsymbol{B}\, d\Omega \]
 - For example, for $n_{sd} = 2$, four-noded element
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
   [[./5.fig23-fournodedstiffness.png]]
 ** Element Calculations
 #+ATTR_REVEAL: :frag (appear)
@@ -159,12 +181,16 @@ This is equivalent to the matrix equation
 * Examples
 ** 2-D Mesh
 Study the essential B.C.'s in the below mesh of four-node rectangular elements below
-[[./5.fig21-2dmeshwessentialbcs.png]]
+  #+ATTR_HTML: :width 700px :style "display: block; margin: auto"
+  [[./5.fig21-2dmeshwessentialbcs.png]]
 
 #+REVEAL: split
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./5.fig24-2dmesharrays.png]]
 ** Four-noded Element
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./5.fig25-Q4addressing.png]]
 
 #+REVEAL: split
+#+ATTR_HTML: :width 700px :style "display: block; margin: auto"
 [[./5.fig26-Q4map.png]]
