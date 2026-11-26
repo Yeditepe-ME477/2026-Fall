@@ -201,7 +201,19 @@ where $n_{int}$ is the number of integration (quadrature) points, $\tilde\xi_l$ 
    \end{align}
 - $g^{(4)} = g_{,\xi\xi\xi\xi}$. Simpson's rule integrates general cubic polynomials exactly and is thus said to be "fourth-order accurate"
 - Trapezoidal and Simpson's rules are widely used, but there exists integration rules that are just as accurate but involve fewer integration points.
-** Gaussian Quadrature
+** Gaussian Quadrature Rules
+[[./6.fig19-gauss1d12.png]]
 
+#+REVEAL: split
+[[./6.fig20-gauss1d3.png]]
+*** Example Derivation for $n_\mathrm{int}=2$
+[[./fig21-gauss1d2example.png]]
+** Gauss Quadrature in Several Dimensions
+Gaussian rules for integrals in several dimensions are constructed by employing one-dimensional Gaussian rules on each coordinate separately. For example in two dimensions
+[[./6.fig22-gaussndrule.png]]
+
+#+REVEAL: split
+It is frequently preferable to tabulate multidimensional rules in terms of a single index so that we would have
+[[./6.fig23-gauss2drule1sum.png]]
 * ($\S3.9$) Shape Function Subroutines
 * ($\S3.10$) Stiffness Coding Styles
